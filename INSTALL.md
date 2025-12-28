@@ -4,30 +4,9 @@
 
 - NixOS installed with Flakes enabled
 - Git installed
-- `sudo` access for system commands
+- `sudo` access
 
-### Enable Flakes (if not already enabled)
-
-Add to `/etc/nixos/configuration.nix`:
-
-```nix
-nix.settings.experimental-features = [ "nix-command" "flakes" ];
-```
-
-Then rebuild:
-```bash
-sudo nixos-rebuild switch
-```
-
-## Installation Steps
-
-### 1. Backup Current Configuration
-
-```bash
-sudo cp -r /etc/nixos /etc/nixos.backup
-```
-
-### 2. Clone NIXKs Repository
+## Step 1: Clone Repository
 
 ```bash
 cd /tmp
@@ -36,43 +15,32 @@ sudo cp -r NIXKs/* /etc/nixos/
 cd /etc/nixos
 ```
 
-### 3. Generate Hardware Configuration
+## Step 2: Generate Hardware Configuration
 
 ```bash
 sudo nixos-generate-hardware-configuration > /tmp/hw.nix
-sudo cp /tmp/hw.nix /etc/nixos/host/chromebook/hardware-configuration.nix
+sudo cp /tmp/hw.nix host/chromebook/hardware-configuration.nix
 ```
 
-### 4. Customize Configuration
+## Step 3: Customize Configuration
 
-Edit the following files for your system:
+### Update Username
 
-**`nixos/user.nix`** - Change username and user settings:
+Edit `nixos/user.nix`:
 ```nix
-users.users.yourusername = {
+users.users.YOUR_USERNAME = {
   isNormalUser = true;
-  home = "/home/yourusername";
+  home = "/home/YOUR_USERNAME";
   description = "Your Name";
   extraGroups = [ "networkmanager" "wheel" ];
   shell = pkgs.nushell;
 };
 ```
 
-**`nixos/networking.nix`** - Set hostname:
+Edit `home/home.nix`:
 ```nix
-networking.hostname = "your-hostname";
-```
-
-**`nixos/localization.nix`** - Set timezone and locale:
-```nix
-time.timeZone = "America/New_York";
-i18n.defaultLocale = "en_US.UTF-8";
-```
-
-**`home/home.nix`** - Update username and email:
-```nix
-home.username = "yourusername";
-home.homeDirectory = "/home/yourusername";
+home.username = "YOUR_USERNAME";
+home.homeDirectory = "/home/YOUR_USERNAME";
 
 programs.git = {
   enable = true;
@@ -83,51 +51,123 @@ programs.git = {
 };
 ```
 
-### 5. Build and Switch
+Edit `host/chromebook/configuration.nix`:
+```nix
+home-manager.users.YOUR_USERNAME = import ./home/home.nix;
+```
+## note you may change the name of chromebook to your devices name
+
+### Set Hostname
+
+Edit `nixos/networking.nix`:
+```nix
+networking.hostname = "nixos"; #the default nixos hostname
+```
+
+### Set Timezone
+
+Edit `nixos/localization.nix`:
+```nix
+time.timeZone = "Your_Region/City";
+```
+
+## Step 4: First Build
 
 ```bash
 sudo nixos-rebuild switch --flake .#nixos
 ```
 
-This may take a while on first build.
+This is the initial build. It may take a while.
 
-### 6. Setup Home Manager
-
-```bash
-home-manager switch --flake .#yourusername@nixos
-```
-
-### 7. Reboot
+## Step 5: Reboot
 
 ```bash
-sudo reboot
+reboot
 ```
 
-## First Login
+Log in and select **Session You Want** from the display manager.
 
-1. Log in with your username
-2. Select **Niri** from the display manager session menu
-3. Press `Super + Shift + /` to see keybindings overlay
+## Future Rebuilds
+
+After the first build, use `nh` as nixos helper:
+
+```bash
+nh os switch /etc/nixos -H nixos --ask
+```
+
+## Customize Niri
+
+Edit `home/systems/niri/default.nix` for:
+- Keybindings (see KEYBINDINGS.md)
+- Display settings
+- Window rules
+- Startup programs
+
+## Add Packages
+
+### System Package
+
+Edit `nixos/environment.nix`:
+```nix
+environment.systemPackages = with pkgs; [
+  newpackage
+];
+```
+
+Rebuild with:
+```bash
+nh os switch /etc/nixos -H nixos --ask
+```
+
+### User Package
+
+Edit `home/packages.nix`:
+```nix
+with pkgs; [
+  newpackage
+]
+```
+
+Rebuild with:
+```bash
+nh os switch /etc/nixos -H nixos --ask
+```
+
+## Change Shell
+
+Edit `nixos/user.nix`:
+```nix
+users.users.YOUR_USERNAME.shell = pkgs.zsh;  # or nushell, fish, bash
+```
+
+Rebuild and log out/in.
 
 ## Troubleshooting
 
-### Build fails with "not found"
+### Build Fails
 
-Search for the package:
+Check syntax:
 ```bash
-nix search nixpkgs packagename
+nix flake check
 ```
 
-### Home Manager won't apply
-
-Verify username matches in all config files:
+Show detailed error:
 ```bash
-grep -r "yourusername" /etc/nixos/home/
+sudo nixos-rebuild build --show-trace
 ```
 
-### Niri won't start
+### Package Not Found
 
-Check if display manager is running:
+Search for package:
+```bash
+nix search nixpkgs package-name
+```
+
+Or visit: https://search.nixos.org/packages
+
+### Niri Won't Start
+
+Check display manager:
 ```bash
 systemctl status display-manager
 ```
@@ -137,49 +177,49 @@ View logs:
 journalctl -xe
 ```
 
-### Can't find package after rebuild
+## Rollback
 
-Rebuild home-manager:
+If something breaks:
+
 ```bash
-home-manager switch --flake .
+nh os rollback
 ```
-
-Log out and back in, then try again.
-
-## Next Steps
-
-- See [KEYBINDINGS.md](KEYBINDINGS.md) for Niri keybindings
-- Customize packages in `home/packages.nix` and `nixos/environment.nix`
-- Modify programs in `home/programs/` for your preferences
-- Check `home/systems/niri/default.nix` for Niri configuration
+or
+```bash
+sudo nixos-rebuild rollback
+```
 
 ## Useful Commands
 
 ```bash
-# Rebuild system
-sudo nixos-rebuild switch --flake .#nixos
-
-# Rebuild home
-home-manager switch --flake .#yourusername@nixos
-
-# Test build
-sudo nixos-rebuild dry-build --flake .
-
 # Update packages
 nix flake update
+
+# Check configuration
+nix flake check
 
 # Search packages
 nix search nixpkgs <name>
 
-# Check for errors
-nix flake check
-
 # Cleanup old generations
 nix-collect-garbage -d
+or
+nh clean all
+
+# Show NixOS version
+nixos-version --detailed
+
+# View logs
+journalctl -xe
 ```
 
-## Getting Help
+## Next Steps
 
-- Check [KEYBINDINGS.md](KEYBINDINGS.md) for Niri shortcuts
-- View logs: `journalctl -xe`
-- Search NixOS packages: https://search.nixos.org/
+- See [KEYBINDINGS.md](KEYBINDINGS.md) for Niri shortcuts
+- Edit programs in `home/programs/`
+- Customize appearance in `home/themes/`
+- Modify Niri config in `home/systems/niri/`
+
+---
+
+For help, check [README.md](README.md) or open an issue on GitHub.

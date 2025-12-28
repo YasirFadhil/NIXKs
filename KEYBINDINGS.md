@@ -150,12 +150,6 @@ binds = {
   # "Super+D".action.spawn = ["rofi" "-show" "drun"];
 };
 ```
-
-Then rebuild:
-```bash
-home-manager switch --flake .
-```
-
 ---
 
-For Niri documentation, see: https://github.com/sodiboo/niri
+For Niri documentation, see: https://github.com/YaLTeR/niri
