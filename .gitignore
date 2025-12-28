@@ -1,0 +1,100 @@
+# Nix
+result
+result-*
+.dirlocals
+.envrc
+.cache
+
+# Build artifacts
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+*.out
+
+# Editor backups and temp files
+*~
+*.swp
+*.swo
+*#
+.#*
+.DS_Store
+*.bak
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.vim/
+.emacs.d/
+
+# OS
+Thumbs.db
+.AppleDouble
+.LSOverride
+._*
+
+# Nix flake lock (optional - uncomment if you want to track it)
+# flake.lock
+
+# Local configuration overrides
+local.nix
+*.local.nix
+
+# Sensitive information
+*secret*
+*password*
+*token*
+*.key
+*.pem
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# User-specific configurations (if any)
+/home/*/local-packages.nix
+/home/*/.local/
+
+# NixOS generations
+/boot/grub/
+/var/lib/nixos/
+
+# direnv
+.envrc.local
+
+# Backup files
+*.backup
+*.backup.*
+/etc/nixos.backup
+/etc/nixos.backup.*
+
+# Generated files (except flake.lock - track that!)
+*.o
+*.so
+
+# Node modules (if using node-based tools)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+
+# Rust
+target/
+Cargo.lock
+
+# Misc
+.history/
+*.log
+logs/
