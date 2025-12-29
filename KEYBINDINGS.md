@@ -59,7 +59,7 @@ Press `Super + Shift + /` to see the keybindings overlay in Niri.
 | `Super + D` | Open application launcher (Rofi drun) |
 | `Super + Shift + D` | Open run launcher (Rofi run) |
 | `Super + E` | Open file manager (Nautilus) |
-| `Super + Alt + V` | Open volume control (PulseAudio) |
+| `Super + Alt + V` | Open volume control |
 
 ## Rofi Utilities
 
@@ -68,20 +68,6 @@ Press `Super + Shift + /` to see the keybindings overlay in Niri.
 | `Super + Shift + E` | Open emoji picker |
 | `Super + Shift + V` | Open clipboard manager |
 
-## Media & System
-
-### Audio Control
-| Keybinding | Action |
-|-----------|--------|
-| `XF86AudioRaiseVolume` | Increase volume by 5% |
-| `XF86AudioLowerVolume` | Decrease volume by 5% |
-| `XF86AudioMute` | Toggle mute |
-
-### Brightness Control
-| Keybinding | Action |
-|-----------|--------|
-| `XF86MonBrightnessUp` | Increase brightness by 5% |
-| `XF86MonBrightnessDown` | Decrease brightness by 5% |
 
 ### Screenshots
 | Keybinding | Action |

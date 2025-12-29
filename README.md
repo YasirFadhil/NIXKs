@@ -4,13 +4,13 @@
 
 A declarative [NixOS](https://nixos.org/) configuration using [Flakes](https://nixos.wiki/wiki/Flakes) with [Niri](https://github.com/YaLTeR/niri) compositor and [Home Manager](https://github.com/nix-community/home-manager).
 
-## Features
+<!--## Features
 
 - 🪟 **Wayland-First** - Niri compositor with Hyprland support
 - 📦 **Flakes-Based** - Reproducible builds with locked dependencies
 - 🏠 **Home Manager** - Declarative user environment
 - 🎨 **Pre-configured** - Zed, Zen Browser, Spicetify, Nushell, and more
-- 🔧 **Modular** - Easy to customize and maintain
+- 🔧 **Modular** - Easy to customize and maintain-->
 
 ## Documentation
 
