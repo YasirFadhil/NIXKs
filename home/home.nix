@@ -11,7 +11,7 @@
     ./programs/fastfetch
     ./programs/ghostty
     ./programs/nushell
-    ./programs.nvchad
+    ./programs/nvchad
     ./programs/rofi
     ./programs/spicetify
     ./programs/starship
