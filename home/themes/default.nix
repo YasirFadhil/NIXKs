@@ -3,7 +3,7 @@
 {
   imports = [
     ./gtk
-    # ./qt
+    ./qt
     ./fonts
   ];
 

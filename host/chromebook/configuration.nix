@@ -8,6 +8,7 @@
       ../../nixos/audio.nix
       ../../nixos/bootloader.nix
       ../../nixos/environment.nix
+      ../../nixos/intel.nix
       ../../nixos/localization.nix
       ../../nixos/networking.nix
       ../../nixos/power-button.nix
@@ -23,8 +24,6 @@
 
   # Install firefox.
   programs.firefox.enable = true;
-
-  services.cloudflare-warp.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

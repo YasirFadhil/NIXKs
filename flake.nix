@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     niri.url = "github:sodiboo/niri-flake";
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
     home-manager = {
@@ -17,9 +18,18 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nvchad-starter = {
+      url = "github:YasirFadhil/chad";
+      flake = false;
+    };
+    nix4nvchad = {
+      url = "github:nix-community/nix4nvchad";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nvchad-starter.follows = "nvchad-starter";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, niri, ... }@inputs: let
+  outputs = { self, nixpkgs, home-manager, niri, nix-cachyos-kernel, ... }@inputs: let
     system = "x86_64-linux";
   in {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {

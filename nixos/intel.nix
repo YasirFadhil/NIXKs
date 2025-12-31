@@ -1,18 +1,17 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   # Intel UHD Graphics 600 (Gemini Lake N4020) configuration
-  hardware.opengl = {
+  boot = {
+    initrd.kernelModules = [ ];
+  };
+
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
     extraPackages = with pkgs; [
       intel-media-driver
-      libva-intel-driver
-      intel-gpu-tools
-    ];
-    extraPackages32 = with pkgs.pkgsi686Linux; [
-      intel-media-driver
-      libva-intel-driver
+      intel-vaapi-driver
+      libvdpau-va-gl
+      vpl-gpu-rt
     ];
   };
 
@@ -29,5 +28,6 @@
   environment.systemPackages = with pkgs; [
     intel-gpu-tools
     clinfo
+    libva-utils
   ];
 }

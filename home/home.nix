@@ -11,6 +11,7 @@
     ./programs/fastfetch
     ./programs/ghostty
     ./programs/nushell
+    ./programs.nvchad
     ./programs/rofi
     ./programs/spicetify
     ./programs/starship
@@ -27,6 +28,14 @@
   home.homeDirectory = "/home/yasirfadhil";
   home.stateVersion = "24.11";
   home.packages = import ./packages.nix {inherit pkgs;};
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+    PAGER = "less";
+    BROWSER = "zen-browser";
+    MOZ_ENABLE_WAYLAND = "1";
+    GDK_BACKEND = "wayland,x11";
+  };
 
   waybar.enable = true;
   programs.starship = {

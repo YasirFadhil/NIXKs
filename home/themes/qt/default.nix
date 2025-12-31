@@ -22,7 +22,7 @@
   # Ensure Qt uses the same cursor theme and icons as GTK
   home.sessionVariables = {
     QT_QPA_PLATFORM_THEME = "gtk3";
-    QT_STYLE_OVERRIDE = "Adwaita-Dark";
+    # QT_STYLE_OVERRIDE = "Adwaita-Dark";
     XCURSOR_THEME = "Bibata-Modern-Ice";
     XCURSOR_SIZE = "20";
   };
