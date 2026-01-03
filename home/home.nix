@@ -15,6 +15,7 @@
     ./programs/rofi
     ./programs/spicetify
     ./programs/starship
+    ./programs/wlogout
     ./programs/zed
     ./programs/zen
 

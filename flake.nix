@@ -18,18 +18,13 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nvchad-starter = {
-      url = "github:YasirFadhil/chad";
-      flake = false;
-    };
     nix4nvchad = {
       url = "github:nix-community/nix4nvchad";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nvchad-starter.follows = "nvchad-starter";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, niri, nix-cachyos-kernel, ... }@inputs: let
+  outputs = { self, nixpkgs, home-manager, niri, nix-cachyos-kernel, nix4nvchad, ... }@inputs: let
     system = "x86_64-linux";
   in {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {

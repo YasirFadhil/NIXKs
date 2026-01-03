@@ -215,9 +215,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "nvchad-starter": [
-          "nvchad-starter"
-        ]
+        "nvchad-starter": "nvchad-starter"
       },
       "locked": {
         "lastModified": 1766894340,
@@ -333,14 +331,15 @@
       "locked": {
         "lastModified": 1753939018,
         "narHash": "sha256-xdLr6tlU9uA+wu0pqha2br0fdVm+1MjgjbB5awz9ICU=",
-        "owner": "YasirFadhil",
-        "repo": "chad",
+        "owner": "NvChad",
+        "repo": "starter",
         "rev": "e3572e1f5e1c297212c3deeb17b7863139ce663e",
         "type": "github"
       },
       "original": {
-        "owner": "YasirFadhil",
-        "repo": "chad",
+        "owner": "NvChad",
+        "ref": "main",
+        "repo": "starter",
         "type": "github"
       }
     },
@@ -364,7 +363,6 @@
         "nix-cachyos-kernel": "nix-cachyos-kernel",
         "nix4nvchad": "nix4nvchad",
         "nixpkgs": "nixpkgs_4",
-        "nvchad-starter": "nvchad-starter",
         "spicetify-nix": "spicetify-nix",
         "zen-browser": "zen-browser"
       }
