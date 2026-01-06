@@ -1,120 +1,101 @@
 { config, pkgs, lib, ... }:
 
 {
+  home.packages = [ pkgs.wlogout ];
+
   # Wlogout layout configuration
   home.file.".config/wlogout/layout".text = ''
     {
-        "label" : "lock",
-        "action" : "swaylock",
-        "text" : "Lock",
-        "keybind" : "l"
-    }
+    "label" : "lock",
+    "action" : "loginctl lock-session",
+    "text" : "Lock",
+    "keybind" : "l"
+}
+{
+    "label" : "hibernate",
+    "action" : "systemctl hibernate",
+    "text" : "Hibernate",
+    "keybind" : "h"
+}
+{
+    "label" : "logout",
+    "action" : "loginctl terminate-user $USER",
+    "text" : "Logout",
+    "keybind" : "e"
+}
+{
+    "label" : "shutdown",
+    "action" : "systemctl poweroff",
+    "text" : "Shutdown",
+    "keybind" : "s"
+}
+{
+    "label" : "suspend",
+    "action" : "systemctl suspend",
+    "text" : "Suspend",
+    "keybind" : "u"
+}
+{
+    "label" : "reboot",
+    "action" : "systemctl reboot",
+    "text" : "Reboot",
+    "keybind" : "r"
+}
 
-    {
-        "label" : "logout",
-        "action" : "hyprctl dispatch exit 0",
-        "text" : "Logout",
-        "keybind" : "e"
-    }
-
-    {
-        "label" : "shutdown",
-        "action" : "systemctl poweroff",
-        "text" : "Shutdown",
-        "keybind" : "s"
-    }
-
-    {
-        "label" : "reboot",
-        "action" : "systemctl reboot",
-        "text" : "Reboot",
-        "keybind" : "r"
-    }
   '';
 
   # CSS styling for wlogout
   home.file.".config/wlogout/style.css".text = ''
     * {
-        background-image: none;
-        font-size: ${fntSize}px;
-    }
+	background-image: none;
+	box-shadow: none;
+}
 
-    @import "$HOME/.config/waybar/theme.css";
+window {
+	background-color: rgba(48, 52, 70, 0.90);
+}
 
-    window {
-        background-color: transparent;
-    }
+button {
+	border-radius: 0;
+	border-color: #babbf1;
+	text-decoration-color: #c6d0f5;
+	color: #c6d0f5;
+	background-color: #292c3c;
+	border-style: solid;
+	border-width: 1px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 25%;
+}
 
-    button {
-        color: ${BtnCol};
-        background-color: @main-bg;
-        outline-style: none;
-        border: none;
-        border-width: 0px;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: 10%;
-        border-radius: 0px;
-        box-shadow: none;
-        text-shadow: none;
-        animation: gradient_f 20s ease-in infinite;
-    }
+button:focus, button:active, button:hover {
+	/* 20% Overlay 2, 80% mantle */
+	background-color: rgb(63, 66, 85);
+	outline-style: none;
+}
 
-    button:focus {
-        background-color: @wb-act-bg;
-        background-size: 20%;
-    }
+#lock {
+    background-image: url("/etc/nixos/home/programs/wlogout/icons/lock.svg");
+}
 
-    button:hover {
-        background-color: @wb-hvr-bg;
-        background-size: 25%;
-        border-radius: ${active_rad}px;
-        animation: gradient_f 20s ease-in infinite;
-        transition: all 0.3s cubic-bezier(.55,0.0,.28,1.682);
-    }
+#logout {
+    background-image: url("/etc/nixos/home/programs/wlogout/icons/logout.svg");
+}
 
-    button:hover#lock {
-        border-radius: ${active_rad}px ${active_rad}px 0px ${active_rad}px;
-        margin : ${y_hvr}px 0px 0px ${x_hvr}px;
-    }
+#suspend {
+    background-image: url("/etc/nixos/home/programs/wlogout/icons/suspend.svg");
+}
 
-    button:hover#logout {
-        border-radius: ${active_rad}px 0px ${active_rad}px ${active_rad}px;
-        margin : 0px 0px ${y_hvr}px ${x_hvr}px;
-    }
+#hibernate {
+    background-image: url("/etc/nixos/home/programs/wlogout/icons/hibernate.svg");
+}
 
-    button:hover#shutdown {
-        border-radius: ${active_rad}px ${active_rad}px ${active_rad}px 0px;
-        margin : ${y_hvr}px ${x_hvr}px 0px 0px;
-    }
+#shutdown {
+    background-image: url("/etc/nixos/home/programs/wlogout/icons/shutdown.svg");
+}
 
-    button:hover#reboot {
-        border-radius: 0px ${active_rad}px ${active_rad}px ${active_rad}px;
-        margin : 0px ${x_hvr}px ${y_hvr}px 0px;
-    }
-
-    #lock {
-        background-image: image(url("$HOME/.config/wlogout/icons/lock_${BtnCol}.png"), url("/usr/share/wlogout/icons/lock.png"), url("/usr/local/share/wlogout/icons/lock.png"));
-        border-radius: ${button_rad}px 0px 0px 0px;
-        margin : ${y_mgn}px 0px 0px ${x_mgn}px;
-    }
-
-    #logout {
-        background-image: image(url("$HOME/.config/wlogout/icons/logout_${BtnCol}.png"), url("/usr/share/wlogout/icons/logout.png"), url("/usr/local/share/wlogout/icons/logout.png"));
-        border-radius: 0px 0px 0px ${button_rad}px;
-        margin : 0px 0px ${y_mgn}px ${x_mgn}px;
-    }
-
-    #shutdown {
-        background-image: image(url("$HOME/.config/wlogout/icons/shutdown_${BtnCol}.png"), url("/usr/share/wlogout/icons/shutdown.png"), url("/usr/local/share/wlogout/icons/shutdown.png"));
-        border-radius: 0px ${button_rad}px 0px 0px;
-        margin : ${y_mgn}px ${x_mgn}px 0px 0px;
-    }
-
-    #reboot {
-        background-image: image(url("$HOME/.config/wlogout/icons/reboot_${BtnCol}.png"), url("/usr/share/wlogout/icons/reboot.png"), url("/usr/local/share/wlogout/icons/reboot.png"));
-        border-radius: 0px 0px ${button_rad}px 0px;
-        margin : 0px ${x_mgn}px ${y_mgn}px 0px;
-    }
+#reboot {
+    background-image: url("/etc/nixos/home/programs/wlogout/icons/reboot.svg");
+}
   '';
 }

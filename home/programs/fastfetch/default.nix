@@ -41,6 +41,10 @@
           key = "│  ";
         }
         {
+          type = "swap";
+          key = "│ 󰓡 ";
+        }
+        {
           type = "disk";
           key = "│  ";
           # format = "{1} / {2}" # uncomment jika ingin tampilkan used/total
@@ -56,7 +60,7 @@
         }
         {
           type = "os";
-          key = " OS -> ";
+          key = "󱄅 OS -> ";
         }
         {
           type = "kernel";

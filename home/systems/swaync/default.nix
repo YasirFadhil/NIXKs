@@ -97,25 +97,25 @@
               command = "swaync-client --close-panel && sleep 0.7 && color=$(hyprpicker -a -f hex) && notify-send '🎨 Color copied!' $color";
             }
             {
-              label = "󰹑";
-              type = "button";
-              command = "swaync-shot";
-            }
-            {
               label = "";
               type = "button";
-              command = "swaync-client --close-panel && kitty --class wifibt -e env -u COLORTERM TERM=xterm-old nmtui";
+              command = "swaync-client --close-panel && ghostty --class wifibt -e env -u COLORTERM TERM=xterm-old nmtui";
             }
             {
               label = "";
               type = "button";
-              command = "swaync-client --close-panel && kitty --class wifibt -e bluetuith";
+              command = "swaync-client --close-panel && ghostty --class wifibt -e bluetuith";
             }
             {
               label = "";
               type = "toggle";
               command = "sh -c 'swaync-client --toggle-dnd'";
               update-command = "sh -c 'out=$(swaync-client -D 2>/dev/null); [[ $out == true || $(echo \"$out\" | jq -r .doNotDisturb 2>/dev/null) == true ]] && echo true || echo false'";
+            }
+            {
+              label = "󰐥";
+              type = "button";
+              command = "wlogout";
             }
           ];
         };

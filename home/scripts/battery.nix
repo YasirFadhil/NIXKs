@@ -6,7 +6,7 @@ pkgs.writeShellScriptBin "battery" ''
   battery_status=$(cat /sys/class/power_supply/BAT0/status)
 
   # Ikon berdasarkan level baterai
-  battery_icons=("󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹")
+  battery_icons=("" "" "" "" "")
   icon_index=$((battery_percentage / 10))
   battery_icon=''${battery_icons[$icon_index]}
 
@@ -22,7 +22,7 @@ pkgs.writeShellScriptBin "battery" ''
     if [ "$battery_percentage" -ge 100 ]; then
       echo "Charged"
     else
-      echo "$battery_percentage% Charging "
+      echo "$battery_percentage% Charging"
     fi
   else
     echo "$battery_percentage% $battery_icon"

@@ -399,9 +399,9 @@ in {
             modules = [
               "custom/nixos"
               "custom/shutdown"
-              "custom/reboot"
-              "custom/logout"
-              "custom/lock"
+              # "custom/reboot"
+              # "custom/logout"
+              # "custom/lock"
             ];
           };
           "group/stuff" = {
@@ -414,7 +414,7 @@ in {
           };
           "custom/shutdown" = {
             format = "<span color='#ff5e5e'></span>";
-            on-click = "systemctl poweroff";
+            on-click = "wlogout";
             tooltip = false;
           };
           "custom/reboot" = {
@@ -681,7 +681,7 @@ in {
           "custom/nixos" = {
             exec = "echo '{\"text\": \"󱄅\", \"tooltip\": \"NixOS '$(nixos-version)'\"}'";
             return-type = "json";
-            on-click = "rofi-launcher";
+            on-click = " rofi -show drun -config ~/.config/rofi/config.rasi";
             format = "{}";
             tooltip = true;
             interval = 86400;

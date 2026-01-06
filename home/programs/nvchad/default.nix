@@ -29,6 +29,6 @@
     hm-activation = true;
 
     # Create backups when config changes
-    backup = true;
+    # backup = true;
   };
 }

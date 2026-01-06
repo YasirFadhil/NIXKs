@@ -19,16 +19,3 @@
     "vm.swappiness" = 10;
   };
 }
-```
-
-Now add this to your `configuration.nix` by adding this line to the imports:
-
-```
-../../nixos/zram.nix
-```
-
-This will:
-- Enable zram with zstd compression (most efficient)
-- Use 50% of your RAM as compressed swap
-- Set high priority so zram is preferred over disk swap
-- Configure swappiness to 10 so the system only swaps when necessary

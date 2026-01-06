@@ -14,6 +14,7 @@
       ../../nixos/power-button.nix
       ../../nixos/session-manager.nix
       ../../nixos/user.nix
+      ../../nixos/zram.nix
       # ../../nixos/virtual.nix
     ];
 
