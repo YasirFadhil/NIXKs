@@ -4,7 +4,7 @@
   entryBorder = "rgba(59,59,59,0.33)";
   entryColor = "rgba(255,255,255,1)";
   font = "SF Pro Display";
-  fontSymbols = "Material Symbols Rounded";
+  fontSymbols = "FiraCode Nerd Font Bold";
 in {
   programs.hyprlock = {
     enable = true;
@@ -121,7 +121,8 @@ in {
           shadow_boost = "0.5";
           color = textColor;
           font_size = "12";
-          font_family = "SF Mono";
+          # font_family = "SF Pro Display Bold";
+          font_family = fontSymbols;
           position = "-10, 10";
           halign = "right";
           valign = "bottom";

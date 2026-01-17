@@ -8,37 +8,25 @@
     {
     "label" : "lock",
     "action" : "loginctl lock-session",
-    "text" : "Lock",
+    "text" : "",
     "keybind" : "l"
-}
-{
-    "label" : "hibernate",
-    "action" : "systemctl hibernate",
-    "text" : "Hibernate",
-    "keybind" : "h"
 }
 {
     "label" : "logout",
     "action" : "loginctl terminate-user $USER",
-    "text" : "Logout",
+    "text" : "󰍃",
     "keybind" : "e"
 }
 {
-    "label" : "shutdown",
+    "label" : "poweroff",
     "action" : "systemctl poweroff",
-    "text" : "Shutdown",
+    "text" : "󰐥",
     "keybind" : "s"
-}
-{
-    "label" : "suspend",
-    "action" : "systemctl suspend",
-    "text" : "Suspend",
-    "keybind" : "u"
 }
 {
     "label" : "reboot",
     "action" : "systemctl reboot",
-    "text" : "Reboot",
+    "text" : "",
     "keybind" : "r"
 }
 
@@ -75,27 +63,23 @@ button:focus, button:active, button:hover {
 }
 
 #lock {
-    background-image: url("/etc/nixos/home/programs/wlogout/icons/lock.svg");
+    font-family: "FiraCode Nerd Font";
+    font-size: 40px;
 }
 
 #logout {
-    background-image: url("/etc/nixos/home/programs/wlogout/icons/logout.svg");
+    font-family: "FiraCode Nerd Font";
+    font-size: 40px;
 }
 
-#suspend {
-    background-image: url("/etc/nixos/home/programs/wlogout/icons/suspend.svg");
-}
-
-#hibernate {
-    background-image: url("/etc/nixos/home/programs/wlogout/icons/hibernate.svg");
-}
-
-#shutdown {
-    background-image: url("/etc/nixos/home/programs/wlogout/icons/shutdown.svg");
+#poweroff {
+    font-family: "FiraCode Nerd Font";
+    font-size: 40px;
 }
 
 #reboot {
-    background-image: url("/etc/nixos/home/programs/wlogout/icons/reboot.svg");
+    font-family: "FiraCode Nerd Font";
+    font-size: 40px;
 }
   '';
 }

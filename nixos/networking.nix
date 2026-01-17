@@ -9,6 +9,12 @@
   services.blueman.enable = true;
   services.cloudflare-warp.enable = true;
   services.dbus.enable = true;
+  services.openssh = {
+    enable = true;
+    settings = {
+      PermitRootLogin = "yes";
+    };
+  };
   security.polkit.enable = true;
   services.avahi = {
     enable = true;

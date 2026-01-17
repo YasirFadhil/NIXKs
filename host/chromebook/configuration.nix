@@ -15,7 +15,7 @@
       ../../nixos/session-manager.nix
       ../../nixos/user.nix
       ../../nixos/zram.nix
-      # ../../nixos/virtual.nix
+      ../../nixos/virtual.nix
     ];
 
   # Enable CUPS to print documents.
