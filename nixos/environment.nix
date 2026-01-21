@@ -41,11 +41,7 @@
     neovim
 
     # Shells
-    fish
-    zsh
     nushell
-    oh-my-zsh
-    zsh-syntax-highlighting
     starship
 
     # GNOME/GTK System Libraries
