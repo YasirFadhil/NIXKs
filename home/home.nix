@@ -11,7 +11,6 @@
     ./programs/fastfetch
     ./programs/foot
     ./programs/ghostty
-    ./programs/ibus
     ./programs/nushell
     ./programs/nvchad
     ./programs/rofi

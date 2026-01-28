@@ -22,9 +22,13 @@
         matches = [ { "node.name" = "~alsa_output.*"; } ];
         actions = {
           update-props = {
+            # Enable automatic port detection for speaker/headphone
+            "api.acp.auto-port" = true;
+            # Enable automatic profile selection
+            "api.acp.auto-profile" = true;
             # Force UCM to handle the profile mapping
             "api.alsa.use-ucm" = true;
-            # Prevents everything from defaulting to 'Pro Audio'
+            # Allows multiple profiles/ports to be exposed
             "api.alsa.pro-audio" = false;
           };
         };
