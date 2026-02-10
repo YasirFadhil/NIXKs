@@ -26,9 +26,25 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    dgop = {
+      url = "github:AvengeMedia/dgop";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    freesmlauncher = {
+      url = "github:FreesmTeam/FreesmLauncher";
+      inputs = {
+        nixpkgs = {
+        follows = "nixpkgs";
+        };
+      };
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, niri, nix-cachyos-kernel, nix4nvchad, ... }@inputs: let
+  outputs = { self, nixpkgs, home-manager, niri, nix-cachyos-kernel, nix4nvchad, freesmlauncher, ... }@inputs: let
     system = "x86_64-linux";
   in {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
