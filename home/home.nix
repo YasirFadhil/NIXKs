@@ -2,8 +2,10 @@
 
   imports = [
     #sys
+    # ./systems/dankshell
     ./systems/hypr
     ./systems/niri
+    # ./systems/noctalia
     ./systems/swaync
     ./systems/waybar
 
@@ -28,7 +30,7 @@
   home.username = "yasirfadhil";
   home.homeDirectory = "/home/yasirfadhil";
   home.stateVersion = "24.11";
-  home.packages = import ./packages.nix {inherit pkgs;};
+  home.packages = import ./packages.nix { inherit pkgs inputs; };
   home.sessionVariables = {
     EDITOR = "nvim";
     VISUAL = "nvim";

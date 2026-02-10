@@ -1,8 +1,10 @@
-{ pkgs, ...}:
+{ pkgs, inputs ? {}, ... }:
 
-with pkgs; [
+let
+  extraGames = if inputs ? freesmlauncher then [ inputs.freesmlauncher.packages."${pkgs.stdenv.hostPlatform.system}".default ] else [];
+in
 
-# (import ./scripts/launcher.nix { inherit pkgs; })
+with pkgs; ([
 (import ./scripts/battery.nix { inherit pkgs; })
 (import ./scripts/nowplay.nix { inherit pkgs; })
 (import ./scripts/audio-sink.nix { inherit pkgs; })
@@ -55,6 +57,7 @@ with pkgs; [
   swappy
 
 # Wayland tools
+  eww
   hyprlock
   hypridle
   wlogout
@@ -74,7 +77,6 @@ with pkgs; [
   blueman
   networkmanager
   caffeine-ng
-  swayosd
 
 # GTK Themes and Tools
   adw-gtk3
@@ -111,4 +113,9 @@ with pkgs; [
 
 # AI/ML Tools
   ollama
+
+# Games
+] ++ extraGames ++ [
+  lunar-client
 ]
+)

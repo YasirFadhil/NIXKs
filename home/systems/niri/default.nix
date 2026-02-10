@@ -2,6 +2,9 @@
 
 let
   myPackages = import ../../packages.nix { inherit pkgs; };
+  # noctalia = cmd: [
+  #   "noctalia-shell" "ipc" "call"
+  # ] ++ (pkgs.lib.splitString " " cmd);
 in
 {
   imports = [
@@ -149,9 +152,6 @@ in
         { command = ["hypridle"]; }
         # { command = ["noctalia-shell"]; }
         { command = ["kdeconnect-indicator"]; }
-        # Using cliphist for clipboard management (via Rofi)
-        # { command = ["clipboard-manager" "store-text"]; }
-        # { command = ["clipboard-manager" "store-image"]; }
         { command = ["wl-paste" "--watch" "cliphist" "store"]; }
       ];
 
@@ -235,6 +235,7 @@ in
       "Mod+T".action.spawn = "ghostty";
       # "Mod+T".action.spawn = "foot";
       "Mod+D".action.spawn = ["rofi" "-show" "drun" "-config" "~/.config/rofi/config.rasi"];
+      # "Mod+D".action.spawn = noctalia "launcher toggle";
       "Mod+Shift+D".action.spawn = ["rofi" "-show" "run" "-config" "~/.config/rofi/config.rasi"];
       "Mod+E".action.spawn = "nautilus";
       "Mod+Alt+V".action.spawn = "pavucontrol";
@@ -261,10 +262,10 @@ in
       # System
       "Mod+Shift+Q".action.quit = {};
       "Mod+P".action.spawn = ["wlogout"];
+      # "Mod+P".action.spawn = noctalia "sessionMenu toggle";
       "Mod+Shift+P".action.power-off-monitors = {};
-      # "Mod+Shift+L".action.spawn = ["noctalia-shell" "ipc" "call" "lockScreen" "lock"];
+      # "Mod+Shift+L".action.spawn = noctalia "lockScreen lock";
       "Mod+Shift+L".action.spawn = ["loginctl" "lock-session"];
-      # "Mod+Shift+L".action.spawn = ["swaylock-blur"];
 
       # Clipboard (using cliphist via Rofi)
       # "Mod+Shift+V".action.spawn = ["clipboard-manager" "show"];
