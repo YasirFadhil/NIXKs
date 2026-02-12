@@ -19,7 +19,7 @@ Is my new config for [NixOS](https://nixos.org/) configuration using [Flakes](ht
 
 ## Screenshots
 
-![Screenshot from my config](Screenshot_niri_2026-02-12_08-49-14.png)
+![Screenshot from my config](./Picts/Screenshot_niri_2026-02-12_08-49-14.png)
 
 ## Directory Structure
 
