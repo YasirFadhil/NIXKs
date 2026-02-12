@@ -10,7 +10,6 @@
     dbus
     gvfs
     mediawriter
-    ventoy-full
     lm_sensors
     polkit_gnome
     gnome-keyring
@@ -91,9 +90,7 @@
     brightnessctl
   ];
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "ventoy-1.1.10"
-  ];
+
 
   system.userActivationScripts = {
     copy-fonts-local-share = {

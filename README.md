@@ -17,6 +17,10 @@ Is my new config for [NixOS](https://nixos.org/) configuration using [Flakes](ht
 - **[INSTALL.md](INSTALL.md)** - Installation and setup guide
 - **[KEYBINDINGS.md](KEYBINDINGS.md)** - Niri keybindings reference
 
+## Screenshots
+
+![Screenshot from my config](Screenshot_niri_2026-02-12_08-49-14.png)
+
 ## Directory Structure
 
 ```

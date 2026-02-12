@@ -16,6 +16,7 @@
       ../../nixos/user.nix
       ../../nixos/zram.nix
       ../../nixos/virtual.nix
+      ../../nixos/ventoy.nix
     ];
 
   # Enable CUPS to print documents.
@@ -28,6 +29,11 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  # Allow insecure packages
+  nixpkgs.config.permittedInsecurePackages = [
+    "ventoy-1.1.10"
+  ];
 
   hardware.enableAllFirmware = true;
   system.stateVersion = "25.05";

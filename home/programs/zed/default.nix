@@ -11,7 +11,7 @@
       "agent": {
         "default_model": {
           "provider": "copilot_chat",
-          "model": "gpt-5-mini"
+          "model": "claude-haiku-4.5"
         },
         "model_parameters": []
       },

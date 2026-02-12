@@ -54,7 +54,7 @@ in
 
       # Layout settings
       layout = {
-        gaps = 15;
+        gaps = 12;
         always-center-single-column = true;
         preset-column-widths = [
           { proportion = 0.333; }
