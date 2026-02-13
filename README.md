@@ -1,6 +1,7 @@
 # NIXKs
 
 <img src="https://wiki.nixos.org/w/images/a/a1/Nix-snowflake-colours.svg" alt="NixOS Logo" width="80" />
+<img alt="niri" src="https://github.com/user-attachments/assets/07d05cd0-d5dc-4a28-9a35-51bae8f119a0" width="80" />
 
 Is my new config for [NixOS](https://nixos.org/) configuration using [Flakes](https://nixos.wiki/wiki/Flakes) with [Niri](https://github.com/YaLTeR/niri) compositor and [Home Manager](https://github.com/nix-community/home-manager).
 
