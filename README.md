@@ -22,7 +22,7 @@ Is my new config for [NixOS](https://nixos.org/) configuration using [Flakes](ht
 ## Screenshots
 
 ### Niri Desktop
-![Screenshot from my config](./Picts/Screenshot_niri_2026-02-12_08-46-02.png
+![Screenshot from my config](./Picts/Screenshot_niri_2026-02-12_08-46-02.png)
 
 ### Hyprlock
 ![Hyprlock screenshot](./Picts/hyprlock-screenshot.png)
