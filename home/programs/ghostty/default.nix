@@ -13,8 +13,8 @@
       bold-is-bright = true;
 
       # Window configuration
-      window-padding-x = 25;
-      window-padding-y = 25;
+      window-padding-x = 10;
+      window-padding-y = 10;
       background-opacity = 0.8;
       confirm-close-surface = false;
 
