@@ -1,0 +1,44 @@
+layout {
+    background-color "transparent"
+
+    focus-ring {
+        active-color   "#cdbdff"
+        inactive-color "#948ea0"
+        urgent-color   "#ffb4ab"
+    }
+
+    border {
+        active-color   "#cdbdff"
+        inactive-color "#948ea0"
+        urgent-color   "#ffb4ab"
+    }
+
+    shadow {
+        color "#00000070"
+    }
+
+    tab-indicator {
+        active-color   "#cdbdff"
+        inactive-color "#948ea0"
+        urgent-color   "#ffb4ab"
+    }
+
+    insert-hint {
+        color "#cdbdff80"
+    }
+}
+
+recent-windows {
+    highlight {
+        corner-radius 21
+        active-color   "#4502b6"
+        urgent-color   "#ffb4ab"
+    }
+
+    binds {
+        Alt+Tab         { next-window scope="output"; }
+        Alt+Shift+Tab   { previous-window scope="output"; }
+        Alt+grave       { next-window filter="app-id"; }
+        Alt+Shift+grave { previous-window filter="app-id"; }
+    }
+}
