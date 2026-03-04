@@ -58,6 +58,9 @@ let
     chmod +x Ventoy2Disk.sh 2>/dev/null || true
     chmod +x ./tool/x86_64/* 2>/dev/null || true
 
+    # Patch the shebang to use bash instead of ash (NixOS compatibility)
+    sed -i '1s|^#!/bin/ash|#!/bin/bash|' Ventoy2Disk.sh 2>/dev/null || true
+
     # Run Ventoy installation
     echo -e "''${GREEN}Installing Ventoy to $DEVICE...''${NC}"
 
@@ -88,5 +91,6 @@ in
     util-linux
     e2fsprogs
     dosfstools
+    bash
   ];
 }

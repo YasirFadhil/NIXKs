@@ -23,7 +23,6 @@ with pkgs; ([
   cbonsai
   cava
   scrcpy
-  quickshell
   libnotify
 
 # Development
@@ -49,10 +48,11 @@ with pkgs; ([
   vlc
   pavucontrol
   sound-theme-freedesktop
+  obs-studio
 
 # File Management and Viewers
   kdePackages.gwenview
-  libreoffice
+  # libreoffice
   gimp3
   swappy
 
@@ -72,7 +72,7 @@ with pkgs; ([
   rofi-emoji
 
 # System Tray and Notifications
-  swaynotificationcenter
+  # swaynotificationcenter
   nwg-dock
   blueman
   networkmanager
@@ -116,6 +116,5 @@ with pkgs; ([
 
 # Games
 ] ++ extraGames ++ [
-  lunar-client
 ]
 )

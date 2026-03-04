@@ -66,8 +66,8 @@
     xdg-desktop-portal-wlr
     xdg-desktop-portal-hyprland
     xwayland
-    xorg.xhost
-    xorg.xauth
+    xhost
+    xauth
 
     # Network Utilities
     samba

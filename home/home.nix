@@ -2,12 +2,12 @@
 
   imports = [
     #sys
-    # ./systems/dankshell
+    ./systems/dankshell
     ./systems/hypr
     ./systems/niri
     # ./systems/noctalia
-    ./systems/swaync
-    ./systems/waybar
+    # ./systems/swaync
+    # ./systems/waybar
 
     # programs
     ./programs/fastfetch
@@ -40,7 +40,7 @@
     GDK_BACKEND = "wayland,x11";
   };
 
-  waybar.enable = true;
+  # waybar.enable = true;
   programs.starship = {
     enable = true;
   };

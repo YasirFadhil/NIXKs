@@ -34,6 +34,10 @@
       url = "github:AvengeMedia/dgop";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    danksearch = {
+      url = "github:AvengeMedia/danksearch";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     freesmlauncher = {
       url = "github:FreesmTeam/FreesmLauncher";
       inputs = {
@@ -46,6 +50,11 @@
 
   outputs = { self, nixpkgs, home-manager, niri, nix-cachyos-kernel, nix4nvchad, freesmlauncher, ... }@inputs: let
     system = "x86_64-linux";
+    fixDeprecatedXorgOverlay = final: prev: {
+      xorg = prev.xorg // {
+        libxcb = prev.libxcb;
+      };
+    };
   in {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       inherit system;
@@ -55,7 +64,7 @@
       modules = [
         ./host/chromebook/configuration.nix
         {
-          nixpkgs.overlays = [ niri.overlays.niri ];
+          nixpkgs.overlays = [ niri.overlays.niri fixDeprecatedXorgOverlay ];
         }
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;

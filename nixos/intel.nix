@@ -12,6 +12,7 @@
       intel-vaapi-driver
       libvdpau-va-gl
       vpl-gpu-rt
+      mesa.drivers
     ];
   };
 
@@ -29,5 +30,6 @@
     intel-gpu-tools
     clinfo
     libva-utils
+    vulkan-tools
   ];
 }
