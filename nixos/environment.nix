@@ -72,7 +72,7 @@
     # Network Utilities
     samba
     cifs-utils
-    networkmanagerapplet
+    # networkmanagerapplet
 
     # Qt Configuration (System-wide)
     libsForQt5.qt5ct

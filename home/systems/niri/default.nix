@@ -1,4 +1,4 @@
-{ inputs, pkgs, lib, config, ... }:
+{ inputs, pkgs, lib, config, niri-blur, ... }:
 
 let
   myPackages = import ../../packages.nix { inherit pkgs; };
@@ -152,13 +152,13 @@ in
       spawn-at-startup = [
         { command = ["polkit-gnome-authentication-agent-1"]; }
         { command = ["gnome-keyring-daemon" "--start" "--components=pkcs11,secrets,ssh,pgp"]; }
-        { command = ["nm-applet"]; }
-        { command = ["blueman-applet"]; }
+        # { command = ["nm-applet"]; }
+        # { command = ["blueman-applet"]; }
         { command = ["swaybg" "-m" "fill" "-i" "/etc/nixos/home/themes/wallpapers/macos-tahoe-26-5120x2880-22674.jpg"]; }
         { command = ["xwayland-satellite"]; }
         { command = ["hypridle"]; }
         # { command = ["noctalia-shell"]; }
-        { command = ["kdeconnect-indicator"]; }
+        # { command = ["kdeconnect-indicator"]; }
         { command = ["wl-paste" "--watch" "cliphist" "store"]; }
       ];
 

@@ -13,6 +13,7 @@
     ./programs/fastfetch
     ./programs/foot
     ./programs/ghostty
+    ./programs/gnom
     ./programs/nushell
     ./programs/nvchad
     ./programs/rofi
@@ -27,17 +28,19 @@
     ./var.nix
   ];
 
-  home.username = "yasirfadhil";
-  home.homeDirectory = "/home/yasirfadhil";
-  home.stateVersion = "24.11";
-  home.packages = import ./packages.nix { inherit pkgs inputs; };
-  home.sessionVariables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
-    PAGER = "less";
-    BROWSER = "zen-browser";
-    MOZ_ENABLE_WAYLAND = "1";
-    GDK_BACKEND = "wayland,x11";
+  home = {
+    username = "yasirfadhil";
+    homeDirectory = "/home/yasirfadhil";
+    stateVersion = "24.11";
+    packages = import ./packages.nix { inherit pkgs inputs; };
+    sessionVariables = {
+      EDITOR = "nvim";
+      VISUAL = "nvim";
+      PAGER = "less";
+      BROWSER = "zen-browser";
+      MOZ_ENABLE_WAYLAND = "1";
+      GDK_BACKEND = "wayland,x11";
+    };
   };
 
   # waybar.enable = true;

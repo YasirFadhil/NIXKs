@@ -31,3 +31,4 @@ alias gcl = git clone
 alias cd = z
 alias zed = zeditor .
 alias nhs = nh os switch /etc/nixos -H nixos
+alias cdn = cd /etc/nixos

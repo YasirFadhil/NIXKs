@@ -12,7 +12,7 @@
       intel-vaapi-driver
       libvdpau-va-gl
       vpl-gpu-rt
-      mesa.drivers
+      mesa
     ];
   };
 

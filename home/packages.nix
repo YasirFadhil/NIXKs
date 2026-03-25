@@ -37,7 +37,11 @@ with pkgs; ([
 # Browsers and Communication
   microsoft-edge
   discord
+  element-desktop
+  google-chrome
   kdePackages.kdeconnect-kde
+  kdePackages.krdp
+  kdePackages.krdc
 
 # System Tools
   winbox4
@@ -52,7 +56,7 @@ with pkgs; ([
 
 # File Management and Viewers
   kdePackages.gwenview
-  # libreoffice
+  libreoffice 
   gimp3
   swappy
 
@@ -73,8 +77,8 @@ with pkgs; ([
 
 # System Tray and Notifications
   # swaynotificationcenter
-  nwg-dock
-  blueman
+  # nwg-dock
+  # blueman
   networkmanager
   caffeine-ng
 

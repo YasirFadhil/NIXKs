@@ -15,8 +15,14 @@
       };
       efi.canTouchEfiVariables = true;
     };
-    kernelPackages = pkgs.linuxPackages_latest;
+    plymouth = {
+      enable = false;
+      theme = "mac-style";
+      themePackages = [ pkgs.mac-style-plymouth ];
+    };
+    # kernelPackages = pkgs.linuxPackages_latest;
     # kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
     kernelParams = [
       "snd_intel_dspcfg.dsp_driver=3"
     ];

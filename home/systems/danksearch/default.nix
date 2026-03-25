@@ -22,7 +22,7 @@
       listen_addr = ":43654";
 
       # Index settings
-      index_path = "~/.cache/danksearch/index";
+      index_path = "${config.home.homeDirectory}/.cache/danksearch/index";
       max_file_bytes = 2097152;  # 2MB
       worker_count = 4;
       index_all_files = true;
@@ -41,13 +41,13 @@
       # Index paths configuration
       index_paths = [
         {
-          path = "~/Documents";
+          path = "${config.home.homeDirectory}/Documents";
           max_depth = 6;
           exclude_hidden = true;
           exclude_dirs = [ "node_modules" "venv" "target" ];
         }
         {
-          path = "~/Projects";
+          path = "${config.home.homeDirectory}/Projects";
           max_depth = 8;
           exclude_hidden = true;
           exclude_dirs = [ "node_modules" ".git" "target" "dist" ];

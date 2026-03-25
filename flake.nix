@@ -4,8 +4,15 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
-    niri.url = "github:sodiboo/niri-flake";
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      # inputs.niri-unstable.follows = "niri-blur";
+    };
+    # niri-blur = {
+      # url = "github:niri-wm/niri/wip/branch";
+      # flake = false;
+    # };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -46,6 +53,10 @@
         };
       };
     };
+    mac-style-plymouth = {
+      url = "github:SergioRibera/s4rchiso-plymouth-theme";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, niri, nix-cachyos-kernel, nix4nvchad, freesmlauncher, ... }@inputs: let
@@ -64,7 +75,10 @@
       modules = [
         ./host/chromebook/configuration.nix
         {
-          nixpkgs.overlays = [ niri.overlays.niri fixDeprecatedXorgOverlay ];
+          nix.settings.substituters = [ "https://attic.xuyh0120.win/lantian" ];
+          nix.settings.trusted-public-keys = [ "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" ];
+
+          nixpkgs.overlays = [ niri.overlays.niri fixDeprecatedXorgOverlay inputs.mac-style-plymouth.overlays.default nix-cachyos-kernel.overlays.pinned ];
         }
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;

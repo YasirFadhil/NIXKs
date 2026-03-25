@@ -6,7 +6,7 @@
   networking.networkmanager.enable = true;
   programs.kdeconnect.enable = true;
   programs.localsend.enable = true;
-  services.blueman.enable = true;
+  # services.blueman.enable = true;
   services.cloudflare-warp.enable = true;
   services.dbus.enable = true;
   services.openssh = {
@@ -51,8 +51,4 @@
       "127.0.0.1" = ["localhost"];
     };
   };
-
- environment.systemPackages = with pkgs; [
-  networkmanagerapplet
- ];
 }
