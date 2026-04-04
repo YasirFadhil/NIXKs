@@ -26,5 +26,6 @@ in
       package = pkgs.bibata-cursors;
       size = 20;
     };
+    gtk4.theme = null;
   };
 }

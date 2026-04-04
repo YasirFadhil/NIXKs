@@ -30,15 +30,6 @@
     qt6.qttools
     qt6.qmake
 
-    # System Monitoring
-    btop
-    fastfetch
-    neofetch
-
-    # Essential Editors
-    vim
-    neovim
-
     # Shells
     nushell
     starship
@@ -72,7 +63,7 @@
     # Network Utilities
     samba
     cifs-utils
-    # networkmanagerapplet
+    networkmanagerapplet
 
     # Qt Configuration (System-wide)
     libsForQt5.qt5ct

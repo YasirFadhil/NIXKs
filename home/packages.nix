@@ -24,6 +24,7 @@ with pkgs; ([
   cava
   scrcpy
   libnotify
+  cisco-packet-tracer_9
 
 # Development
   zig
@@ -45,8 +46,8 @@ with pkgs; ([
 
 # System Tools
   winbox4
-  cloudflare-warp
   swaybg
+  hyphen
 
 # Media and Entertainment
   vlc
@@ -56,7 +57,7 @@ with pkgs; ([
 
 # File Management and Viewers
   kdePackages.gwenview
-  libreoffice 
+  libreoffice
   gimp3
   swappy
 
@@ -78,7 +79,7 @@ with pkgs; ([
 # System Tray and Notifications
   # swaynotificationcenter
   # nwg-dock
-  # blueman
+  blueman
   networkmanager
   caffeine-ng
 
@@ -110,7 +111,6 @@ with pkgs; ([
 # System Monitoring
   btop
   fastfetch
-  neofetch
 
 # Text Editor Alt
   onlyoffice-desktopeditors

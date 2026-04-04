@@ -5,7 +5,7 @@
     ./systems/dankshell
     ./systems/hypr
     ./systems/niri
-    # ./systems/noctalia
+    ./systems/noctalia
     # ./systems/swaync
     # ./systems/waybar
 
@@ -31,7 +31,7 @@
   home = {
     username = "yasirfadhil";
     homeDirectory = "/home/yasirfadhil";
-    stateVersion = "24.11";
+    stateVersion = "26.05";
     packages = import ./packages.nix { inherit pkgs inputs; };
     sessionVariables = {
       EDITOR = "nvim";

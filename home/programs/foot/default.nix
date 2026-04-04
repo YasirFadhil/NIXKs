@@ -14,7 +14,7 @@
         style = "block";
       };
 
-      colors = {
+      colors-dark = {
         foreground = "dddddd";
         background = "000000";
         alpha = "0.8";

@@ -24,8 +24,19 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Install firefox.
-  programs.firefox.enable = true;
+  # Install some programs.
+  programs = {
+    firefox.enable = true;
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+      extraCompatPackages = with pkgs; [
+        proton-ge-bin
+      ];
+    };
+    gamemode.enable = true;
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

@@ -5,6 +5,10 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     niri = {
       url = "github:sodiboo/niri-flake";
       # inputs.niri-unstable.follows = "niri-blur";
@@ -59,13 +63,8 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, niri, nix-cachyos-kernel, nix4nvchad, freesmlauncher, ... }@inputs: let
+  outputs = { self, nixpkgs, home-manager, niri, nix-cachyos-kernel, nix4nvchad, freesmlauncher, hyprland, ... }@inputs: let
     system = "x86_64-linux";
-    fixDeprecatedXorgOverlay = final: prev: {
-      xorg = prev.xorg // {
-        libxcb = prev.libxcb;
-      };
-    };
   in {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       inherit system;
@@ -75,10 +74,12 @@
       modules = [
         ./host/chromebook/configuration.nix
         {
-          nix.settings.substituters = [ "https://attic.xuyh0120.win/lantian" ];
-          nix.settings.trusted-public-keys = [ "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" ];
-
-          nixpkgs.overlays = [ niri.overlays.niri fixDeprecatedXorgOverlay inputs.mac-style-plymouth.overlays.default nix-cachyos-kernel.overlays.pinned ];
+          nix.settings = {
+            substituters = [ "https://attic.xuyh0120.win/lantian" "https://hyprland.cachix.org"];
+            trusted-public-keys = [ "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+            trusted-substituters = ["https://hyprland.cachix.org"];
+          };
+          nixpkgs.overlays = [ niri.overlays.niri inputs.mac-style-plymouth.overlays.default nix-cachyos-kernel.overlays.pinned ];
         }
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
@@ -86,6 +87,13 @@
           home-manager.users.yasirfadhil = import ./home/home.nix;
           home-manager.extraSpecialArgs = { inherit inputs; };
         }
+        ({ pkgs, ... }: {
+          programs.hyprland = {
+            enable = true;
+            package = pkgs.hyprland;
+            portalPackage = pkgs.xdg-desktop-portal-hyprland;
+          };
+        })
       ];
     };
   };

@@ -8,7 +8,9 @@
     wayland = true;
   };
 
-  programs.niri.enable = true;
+  programs = {
+    niri.enable = true;
+  };
 
   # Enable the GNOME Desktop Environment.
   services.desktopManager.gnome.enable = true;
