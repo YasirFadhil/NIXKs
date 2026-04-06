@@ -6,6 +6,7 @@ in
 
 {
   imports = [
+    ./modules/animation.nix
     ./modules/hyprlock.nix
     ./modules/hypridle.nix
     ./modules/keybinds.nix
@@ -18,7 +19,7 @@ in
 
     settings = {
       exec-once = [
-        "noctalia-shell"
+        # "noctalia-shell"
       ];
 
       general = {
@@ -50,7 +51,7 @@ in
         follow_mouse = 1;
         sensitivity = 0.0;
         touchpad = {
-          natural_scroll = false;
+          natural_scroll = true;
         };
       };
 

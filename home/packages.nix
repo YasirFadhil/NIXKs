@@ -8,6 +8,7 @@ with pkgs; ([
 (import ./scripts/battery.nix { inherit pkgs; })
 (import ./scripts/nowplay.nix { inherit pkgs; })
 (import ./scripts/audio-sink.nix { inherit pkgs; })
+(import ./scripts/volume-control.nix { inherit pkgs; })
 
 
 # Terminal Emulators
@@ -65,6 +66,7 @@ with pkgs; ([
   eww
   hyprlock
   hypridle
+  hyprshot
   wlogout
   waybar
   wlr-randr

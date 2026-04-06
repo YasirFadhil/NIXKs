@@ -4,12 +4,12 @@
 }: {
   wayland.windowManager.hyprland = {
     settings = {
-      bindl = [
-        "XF86AudioRaiseVolume, exec, noctala-shell ipc volume increase"
-        "XF86AudioLowerVolume, exec, noctala-shell ipc volume decrease"
-        "XF86AudioMute, exec, noctala-shell ipc volume mute"
-        "XF86MonBrightnessUp, exec, noctala-shell ipc brightness increase"
-        "XF86MonBrightnessDown, exec, noctala-shell ipc brightness decrease"
+      bindel = [
+        ",XF86AudioRaiseVolume, exec, noctalia-shell ipc call volume increase"
+        ",XF86AudioLowerVolume, exec, noctalia-shell ipc call volume decrease"
+        ",XF86AudioMute, exec, noctalia-shell ipc call muteOutput"
+        ",XF86MonBrightnessUp, exec, noctalia-shell ipc call brightness increase"
+        ",XF86MonBrightnessDown, exec, noctalia-shell ipc call brightness decrease"
       ];
 
       bind = [
