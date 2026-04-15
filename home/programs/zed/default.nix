@@ -20,7 +20,7 @@
       "theme": {
         "mode": "system",
         "light": "One Light",
-        "dark": "One Dark Pro Max"
+        "dark": "One Dark Pro Glass"
       }
     }
   #   {

@@ -120,6 +120,6 @@ with pkgs; ([
   ollama
 
 # Games
-#] ++ extraGames ++ [
+] ++ extraGames ++ [
 ]
 )

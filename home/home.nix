@@ -2,7 +2,7 @@
 
   imports = [
     #sys
-    # ./systems/dankshell
+    ./systems/dankshell
     ./systems/hypr
     ./systems/niri
     # ./systems/noctalia

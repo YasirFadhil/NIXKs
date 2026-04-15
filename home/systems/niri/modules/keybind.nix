@@ -6,8 +6,8 @@
 {
   programs.niri = {
     settings = {
-      binds = {
-      "Mod+Shift+Slash".action.show-hotkey-overlay = {};
+      # binds = {
+      # "Mod+Shift+Slash".action.show-hotkey-overlay = {};
 
       # Movement
       # "Mod+Left".action.focus-column-left = {};
@@ -54,7 +54,7 @@
       # "Mod+Shift+0".action.move-column-to-workspace = 10;
 
       # # Window management
-       "Mod+Q".action.close-window = {};
+       # "Mod+Q".action.close-window = {};
       # "Mod+F".action.maximize-column = {};
       # "Mod+Shift+F".action.fullscreen-window = {};
       # "Mod+A".action.open-overview = {};
@@ -66,8 +66,8 @@
 
       # # Applications
       # "Mod+T".action.spawn = "ghostty";
-       "Mod+T".action.spawn = "foot";
-       "Mod+D".action.spawn = ["rofi" "-show" "drun" "-config" "~/.config/rofi/config.rasi"];
+       # "Mod+T".action.spawn = "foot";
+       # "Mod+D".action.spawn = ["rofi" "-show" "drun" "-config" "~/.config/rofi/config.rasi"];
       # # "Mod+D".action.spawn = noctalia "launcher toggle";
       # "Mod+Shift+D".action.spawn = ["rofi" "-show" "run" "-config" "~/.config/rofi/config.rasi"];
       # "Mod+E".action.spawn = "nautilus";
@@ -110,7 +110,7 @@
       # # Scratchpad
       # "Mod+Shift+Minus".action.move-window-to-workspace = "scratchpad";
       # "Mod+Minus".action.focus-workspace = "scratchpad";
-      };
+      # };
     };
   };
 }
