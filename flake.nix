@@ -11,12 +11,13 @@
     };
     niri = {
       url = "github:sodiboo/niri-flake";
-      # inputs.niri-unstable.follows = "niri-blur";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.niri-unstable.follows = "niri-blur";
     };
-    # niri-blur = {
-      # url = "github:niri-wm/niri/wip/branch";
-      # flake = false;
-    # };
+    niri-blur = {
+      url = "github:niri-wm/niri/kde-blur-protocol";
+      flake = false;
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";

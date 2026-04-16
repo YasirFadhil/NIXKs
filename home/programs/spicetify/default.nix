@@ -12,7 +12,7 @@ in {
 
   programs.spicetify = {
     enable = true;
-    theme = spicePkgs.themes.default;  # Changed to lowercase 'default'
+    theme = spicePkgs.themes.default;
 
     enabledExtensions = with spicePkgs.extensions; [
       playlistIcons

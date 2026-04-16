@@ -38,20 +38,21 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
 # Firewall
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [80 443 1935 3000 8080 8081 8292 9000 4321];
-    allowedUDPPorts = [3478 3479 5678 20561];
-    allowedTCPPortRanges = [
-      { from = 1714; to = 1764; }
-    ];
-    allowedUDPPortRanges = [
-      { 
-        from = 40000; 
-        to = 50000; 
-      }
-    ];
-  };
+networking.firewall = {
+  enable = true;
+  allowedTCPPorts = [80 443 1935 3000 8080 8081 8292 9000 4321];
+  allowedUDPPorts = [3478 3479 5678 20561 2408 500 4500];
+  allowedTCPPortRanges = [
+    { from = 1714; to = 1764; }
+  ];
+  allowedUDPPortRanges = [
+    {
+      from = 40000;
+      to = 50000;
+    }
+  ];
+  checkReversePath = "loose";
+};
 
   # networking = {
   #   nameservers = [ "1.1.1.1" "8.8.8.8" ];

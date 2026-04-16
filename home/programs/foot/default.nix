@@ -5,7 +5,7 @@
     enable = true;
     settings = {
       main = {
-        font = "SF Mono:style=bold:size=7";
+        font = "SF Mono:style=bold:size=12";
         dpi-aware = "yes";
         pad = "10x10";
       };
