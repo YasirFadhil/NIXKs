@@ -34,6 +34,7 @@ with pkgs; ([
   vim
   neovim
   git
+  jdk25
 
 # Browsers and Communication
   microsoft-edge

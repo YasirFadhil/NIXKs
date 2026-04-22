@@ -11,7 +11,7 @@ in
     ./modules/hypridle.nix
     ./modules/keybinds.nix
   ];
-
+  waybar.enable = true;
   wayland.windowManager.hyprland = {
     enable = false;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
@@ -19,6 +19,7 @@ in
 
     settings = {
       exec-once = [
+        "waybar"
         # "noctalia-shell"
       ];
 
