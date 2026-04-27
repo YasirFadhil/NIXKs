@@ -94,6 +94,7 @@ with pkgs; ([
   libsForQt5.qtstyleplugins
   libsForQt5.qtquickcontrols2
   libsForQt5.qtgraphicaleffects
+  where-is-my-sddm-theme
 
 # Qt Wayland Support
   qt5.qtwayland

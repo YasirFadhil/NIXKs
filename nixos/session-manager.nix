@@ -2,10 +2,22 @@
 {
   services.xserver.enable = true;
 
-  # Use GDM display manager
-  services.displayManager.gdm = {
-    enable = true;
-    wayland = true;
+  # Display manager
+  services.displayManager = {
+    gdm = {
+      enable = true;
+      wayland = true;
+    };
+    sddm = {
+      enable = false;
+      theme = "where-is-my-sddm-theme";
+      wayland = {
+        enable = true;
+      };
+    };
+    ly = {
+      enable = false;
+    };
   };
 
   programs = {

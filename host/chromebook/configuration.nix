@@ -22,7 +22,22 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix = {
+    daemonCPUSchedPolicy = "idle";
+    daemonIOSchedClass = "idle";
+
+    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+    channel.enable = false;
+    extraOptions = ''
+      warn-dirty = true;
+    '';
+    settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      auto-optimise-store = true;
+      cores = 2;
+      max-jobs = 2;
+    };
+  };
 
   # Install some programs.
   programs = {
