@@ -3,7 +3,7 @@
   pkgs,
   lib,
   config,
-  niri-blur,
+  niri,
   ...
 }:
 
@@ -36,6 +36,7 @@ in
 
   programs.niri = {
     enable = true;
+    package = pkgs.niri-unstable;
 
     settings = {
       # Environment variables

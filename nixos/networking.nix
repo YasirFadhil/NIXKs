@@ -6,11 +6,11 @@
   networking.networkmanager.enable = true;
   programs.kdeconnect.enable = true;
   programs.localsend.enable = true;
-  programs.winbox = {
-    enable = true;
-    openFirewall = true;
-    package = pkgs.winbox;
-  };
+ # programs.winbox = {
+   # enable = true;
+   # openFirewall = true;
+   # package = pkgs.winbox;
+ # };
   services.blueman.enable = true;
   services.cloudflare-warp.enable = true;
   services.dbus.enable = true;

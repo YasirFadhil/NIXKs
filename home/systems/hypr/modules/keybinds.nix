@@ -5,11 +5,11 @@
   wayland.windowManager.hyprland = {
     settings = {
       bindel = [
-        ",XF86AudioRaiseVolume, exec, noctalia-shell ipc call volume increase"
-        ",XF86AudioLowerVolume, exec, noctalia-shell ipc call volume decrease"
-        ",XF86AudioMute, exec, noctalia-shell ipc call muteOutput"
-        ",XF86MonBrightnessUp, exec, noctalia-shell ipc call brightness increase"
-        ",XF86MonBrightnessDown, exec, noctalia-shell ipc call brightness decrease"
+        ",XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+        ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+        ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ",XF86MonBrightnessUp, exec, brightnessctl set 5%+"
+        ",XF86MonBrightnessDown, exec, brightnessctl set 5%-"
       ];
 
       bind = [
@@ -18,11 +18,12 @@
         "SUPER SHIFT, Q, exit,"
         "SUPER, E, exec, nautilus"
         "SUPER SHIFT, F, togglefloating,"
-        "SUPER, SPACE, exec, noctalia-shell ipc call launcher toggle"
-        "SUPER, P, exec, noctala-shell ipc call sessionMenu toggle"
-        "SUPER, V, exec, noctala-shell ipc call launcher clipboard"
-        "SUPER SHIFT, E, exec, noctala-shell ipc call launcher emoji"
-        "SUPER, L, exec, noctalia-shell ipc call lockScreen lock"
+        "SUPER, SPACE, exec, rofi -show drun -config ~/.config/rofi/config.rasi"
+        "SUPER, P, exec, wlogout"
+        "SUPER, V, exec, ~/.local/bin/rofi-clipboard"
+        "SUPER SHIFT, E, exec, ~/.local/bin/rofi-emoji"
+        "SUPER, L, exec, hyprlock"
+        "SUPER ALT, A, exec, audio-sink --togle"
 
         "SUPER, left, movefocus, l"
         "SUPER, right, movefocus, r"

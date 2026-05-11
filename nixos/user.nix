@@ -6,8 +6,9 @@ in
 {
   users = {
     users.${username} = {
+    # shell = pkgs.zsh;
     shell = pkgs.nushell;
-    # shell = bash;
+    # shell = pkgs.bash;
     isNormalUser = true;
     description = "${username} account";
     extraGroups = [

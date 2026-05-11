@@ -5,9 +5,9 @@
     ./systems/dankshell
     ./systems/hypr
     ./systems/niri
-    ./systems/noctalia
+    # ./systems/noctalia
     # ./systems/swaync
-    # ./systems/waybar
+    ./systems/waybar
 
     # programs
     ./programs/fastfetch
@@ -21,6 +21,7 @@
     ./programs/starship
     ./programs/zed
     ./programs/zen
+    ./programs/zsh
 
     # other
     ./nh.nix

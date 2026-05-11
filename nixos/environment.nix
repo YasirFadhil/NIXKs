@@ -33,11 +33,10 @@
     # Shells
     nushell
     starship
+    zsh
 
     # GNOME/GTK System Libraries
     gnome-disk-utility
-    adwaita-icon-theme
-    gsettings-desktop-schemas
     librsvg
     gtk3
     gtk4
@@ -96,4 +95,7 @@
   };
 
   environment.sessionVariables.ALSA_CONFIG_UCM2 = "${pkgs.alsa-ucm-conf}/share/alsa/ucm2";
+
+  # Enable zsh shell
+  programs.zsh.enable = true;
 }

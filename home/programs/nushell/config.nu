@@ -15,6 +15,13 @@ def gup [] {
   git push -u origin main
 }
 
+def gum [] {
+  let msg = (input "Commit message: ")
+  git add .
+  git commit -m $msg
+  git push -u origin master
+}
+
 #alias shortcut
 alias ll = clear
 alias l = clear
@@ -24,11 +31,13 @@ alias sl = ls
 alias g = git
 alias gad = git add .
 alias gcm = git commit -m "."
-alias gps = git push -u origin main
+alias gpm = git push -u origin main
+alias gps = git push -u origin master
 alias gcl = git clone
 
 #other
 alias cd = z
 alias zed = zeditor .
-alias nhs = nh os switch /etc/nixos -H nixos
-alias cdn = cd /etc/nixos
+alias nh-switch = nh os switch /home/yasirfadhil/.config/nixos -H nixos --ask
+alias nh-clean = nh clean all --keep 3
+alias cdn = cd ~/.config/nixos

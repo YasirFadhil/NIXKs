@@ -353,7 +353,7 @@ in {
             "group/stuff"
           ];
           modules-center = [
-            "niri/window"
+            "hyprland/window"
           ];
           modules-right = [
             "tray"
@@ -380,7 +380,7 @@ in {
             input_delay = 0;
             sleep_timer = 300;
           };
-          "niri/window" = {
+          "hyprland/window" = {
             format = " {title}";
             icon = true;
             icon-size = 15;
@@ -408,7 +408,7 @@ in {
             orientation = "horizontal";
             modules = [
               # "clock"
-              "niri/workspaces"
+              "hyprland/workspaces"
               # "custom/notification"
             ];
           };
@@ -424,7 +424,7 @@ in {
           };
           "custom/logout" = {
             format = "󰗽";
-            on-click = "niri msg action quit";
+            on-click = "hyprctl dispatch exit";
             tooltip = false;
           };
           "custom/lock" = {
@@ -432,7 +432,7 @@ in {
             on-click = "hyprlock";
             tooltip = false;
           };
-          "niri/workspaces" = {
+          "hyprland/workspaces" = {
             format = "{icon}";
             on-click = "activate";
             all-outputs = true;

@@ -18,33 +18,11 @@
       "ui_font_size": 16,
       "buffer_font_size": 15,
       "theme": {
-        "mode": "system",
+        "mode": "dark",
         "light": "One Light",
-        "dark": "One Dark Pro Max"
+        "dark": "One Dark Pro Glass"
       }
     }
-  #   {
-  #     "icon_theme": "Material Icon Theme",
-  #     "ui_font_size": 16,
-  #     "buffer_font_size": 15,
-  #     "vim_mode": true,
-  #     "theme": {
-  #       "mode": "dark",
-  #       "light": "One Light",
-  #       "dark": "One Dark Pro Max"
-  #     },
-  #     "languages": {
-  #       "Python": {
-  #         "language_servers": ["pylsp"],
-  #         "formatter": {
-  #           "external": {
-  #             "command": "black",
-  #             "arguments": ["-"]
-  #           }
-  #         }
-  #       }
-  #     }
-  #   }
   '';
 
   # Keymap configuration

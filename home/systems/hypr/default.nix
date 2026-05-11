@@ -12,6 +12,17 @@ in
     ./modules/keybinds.nix
   ];
 
+  waybar.enable = true;
+
+  # Apply GTK/Qt themes to Hyprland session
+  home.sessionVariables = {
+    GDK_BACKEND = "wayland,x11";
+    QT_QPA_PLATFORM_THEME = "gtk3";
+    QT_STYLE_OVERRIDE = "gtk2";
+    XCURSOR_THEME = "Bibata-Modern-Ice";
+    XCURSOR_SIZE = "20";
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
@@ -20,12 +31,15 @@ in
     settings = {
       exec-once = [
         # "noctalia-shell"
+        "hyprctl setcursor Bibata-Modern-Ice 20"
+        "waybar"
+        "swaybg -m fill -i ~/.config/nixos/home/themes/wallpapers/MacTahoeDark.jpg"
       ];
 
       general = {
         gaps_in = 5;
         gaps_out = 10;
-        border_size = 2;
+        border_size = 0;
         layout = "dwindle";
       };
 

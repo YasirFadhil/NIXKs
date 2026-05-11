@@ -1,14 +1,13 @@
 { pkgs, inputs ? {}, ... }:
 
-let
-  extraGames = if inputs ? freesmlauncher then [ inputs.freesmlauncher.packages."${pkgs.stdenv.hostPlatform.system}".default ] else [];
-in
+#let
+ # extraGames = if inputs ? freesmlauncher then [ inputs.freesmlauncher.packages."${pkgs.stdenv.hostPlatform.system}".default ] else [];
+#in
 
 with pkgs; ([
 (import ./scripts/battery.nix { inherit pkgs; })
 (import ./scripts/nowplay.nix { inherit pkgs; })
 (import ./scripts/audio-sink.nix { inherit pkgs; })
-(import ./scripts/volume-control.nix { inherit pkgs; })
 
 
 # Terminal Emulators
@@ -25,7 +24,7 @@ with pkgs; ([
   cava
   scrcpy
   libnotify
-  cisco-packet-tracer_9
+ # cisco-packet-tracer_9
 
 # Development
   zig
@@ -37,7 +36,7 @@ with pkgs; ([
   git
 
 # Browsers and Communication
-  microsoft-edge
+ # microsoft-edge
   discord
   element-desktop
   google-chrome
@@ -74,9 +73,9 @@ with pkgs; ([
   wl-clipboard
 
 # Rofi and Related
-  rofi
-  rofimoji
-  rofi-emoji
+ rofi
+ # rofimoji
+ # rofi-emoji
 
 # System Tray and Notifications
   # swaynotificationcenter
@@ -86,7 +85,6 @@ with pkgs; ([
   caffeine-ng
 
 # GTK Themes and Tools
-  adw-gtk3
   gnome-tweaks
   gnome-extension-manager
 
@@ -98,11 +96,6 @@ with pkgs; ([
 # Qt Wayland Support
   qt5.qtwayland
   qt6.qtwayland
-
-# KDE/Breeze Themes
-  kdePackages.breeze
-  kdePackages.breeze-icons
-  kdePackages.breeze-gtk
 
 # Additional Qt Libraries
   libsForQt5.qtbase
@@ -117,10 +110,7 @@ with pkgs; ([
 # Text Editor Alt
   onlyoffice-desktopeditors
 
-# AI/ML Tools
-  ollama
-
 # Games
-] ++ extraGames ++ [
+#] ++ extraGames ++ [
 ]
 )
