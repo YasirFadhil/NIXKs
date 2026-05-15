@@ -10,6 +10,7 @@
         {
           matches = [
             {is-window-cast-target = true;}
+            {app-id = "^foot$";}
           ];
           focus-ring = {
             active = {color = "#f38ba8";};
@@ -36,6 +37,11 @@
           };
           clip-to-geometry = true;
           draw-border-with-background = false;
+        }
+        {
+          matches = [
+            {app-id = "kitty";}
+          ];
         }
       ];
     };

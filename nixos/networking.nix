@@ -13,6 +13,7 @@
  # };
   services.blueman.enable = true;
   services.cloudflare-warp.enable = true;
+  services.cloudflare-warp.openFirewall = true;
   services.dbus.enable = true;
   services.openssh = {
     enable = true;
@@ -46,9 +47,9 @@
       { from = 1714; to = 1764; }
     ];
     allowedUDPPortRanges = [
-      { 
-        from = 40000; 
-        to = 50000; 
+      {
+        from = 40000;
+        to = 50000;
       }
     ];
   };

@@ -1,15 +1,30 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 {
   services.xserver.enable = true;
 
   # Use GDM display manager
   services.displayManager.gdm = {
-    enable = true;
+    enable = false;
     wayland = true;
   };
 
- programs = {
-   niri.enable = true;
+  # SDDM display manager
+  services.displayManager.sddm = {
+    enable = true;
+    theme = "sddm-astronaut-theme";
+
+    extraPackages = [
+      pkgs.sddm-astronaut
+      (pkgs.sddm-astronaut.override {
+        embeddedTheme = "pixel_sakura"; # Options: "astronaut", "black_hole", "cyberpunk", etc.
+      })
+    ];
+  };
+
+ # Disable system-level niri to use Home Manager version only
+ programs.niri = {
+   enable = true;
+   package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-unstable;
  };
 
   # Enable the GNOME Desktop Environment.

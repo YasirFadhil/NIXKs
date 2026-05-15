@@ -36,7 +36,7 @@ in
 
   programs.niri = {
     enable = true;
-    package = pkgs.niri-unstable;
+    package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-unstable;
 
     settings = {
       # Environment variables
@@ -77,4 +77,3 @@ in
     };
   };
 }
-
