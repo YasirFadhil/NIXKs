@@ -9,13 +9,13 @@
     # LSP servers, formatters, and other tools
     extraPackages = with pkgs; [
       # Language servers
-      nodePackages.bash-language-server
-      nodePackages.typescript-language-server
+      bash-language-server
+      typescript-language-server
       lua-language-server
       pyright
 
       # Formatters
-      nodePackages.prettier
+      prettier
       black
       stylua
 
@@ -31,4 +31,22 @@
     # Create backups when config changes
     # backup = true;
   };
+
+  xdg.configFile."nvim/lua/chadrc.lua".text = ''
+    ---@type ChadrcConfig
+    local M = {}
+
+    M.base46 = {
+      transparency = true,
+      
+      -- Optional: You can also hardcode your favorite theme here!
+      theme = "dark_horizon", 
+    }
+
+    M.nvdash = {
+      load_on_startup = true,
+    }
+
+    return M
+  '';
 }

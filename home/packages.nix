@@ -24,6 +24,7 @@ with pkgs; ([
   cava
   scrcpy
   libnotify
+  psmisc
  # cisco-packet-tracer_9
 
 # Development
@@ -34,6 +35,7 @@ with pkgs; ([
   vim
   neovim
   git
+  pywal
 
 # Browsers and Communication
  # microsoft-edge

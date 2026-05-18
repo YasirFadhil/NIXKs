@@ -22,7 +22,15 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+    experimental-features = [
+    "nix-command"
+    "flakes"
+    ];
+
+    max-jobs = 1;
+    cores = 1;
+  };
 
   # Install some programs.
   programs = {
@@ -43,10 +51,10 @@
 
   # Allow insecure packages
   nixpkgs.config.permittedInsecurePackages = [
-    "ventoy-1.1.10"
+    "ventoy-1.1.12"
   ];
 
   hardware.enableAllFirmware = true;
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
 
 }

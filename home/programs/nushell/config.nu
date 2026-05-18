@@ -38,6 +38,6 @@ alias gcl = git clone
 #other
 alias cd = z
 alias zed = zeditor .
-alias nh-switch = nh os switch /home/yasirfadhil/.config/nixos -H nixos --ask
+alias nh-switch = nh os switch /home/yasirfadhil/.config/nixos -H nixosss --ask
 alias nh-clean = nh clean all --keep 3
 alias cdn = cd ~/.config/nixos

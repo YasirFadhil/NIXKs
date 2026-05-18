@@ -1,8 +1,11 @@
 { config, pkgs, lib, ... }:
 
 {
-  hardware.bluetooth.enable = true;
-  networking.hostName = "nixos";
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
+  networking.hostName = "nixosss";
   networking.networkmanager.enable = true;
   programs.kdeconnect.enable = true;
   programs.localsend.enable = true;

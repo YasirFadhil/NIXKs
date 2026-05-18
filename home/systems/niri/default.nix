@@ -36,7 +36,7 @@ in
 
   programs.niri = {
     enable = true;
-    package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-unstable;
+    package = pkgs.niri;
 
     settings = {
       # Environment variables
@@ -52,7 +52,7 @@ in
       spawn-at-startup = [
         { command = ["polkit-gnome-authentication-agent-1"]; }
         { command = ["gnome-keyring-daemon" "--start" "--components=pkcs11,secrets,ssh,pgp"]; }
-        { command = ["swaybg" "-m" "fill" "-i" "/etc/nixos/home/themes/wallpapers/macos-tahoe-26-5120x2880-22674.jpg"]; }
+        { command = ["swaybg" "-m" "fill" "-i" "${config.home.homeDirectory}/.config/nixos/home/themes/wallpapers/MacTahoeDark.jpg"]; }
         { command = ["xwayland-satellite"]; }
         { command = ["hypridle"]; }
         { command = ["wl-paste" "--watch" "cliphist" "store"]; }

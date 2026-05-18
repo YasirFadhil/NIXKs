@@ -6,11 +6,12 @@
    # nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
     hyprland = {
-      url = "github:hyprwm/Hyprland";
+      url = "github:hyprwm/Hyprland/v0.55.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri = {
       url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -61,21 +62,37 @@
   outputs = { self, nixpkgs, home-manager, niri, nix4nvchad, hyprland, ... }@inputs: let
     system = "x86_64-linux";
   in {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.nixosss = nixpkgs.lib.nixosSystem {
       inherit system;
       specialArgs = {
         inherit inputs;
-        inherit niri;
       };
       modules = [
         ./host/chromebook/configuration.nix
         {
           nix.settings = {
-            substituters = [ "https://hyprland.cachix.org"];
-            trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc= "];
-            trusted-substituters = [ "https://hyprland.cachix.org" ];
+            substituters = [
+              "https://hyprland.cachix.org"
+              "https://niri.cachix.org"
+            ];
+            trusted-public-keys = [
+              "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+              "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z7oezYhGhR+3W2964="
+            ];
+            trusted-substituters = [
+              "https://hyprland.cachix.org"
+              "https://niri.cachix.org"
+            ];
           };
-        nixpkgs.overlays = [ niri.overlays.niri ];
+        nixpkgs.overlays = [
+          # niri.overlays.niri
+          #
+          # (final: prev: {
+          #   niri= prev.niri-unstable.overrideAttrs (oldAttrs: {
+          #     doCheck = false;
+          #   });
+          # })
+        ];
         }
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
@@ -88,6 +105,10 @@
             enable = true;
             package = pkgs.hyprland;
             portalPackage = pkgs.xdg-desktop-portal-hyprland;
+          };
+          programs.niri = {
+            enable = true;
+            package = pkgs.niri;
           };
         })
       ];

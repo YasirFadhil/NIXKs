@@ -8,7 +8,7 @@
     algorithm = "zstd";
     # Memory to allocate for zram (in MB)
     # Default is 1/2 of available RAM
-    memoryPercent = 50;
+    memoryPercent = 100;
     # Priority for zram swap (higher = preferred)
     priority = 32767;
   };
@@ -17,5 +17,6 @@
   # Only swap when necessary
   boot.kernel.sysctl = {
     "vm.swappiness" = 5;
+    "vm.page-cluster" = 0; 
   };
 }

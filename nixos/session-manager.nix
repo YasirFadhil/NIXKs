@@ -21,12 +21,6 @@
     ];
   };
 
- # Disable system-level niri to use Home Manager version only
- programs.niri = {
-   enable = true;
-   package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-unstable;
- };
-
   # Enable the GNOME Desktop Environment.
   services.desktopManager.gnome.enable = true;
   services.gnome.gnome-keyring.enable = true;
