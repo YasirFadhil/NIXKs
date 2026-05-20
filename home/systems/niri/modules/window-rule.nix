@@ -27,10 +27,6 @@
             active = {color = "#f38ba8";};
             inactive = {color = "#7d0d2d";};
           };
-          background-effect = {
-            blur = true;
-            noise = 0.5;
-          };
         }
         {
           geometry-corner-radius = {

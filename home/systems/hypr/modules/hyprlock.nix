@@ -4,6 +4,8 @@
   entryBorder = "rgba(59,59,59,0.33)";
   entryColor = "rgba(255,255,255,1)";
   font = "SF Pro Display";
+  fontBold = "SF Pro Display Bold";
+  fontMono = "SF Mono";
   fontSymbols = "FiraCode Nerd Font Bold";
 in {
   programs.hyprlock = {
@@ -14,7 +16,7 @@ in {
 
       background = lib.mkForce {
         monitor = "";
-        path = "/etc/nixos/home/themes/wallpapers/lock.jpg";
+        path = "/home/yasirfadhil/.config/nixos/home/themes/wallpapers/lock.jpg";
         # You can add blur, vibrancy, contrast if You want.
       };
 
@@ -45,7 +47,7 @@ in {
           shadow_boost = "0.5";
           color = textColor;
           font_size = "80";
-          font_family = "SF Pro Display Bold";
+          font_family = fontBold;
           font_weight = "300";
           position = "0, 234";
           halign = "center";
@@ -60,7 +62,7 @@ in {
           shadow_boost = "0.5";
           color = textColor;
           font_size = "16";
-          font_family = "SF Mono Bold";
+          font_family = fontMono;
           position = "0, 296";
           halign = "center";
           valign = "center";
@@ -81,7 +83,7 @@ in {
           ''}'';
           color = "rgba(255,255,255,0.5)";
           font_size = "14";
-          font_family = "SF Pro Display";
+          font_family = font;
           position = "0, 15";
           halign = "center";
           valign = "bottom";
@@ -133,7 +135,7 @@ in {
           monitor = "";
           text = ''cmd[update:5000] nowplay'';
           color = textColor;
-          font_family = "SF Pro Display Bold";
+          font_family = fontBold;
           font_size = "12";
           position = "10, 10";
           halign = "left";
