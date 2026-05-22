@@ -32,6 +32,13 @@
     cores = 1;
   };
 
+  security.sudo = {
+    extraConfig = ''
+      Defaults pwfeedback
+      Defaults insults
+    '';
+  };
+
   # Install some programs.
   programs = {
     firefox.enable = true;
@@ -53,7 +60,8 @@
   nixpkgs.config.permittedInsecurePackages = [
     "ventoy-1.1.12"
   ];
-
+  
+  hardware.enableRedistributableFirmware = true;
   hardware.enableAllFirmware = true;
   system.stateVersion = "25.11";
 

@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-   # nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+    # nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
     hyprland = {
       url = "github:hyprwm/Hyprland/v0.55.0";
@@ -17,10 +17,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # spicetify-nix = {
+    #   url = "github:Gerg-L/spicetify-nix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -74,17 +74,21 @@
             substituters = [
               "https://hyprland.cachix.org"
               "https://niri.cachix.org"
+              # "https://attic.xuyh0120.win/lantian"
             ];
             trusted-public-keys = [
               "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
               "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z7oezYhGhR+3W2964="
+              # "lantian:EaAUQ+W6r7EtwnmYeVwx5kOGEBpjlBfplzGlTNvHc="
             ];
             trusted-substituters = [
               "https://hyprland.cachix.org"
               "https://niri.cachix.org"
+              # "https://attic.xuyh0120.win/lantian"
             ];
           };
-        nixpkgs.overlays = [
+        # nixpkgs.overlays = [
+          # nix-cachyos-kernel.overlays.default
           # niri.overlays.niri
           #
           # (final: prev: {
@@ -92,7 +96,7 @@
           #     doCheck = false;
           #   });
           # })
-        ];
+        # ];
         }
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
@@ -109,7 +113,6 @@
           programs.niri = {
             enable = true;
             package = pkgs.niri;
-            portalPackage = pkgs.xdg-desktop-portal-gnome
           };
         })
       ];

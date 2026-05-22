@@ -19,6 +19,7 @@
     # Audio/Video System
     alsa-utils
     alsa-ucm-conf
+    alsa-tools
     pamixer
     playerctl
     ffmpeg_7
@@ -95,8 +96,6 @@
     };
   };
 
-  environment.sessionVariables.ALSA_CONFIG_UCM2 = "${pkgs.alsa-ucm-conf}/share/alsa/ucm2";
-
-  # Enable zsh shell
+   # Enable zsh shell
   programs.zsh.enable = true;
 }

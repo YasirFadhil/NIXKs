@@ -5,6 +5,9 @@
     autocd = true;
     enableCompletion = true;
     enableVteIntegration = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+    historySubstringSearch.enable = true;
 
     history = {
       size = 10000;
@@ -29,11 +32,12 @@
 
       # Navigation
       zed = "zeditor .";
+      cd = "z";
 
       # NixOS (matching nushell style)
       nhs = "nh os switch /home/yasirfadhil/.config/nixos -H nixos --ask";
       cdn = "cd /home/yasirfadhil/.config/nixos";
-      nh-switch = "nh os switch /home/yasirfadhil/.config/nixos -H nixos --ask";
+      nh-switch = "nh os switch /home/yasirfadhil/.config/nixos -H nixosss --ask";
       nh-clean = "nh clean all --keep 3";
       nix-search = "nix-shell -p";
 
@@ -56,24 +60,6 @@
 
       # Additional customization here
     '';
-
-    plugins = [
-      {
-        name = "zsh-autosuggestions";
-        src = "${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions";
-        file = "zsh-autosuggestions.plugin.zsh";
-      }
-      {
-        name = "zsh-history-substring-search";
-        src = "${pkgs.zsh-history-substring-search}/share/zsh-history-substring-search";
-        file = "zsh-history-substring-search.plugin.zsh";
-      }
-      {
-        name = "zsh-syntax-highlighting";
-        src = pkgs.zsh-syntax-highlighting;
-        file = "share/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh";
-      }
-    ];
   };
 
   # Starship prompt integration

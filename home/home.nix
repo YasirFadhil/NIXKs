@@ -17,7 +17,7 @@
     ./programs/nushell
     ./programs/nvchad
     ./programs/rofi
-    ./programs/spicetify
+    # ./programs/spicetify
     ./programs/starship
     ./programs/zed
     ./programs/zen
@@ -47,6 +47,10 @@
   # waybar.enable = true;
   programs.starship = {
     enable = true;
+  };
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
   };
   programs.git = {
     enable = true;

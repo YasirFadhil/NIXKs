@@ -15,6 +15,7 @@ with pkgs; ([
   ghostty
   alacritty
   foot
+  claude-code
 
 # Shell Tools
   carapace
@@ -56,6 +57,7 @@ with pkgs; ([
   pavucontrol
   sound-theme-freedesktop
   obs-studio
+  spotify
 
 # File Management and Viewers
   kdePackages.gwenview
