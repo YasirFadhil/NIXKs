@@ -7,6 +7,7 @@
       ../../home/var.nix
       ../../nixos/audio.nix
       ../../nixos/bootloader.nix
+      ../../nixos/chrome-nix.nix
       ../../nixos/environment.nix
       ../../nixos/intel.nix
       ../../nixos/localization.nix

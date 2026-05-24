@@ -51,6 +51,7 @@ with pkgs; ([
   winbox4
   swaybg
   hyphen
+  mpvpaper
 
 # Media and Entertainment
   vlc
