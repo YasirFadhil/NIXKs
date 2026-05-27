@@ -1,45 +1,89 @@
 # NIXKs
 
-<div style="display: flex; align-items: center; gap: 20px;">
-  <img src="https://wiki.nixos.org/w/images/a/a1/Nix-snowflake-colours.svg" alt="NixOS Logo" width="100" height="100" />
+<div align="center">
+  <img src="https://wiki.nixos.org/w/images/a/a1/Nix-snowflake-colours.svg" width="120" alt="NixOS Logo" />
+
+Minimal and modular NixOS configuration using Flakes, Home Manager, and the Niri compositor.
+Built for a clean Wayland workflow with a macOS-inspired aesthetic.
 </div>
 
-Is my new config for [NixOS](https://nixos.org/) configuration using [Flakes](https://nixos.wiki/wiki/Flakes) with [Niri](https://github.com/YaLTeR/niri) compositor and [Home Manager](https://github.com/nix-community/home-manager).
+---
 
-<!--## Features
+## Overview
 
-- 🪟 **Wayland-First** - Niri compositor with Hyprland support
-- 📦 **Flakes-Based** - Reproducible builds with locked dependencies
-- 🏠 **Home Manager** - Declarative user environment
-- 🎨 **Pre-configured** - Zed, Zen Browser, Spicetify, Nushell, and more
-- 🔧 **Modular** - Easy to customize and maintain-->
+NIXKs is my personal NixOS setup focused on:
+
+- Declarative and reproducible configuration
+- Modular system structure
+- Wayland-first desktop experience
+- Lightweight but modern workflow
+- Easy customization and maintenance
+
+This setup currently uses:
+
+- [NixOS](https://nixos.org/)
+- [Flakes](https://nixos.wiki/wiki/Flakes)
+- [Home Manager](https://github.com/nix-community/home-manager)
+- [Niri](https://github.com/YaLTeR/niri)
+- [DMS](https://github.com/AvengeMedia/DankMaterialShell)
+
+---
 
 ## Documentation
 
-- **[INSTALL.md](INSTALL.md)** - Installation and setup guide
-- **[KEYBINDINGS.md](KEYBINDINGS.md)** - Niri keybindings reference
+| File | Description |
+|------|-------------|
+| [INSTALL.md](INSTALL.md) | Installation and setup guide |
+| [KEYBINDINGS.md](KEYBINDINGS.md) | Niri keybindings reference |
+
+---
 
 ## Directory Structure
 
-```
+```txt
 .
-├── flake.nix                  # Flake configuration
-├── host/chromebook/           # Hardware-specific config
-├── nixos/                     # System configuration
-├── home/                      # Home Manager configuration
-│   ├── programs/              # Program configs
-│   ├── systems/               # Desktop configs
-│   └── themes/                # Theme customization
-└── KEYBINDINGS.md             # Niri shortcuts
+├── flake.nix
+├── host/
+│   └── chromebook/
+├── nixos/
+├── home/
+│   ├── programs/
+│   ├── systems/
+│   ├── themes/
+│   └── scripts/
+└── README.md
 ```
+
+---
+
+## Features
+
+- Modular NixOS configuration
+- Home Manager integration
+- Niri compositor setup
+- Reusable theming system
+- Multiple shell configurations
+- Custom scripts and utilities
+- Chromebook-friendly setup
+
+---
 
 ## Resources
 
 - [NixOS Manual](https://nixos.org/manual/nixos/stable/)
 - [Home Manager](https://nix-community.github.io/home-manager/)
-- [Niri Documentation](https://github.com/YaLTeR/niri)
+- [Niri Wiki](https://github.com/YaLTeR/niri/wiki)
 - [NixOS Wiki](https://nixos.wiki/)
+- [DMS](https://github.com/AvengeMedia/DankMaterialShell)
 
 ---
 
-> Made with ❤️ by [YasirFadhil](https://github.com/YasirFadhil)
+## License
+
+This project is licensed under the MIT License.
+
+---
+
+<div align="center">
+Made by <a href="https://github.com/YasirFadhil">YasirFadhil</a>
+</div>
