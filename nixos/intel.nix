@@ -1,19 +1,13 @@
 { pkgs, ... }:
 {
-  # Intel UHD Graphics 600 (Gemini Lake N4020) configuration
-  boot = {
-    initrd.kernelModules = [ ];
-  };
-
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
     extraPackages = with pkgs; [
-      intel-media-driver
-      intel-vaapi-driver
+      intel-media-driver   # Primary VA-API driver for hardware acceleration
+      intel-vaapi-driver   # Fallback driver
       libvdpau-va-gl
       vpl-gpu-rt
-      mesa
     ];
   };
 
@@ -34,3 +28,4 @@
     vulkan-tools
   ];
 }
+
