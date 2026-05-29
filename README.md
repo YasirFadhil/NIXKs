@@ -68,6 +68,31 @@ This setup currently uses:
 
 ---
 
+## Screenshots
+
+> [!IMPORTANT]
+> The screenshots shown here use my personal Quickshell + Dank Shell setup. Parts of the interface are configured manually and are not fully managed by this NixOS configuration. As a result, your desktop may look slightly different after installation.
+
+### Desktop Environment
+<div align="center">
+  <img src="pictures/niri-dms.png" width="100%" alt="Niri Desktop with DMS Shell" />
+  <p><em>Clean desktop with Niri compositor and DMS shell</em></p>
+</div>
+
+### Dashboard
+<div align="center">
+  <img src="pictures/dms-dashboard.png" width="100%" alt="DMS Dashboard Overview" />
+  <p><em>DMS dashboard with weather, calendar, and media controls</em></p>
+</div>
+
+### Additional Features
+- **App Launcher**: Quick access application menu with DMS
+- **Lock Screen**: Custom styled lock screen with DMS
+- **System Info**: FastFetch system information display
+- **Theme Settings**: Dank Material Shell (DMS) configuration options
+
+---
+
 ## Resources
 
 - [NixOS Manual](https://nixos.org/manual/nixos/stable/)
