@@ -6,6 +6,7 @@
     ./systems/hypr
     ./systems/niri
     # ./systems/noctalia
+    ./systems/quickshell
     # ./systems/swaync
     ./systems/waybar
 
@@ -43,6 +44,14 @@
       GDK_BACKEND = "wayland,x11";
     };
   };
+
+  #xdg.mimeApps = {
+  #  enable = true;
+  #  defaultApplications = {
+  #    "inode/directory" = [ "org.gnome.Nautilus.desktop" ];
+  #  };
+  #};
+
 
   # waybar.enable = true;
   programs.starship = {
