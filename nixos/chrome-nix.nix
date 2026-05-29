@@ -75,7 +75,7 @@ in
   };
 
   # 4. Sledgehammer: Mengganti ALSA system-wide (wajib untuk > 24.05)
-  system.replaceRuntimeDependencies = [
+  system.replaceDependencies.replacements = [
     ({
       original = pkgs.alsa-ucm-conf;
       replacement = cb-ucm-conf;
