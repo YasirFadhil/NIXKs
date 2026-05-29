@@ -30,6 +30,7 @@
     qt6.qtdeclarative
     qt6.qttools
     qt6.qmake
+    android-tools
 
     # Shells
     nushell

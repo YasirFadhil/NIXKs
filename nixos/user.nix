@@ -17,6 +17,7 @@ in
      "video"
      "audio"
      "libvirtd"
+     "adbusers"
     ];
     };
   };
