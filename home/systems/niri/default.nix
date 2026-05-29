@@ -51,7 +51,7 @@ in
       spawn-at-startup = [
         { command = ["polkit-gnome-authentication-agent-1"]; }
         { command = ["gnome-keyring-daemon" "--start" "--components=pkcs11,secrets,ssh,pgp"]; }
-        { command = ["swaybg" "-m" "fill" "-i" "${config.home.homeDirectory}/.config/nixos/home/themes/wallpapers/Shorekeeper.jpg"]; }
+        { command = ["swaybg" "-m" "fill" "-i" "${config.home.homeDirectory}/.config/nixos/home/themes/wallpapers/wallbler.jpg"]; }
         { command = ["xwayland-satellite"]; }
         { command = ["hypridle"]; }
         { command = ["wl-paste" "--watch" "cliphist" "store"]; }
