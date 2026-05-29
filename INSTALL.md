@@ -11,8 +11,8 @@
 ```bash
 cd /tmp
 git clone https://github.com/YasirFadhil/NIXKs.git
-sudo cp -r NIXKs/* /etc/nixos/
-cd /etc/nixos
+sudo cp -r NIXKs/* ~/.config/nixos/
+cd ~/.config/nixos
 ```
 
 ## Step 2: Generate Hardware Configuration
@@ -23,6 +23,18 @@ sudo cp /tmp/hw.nix host/chromebook/hardware-configuration.nix
 ```
 
 ## Step 3: Customize Configuration
+
+### Make your own host
+
+Make your own host folder:
+```bash
+mkdir -p host/YOUR_HOST
+```
+Copy the configuration files:
+```bash
+cp -r nixos/* host/YOUR_HOST/
+```
+Then make changes to readjust the configuration for your host.
 
 ### Update Username
 
@@ -51,11 +63,10 @@ programs.git = {
 };
 ```
 
-Edit `host/chromebook/configuration.nix`:
+Edit `host/YOUR_HOST/configuration.nix`:
 ```nix
 home-manager.users.YOUR_USERNAME = import ./home/home.nix;
 ```
-## note you may change the name of chromebook to your devices name
 
 ### Set Hostname
 
@@ -92,7 +103,11 @@ Log in and select **Session You Want** from the display manager.
 After the first build, use `nh` as nixos helper:
 
 ```bash
-nh os switch /etc/nixos -H nixos --ask
+nh os switch ~/.config/nixos -H nixos --ask
+```
+or
+```bash
+nh os switch /home/YOUR_USERNAME/config/nixos -H nixos --ask
 ```
 
 ## Customize Niri
@@ -116,7 +131,7 @@ environment.systemPackages = with pkgs; [
 
 Rebuild with:
 ```bash
-nh os switch /etc/nixos -H nixos --ask
+nh os switch ~/.config/nixos -H nixos --ask
 ```
 
 ### User Package
@@ -130,7 +145,7 @@ with pkgs; [
 
 Rebuild with:
 ```bash
-nh os switch /etc/nixos -H nixos --ask
+nh os switch ~/.config/nixos -H nixos --ask
 ```
 
 ## Change Shell
@@ -218,7 +233,7 @@ journalctl -xe
 - See [KEYBINDINGS.md](KEYBINDINGS.md) for Niri shortcuts
 - Edit programs in `home/programs/`
 - Customize appearance in `home/themes/`
-- Modify Niri config in `home/systems/niri/`
+- Modify wm/quickshells/more systems config in `home/systems/`
 
 ---
 
