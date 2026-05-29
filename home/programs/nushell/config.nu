@@ -22,6 +22,17 @@ def gum [] {
   git push -u origin master
 }
 
+def gme [] {
+  git fetch --all
+  git checkout main
+  git pull origin main
+  git checkout master
+  git rebase main
+  git checkout main
+  git merge master --ff-only
+  git push origin main
+}
+
 #alias shortcut
 alias ll = clear
 alias l = clear
@@ -38,6 +49,4 @@ alias gcl = git clone
 #other
 alias cd = z
 alias zed = zeditor .
-alias nh-switch = nh os switch /home/yasirfadhil/.config/nixos -H nixosss --ask
 alias nh-clean = nh clean all --keep 3
-alias cdn = cd ~/.config/nixos
