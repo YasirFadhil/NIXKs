@@ -37,44 +37,6 @@ in
   programs.niri = {
     enable = true;
     package = pkgs.niri;
-    # config = ''
-    #   environment {
-    #     NIXOS_OZONE_WL "1"
-    #     MOZ_ENABLE_WAYLAND "1"
-    #     XDG_SESSION_TYPE "wayland"
-    #     XDG_CURRENT_DESKTOP "niri"
-    #     XDG_SESSION_DESKTOP "niri"
-    #   }
-    #
-    #   spawn-at-startup "polkit-gnome-authentication-agent-1"
-    #   spawn-at-startup "gnome-keyring-daemon" "--start" "--components=pkcs11,secrets,ssh,pgp"
-    #   spawn-at-startup "swaybg" "-m" "fill" "-i" "${config.home.homeDirectory}/.config/nixos/home/themes/wallpapers/MacTahoeDark.jpg"
-    #   spawn-at-startup "xwayland-satellite"
-    #   spawn-at-startup "hypridle"
-    #   spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
-    #
-    #   cursor {
-    #     xcursor-theme "Bibata-Modern-Ice"
-    #     xcursor-size 20
-    #   }
-    #
-    #   screenshot-path "~/Pictures/Screenshots/Screenshot_niri_%Y-%m-%d_%H-%M-%S.png"
-    #
-    #   hotkey-overlay {
-    #     skip-at-startup
-    #   }
-    #
-    #   prefer-no-csd
-    #
-    #   window-rule {
-    #     background-effect {
-    #       blur true
-    #       xray false
-    #       noise 0.02
-    #       saturation 1.1
-    #     }
-    #   }
-    # '';
     settings = {
       # Environment variables
       environment = {
@@ -89,11 +51,11 @@ in
       spawn-at-startup = [
         { command = ["polkit-gnome-authentication-agent-1"]; }
         { command = ["gnome-keyring-daemon" "--start" "--components=pkcs11,secrets,ssh,pgp"]; }
-        # { command = ["swaybg" "-m" "fill" "-i" "${config.home.homeDirectory}/.config/nixos/home/themes/wallpapers/Shorekeeper.jpg"]; }
+        { command = ["swaybg" "-m" "fill" "-i" "${config.home.homeDirectory}/.config/nixos/home/themes/wallpapers/Shorekeeper.jpg"]; }
         { command = ["xwayland-satellite"]; }
         { command = ["hypridle"]; }
         { command = ["wl-paste" "--watch" "cliphist" "store"]; }
-        { command = ["mpvpaper -o 'hwdec=vaapi loop=inf' '*' ~/Downloads/Chisa720.mp4"]; }
+        # { command = ["mpvpaper" "-o" "hwdec=vaapi loop=inf" "*" "${config.home.homeDirectory}/Downloads/Chisa720.mp4"]; }
       ];
 
       # Cursor settings
