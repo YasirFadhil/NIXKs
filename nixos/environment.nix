@@ -31,6 +31,7 @@
     qt6.qttools
     qt6.qmake
     android-tools
+    bun
 
     # Shells
     nushell

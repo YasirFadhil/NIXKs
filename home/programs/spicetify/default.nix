@@ -12,7 +12,23 @@ in {
 
   programs.spicetify = {
     enable = true;
-    theme = spicePkgs.themes.default;  # Changed to lowercase 'default'
+    theme = spicePkgs.themes.text;  # Changed to lowercase 'default'
+    # theme = {
+    #   name = "text";
+
+    #   src = pkgs.fetchFromGitHub {
+    #     owner = "spicetify";
+    #     repo = "spicetify-themes";
+    #     rev = "master";
+    #     hash = "sha256-jEBkyzCjcN6eUZ/RLmxRIPlrL1PEvKGOr/9auQOsqPg=";
+    #   };
+
+    #   injectCss = true;
+    #   injectThemeJs = true;
+    #   replaceColors = true;
+    #   homeConfig = true;
+    #   overwriteAssets = false;
+    # };
 
     enabledExtensions = with spicePkgs.extensions; [
       playlistIcons

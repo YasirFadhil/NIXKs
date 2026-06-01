@@ -18,7 +18,7 @@
     ./programs/nushell
     ./programs/nvchad
     ./programs/rofi
-    # ./programs/spicetify
+    ./programs/spicetify
     ./programs/starship
     ./programs/zed
     ./programs/zen

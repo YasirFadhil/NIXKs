@@ -7,7 +7,7 @@
 with pkgs; ([
 (import ./scripts/battery.nix { inherit pkgs; })
 (import ./scripts/nowplay.nix { inherit pkgs; })
-(import ./scripts/audio-sink.nix { inherit pkgs; })
+# (import ./scripts/audio-sink.nix { inherit pkgs; })
 
 
 # Terminal Emulators
@@ -15,7 +15,7 @@ with pkgs; ([
   ghostty
   alacritty
   foot
-  claude-code
+  # claude-code
 
 # Shell Tools
   carapace
@@ -32,9 +32,11 @@ with pkgs; ([
   zig
   go
   nodejs
+  # bun
   zed-editor
   vim
   neovim
+  antigravity
   git
   pywal
 
@@ -58,7 +60,7 @@ with pkgs; ([
   pavucontrol
   sound-theme-freedesktop
   obs-studio
-  spotify
+  # spotify
 
 # File Management and Viewers
   kdePackages.gwenview

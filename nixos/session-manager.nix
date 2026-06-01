@@ -3,10 +3,10 @@
   services.xserver.enable = true;
 
   # Use GDM display manager
-  services.displayManager.gdm = {
-    enable = false;
-    wayland = true;
-  };
+  # services.displayManager.gdm = {
+    # enable = true;
+    # wayland = true;
+  # };
 
   # SDDM display manager
   services.displayManager.sddm = {
