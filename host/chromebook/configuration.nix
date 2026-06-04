@@ -42,9 +42,6 @@
 
   # Install some programs.
   programs = {
-    firefox = {
-      enable = true;
-    };
     steam = {
       enable = true;
       remotePlay.openFirewall = true;

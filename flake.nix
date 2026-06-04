@@ -3,65 +3,63 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
-    apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
-    hyprland = {
-      url = "github:hyprwm/Hyprland/v0.55.0";
+    
+    apple-fonts = {
+      url = "github:Lyndeno/apple-fonts.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    
     qml-niri = {
       url = "github:imiric/qml-niri/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    
     home-manager = {
-      url = "github:nix-community/home-manager/master";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    
     nix4nvchad = {
       url = "github:nix-community/nix4nvchad";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #noctalia = {
-     # url = "github:noctalia-dev/noctalia-shell";
-      #inputs.nixpkgs.follows = "nixpkgs";
-    #};
+    
     dms = {
       url = "github:AvengeMedia/DankMaterialShell/stable";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    
     dgop = {
       url = "github:AvengeMedia/dgop";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    
     danksearch = {
       url = "github:AvengeMedia/danksearch";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #freesmlauncher = {
-     # url = "github:FreesmTeam/FreesmLauncher";
-      #inputs = {
-       # nixpkgs = {
-        #follows = "nixpkgs";
-        #};
-      #};
-    #};
-    #mac-style-plymouth = {
-     # url = "github:SergioRibera/s4rchiso-plymouth-theme";
-      #inputs.nixpkgs.follows = "nixpkgs";
-    #};
   };
+
 
   outputs = { self, nixpkgs, home-manager, niri, nix4nvchad, hyprland, ... }@inputs: let
     system = "x86_64-linux";
