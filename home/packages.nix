@@ -103,6 +103,7 @@ with pkgs; ([
 # Qt Wayland Support
   qt5.qtwayland
   qt6.qtwayland
+  qt6.qtwebsockets
 
 # Additional Qt Libraries
   libsForQt5.qtbase

@@ -15,6 +15,7 @@
     ./programs/foot
     ./programs/ghostty
     ./programs/gnom
+    ./programs/helium
     ./programs/nushell
     ./programs/nvchad
     ./programs/rofi
