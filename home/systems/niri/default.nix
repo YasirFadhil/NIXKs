@@ -26,13 +26,13 @@ in
 
   home.packages = myPackages;
 
-  home.pointerCursor = {
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Ice";
-    size = 20;
-    x11.enable = true;
-    gtk.enable = true;
-  };
+  # home.pointerCursor = {
+  #   # package = pkgs.bibata-cursors;
+  #   name = "MacTahoe-dark";
+  #   size = 20;
+  #   x11.enable = true;
+  #   gtk.enable = true;
+  # };
 
   programs.niri = {
     enable = true;
@@ -60,8 +60,8 @@ in
 
       # Cursor settings
       cursor = {
-        theme = "Bibata-Modern-Ice";
-        size = 20;
+        theme = "MacTahoe-dark";
+        size = 24;
       };
 
       # Screenshot settings

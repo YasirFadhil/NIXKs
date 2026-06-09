@@ -8,6 +8,11 @@
       url = "github:Lyndeno/apple-fonts.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    sf-mono-liga-src = {
+      url = "github:shaunsingh/SFMono-Nerd-Font-Ligaturized";
+      flake = false;
+    };
     
     hyprland = {
       url = "github:hyprwm/Hyprland";
@@ -93,7 +98,19 @@
               # "https://attic.xuyh0120.win/lantian"
             ];
           };
-        # nixpkgs.overlays = [
+        nixpkgs.overlays = [
+          (final: prev: {
+            sf-mono-liga-bin = prev.stdenvNoCC.mkDerivation rec {
+              pname = "sf-mono-liga-bin";
+              version = "dev";
+              src = inputs.sf-mono-liga-src;
+              dontConfigure = true;
+              installPhase = ''
+                mkdir -p $out/share/fonts/opentype
+                cp -R $src/*.otf $out/share/fonts/opentype/
+              '';
+            };
+          }) 
           # nix-cachyos-kernel.overlays.default
           # niri.overlays.niri
           #
@@ -102,7 +119,7 @@
           #     doCheck = false;
           #   });
           # })
-        # ];
+        ];
         }
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;

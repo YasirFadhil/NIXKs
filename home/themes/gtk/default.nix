@@ -2,14 +2,15 @@
 
 let
   mactahoe-icon-theme = pkgs.callPackage ../icons/mactahoe.nix {};
+  gnome-macos-tahoe-theme = pkgs.callPackage ./gnome-macos-tahoe.nix {};
 in
 {
   # GTK theme configuration
   gtk = {
     enable = true;
     theme = {
-      name = "WhiteSur-Dark";
-      package = pkgs.whitesur-gtk-theme;
+      name = "Tahoe-Dark";
+      package = gnome-macos-tahoe-theme;
     };
     font = {
       name = "SF Pro Display";
@@ -22,10 +23,19 @@ in
       # package = pkgs.whitesur-icon-theme;
     };
     cursorTheme = {
-      name = "Bibata-Modern-Ice";
-      package = pkgs.bibata-cursors;
-      size = 20;
+      # name = "Bibata-Modern-Ice";
+      # package = pkgs.bibata-cursors;
+      name = "MacTahoe-dark";
+      size = 24;
     };
-    gtk4.theme = null;
+    gtk4 = {
+      theme = {
+        name = "Tahoe-Dark";
+        package = gnome-macos-tahoe-theme;
+      };
+      extraConfig = {
+        gtk-application-prefer-dark-theme = 1;
+      };
+    };
   };
 }

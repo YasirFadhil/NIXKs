@@ -54,6 +54,7 @@ with pkgs; ([
   swaybg
   hyphen
   mpvpaper
+  nwg-look
 
 # Media and Entertainment
   vlc

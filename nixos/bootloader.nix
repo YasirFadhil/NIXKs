@@ -21,7 +21,7 @@
       "snd_intel_dspcfg.dsp_driver=3"
       # "i915.mitigations=off"
       # "intel_iommu=igfx_off"          # Fixed typo: changed hyphen to equals sign
-      # "intel_idle.max_cstate=1"       # Prevents Gemini Lake low-power hardware freezes
+      "intel_idle.max_cstate=1"       # Prevents Gemini Lake low-power hardware freezes
       # "i915.enable_dc=0"              # Disables unstable GPU power-saving states
     ];
   };
