@@ -38,6 +38,13 @@ in
     enable = true;
     package = pkgs.niri;
     settings = {
+      # blur = {
+      #   passes = 2;
+      #   offset = 3.0;
+      #   noise = 0.03;
+      #   saturation = 1.0;
+      # };
+
       # Environment variables
       environment = {
         NIXOS_OZONE_WL = "1";

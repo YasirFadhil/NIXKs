@@ -32,7 +32,6 @@ with pkgs; ([
   zig
   go
   nodejs
-  # bun
   zed-editor
   vim
   neovim

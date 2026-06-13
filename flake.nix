@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    
+
     apple-fonts = {
       url = "github:Lyndeno/apple-fonts.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -13,52 +13,52 @@
       url = "github:shaunsingh/SFMono-Nerd-Font-Ligaturized";
       flake = false;
     };
-    
+
     hyprland = {
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     qml-niri = {
       url = "github:imiric/qml-niri/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     nix4nvchad = {
       url = "github:nix-community/nix4nvchad";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     dms = {
       url = "github:AvengeMedia/DankMaterialShell/stable";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     dgop = {
       url = "github:AvengeMedia/dgop";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     danksearch = {
       url = "github:AvengeMedia/danksearch";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -85,17 +85,14 @@
             substituters = [
               "https://hyprland.cachix.org"
               "https://niri.cachix.org"
-              # "https://attic.xuyh0120.win/lantian"
             ];
             trusted-public-keys = [
               "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
               "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z7oezYhGhR+3W2964="
-              # "lantian:EaAUQ+W6r7EtwnmYeVwx5kOGEBpjlBfplzGlTNvHc="
             ];
             trusted-substituters = [
               "https://hyprland.cachix.org"
               "https://niri.cachix.org"
-              # "https://attic.xuyh0120.win/lantian"
             ];
           };
         nixpkgs.overlays = [
@@ -110,15 +107,33 @@
                 cp -R $src/*.otf $out/share/fonts/opentype/
               '';
             };
-          }) 
-          # nix-cachyos-kernel.overlays.default
-          # niri.overlays.niri
-          #
-          # (final: prev: {
-          #   niri= prev.niri-unstable.overrideAttrs (oldAttrs: {
-          #     doCheck = false;
-          #   });
-          # })
+          })
+
+          (final: prev: {
+            bun = prev.bun.overrideAttrs (oldAttrs: {
+              # Use baseline build for Celeron N4020 (x86-64 without AVX)
+              # Baseline build is compatible with older CPUs that don't support AVX
+              src = prev.fetchurl {
+                url = "https://github.com/oven-sh/bun/releases/download/bun-v1.3.13/bun-linux-x64-baseline.zip";
+                sha256 = "0l67xlql0fwdz1xy71sjdxrnjprz49d0mb6s0l10js3h58lj92lx";
+              };
+
+              # Use pre-compiled binary, no build needed
+              dontConfigure = true;
+              dontBuild = true;
+              doCheck = false;
+
+              unpackPhase = ''
+                ${prev.unzip}/bin/unzip $src
+              '';
+
+              installPhase = ''
+                mkdir -p $out/bin
+                cp bun-linux-x64-baseline/bun $out/bin/bun
+                chmod +x $out/bin/bun
+              '';
+            });
+          })
         ];
         }
         home-manager.nixosModules.home-manager {
