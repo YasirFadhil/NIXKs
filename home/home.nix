@@ -8,6 +8,7 @@
     # ./systems/noctalia
     ./systems/quickshell
     # ./systems/swaync
+    # ./systems/swaylock
     ./systems/waybar
 
     # programs

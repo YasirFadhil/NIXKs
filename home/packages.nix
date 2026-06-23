@@ -78,6 +78,7 @@ with pkgs; ([
   wlr-randr
   wlopm
   wl-clipboard
+  swaylock-effects
 
 # Rofi and Related
  rofi

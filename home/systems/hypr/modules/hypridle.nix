@@ -7,8 +7,9 @@
     general {
         # use noctalia-shell ipc call for lock screen
         # lock_cmd = noctalia-shell ipc call lockScreen lock
-        lock_cmd = dms ipc lock lock
+        # lock_cmd = dms ipc lock lock
         # lock_cmd = hyprlock
+        lock_cmd = swaylock
         before_sleep_cmd = loginctl lock-session
         # Use hyprctl if available (Hyprland), otherwise niri msg for Niri
         after_sleep_cmd = command -v hyprctl >/dev/null && hyprctl dispatch dpms on || niri msg action power-on-monitors

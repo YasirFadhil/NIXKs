@@ -8,9 +8,16 @@
     # wayland = true;
   # };
 
+  #LY display manager
+  services.displayManager = {
+    ly = {
+      enable = true;
+    };
+  };
+
   # SDDM display manager
   services.displayManager.sddm = {
-    enable = true;
+    enable = false;
     theme = "sddm-astronaut-theme";
 
     extraPackages = [

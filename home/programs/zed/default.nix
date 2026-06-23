@@ -5,7 +5,7 @@
   home.file.".config/zed/settings.json".text = ''
     {
       "ui_font_family": "SF Pro Display",
-      "buffer_font_family": "SF Mono",
+      "buffer_font_family": "Liga SFMono Nerd Font",
       "icon_theme": "Material Icon Theme",
       "vim_mode": true,
       "agent": {

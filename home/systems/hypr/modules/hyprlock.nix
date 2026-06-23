@@ -5,7 +5,7 @@
   entryColor = "rgba(255,255,255,1)";
   font = "SF Pro Display";
   fontBold = "SF Pro Display Bold";
-  fontMono = "SF Mono";
+  fontMono = "Liga SFMono Nerd Font";
   fontSymbols = "FiraCode Nerd Font Bold";
 in {
   programs.hyprlock = {

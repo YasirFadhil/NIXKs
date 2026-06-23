@@ -7,14 +7,16 @@
       };
       efi.canTouchEfiVariables = true;
     };
+    
+    kernel.sysctl."kernel.sysrq" = 1;
 
     # Force early loading of the Intel graphics driver to prevent switch-root freezes
-    initrd.kernelModules = [  ];
+    initrd.kernelModules = [ "i915" ];
 
     # Linux 6.12 is good, but if freezes persist, uncomment the LTS line below
-    # kernelPackages = pkgs.linuxPackages_6_12;
+    kernelPackages = pkgs.linuxPackages_6_18;
     # kernelPackages = pkgs.linuxPackages_latest;
-    kernelPackages = pkgs.linuxPackages_zen;
+    # kernelPackages = pkgs.linuxPackages_zen;
     # kernelPackages = pkgs.linuxPackages_cachyos_lts;
 
     kernelParams = [
@@ -22,7 +24,8 @@
       # "i915.mitigations=off"
       # "intel_iommu=igfx_off"          # Fixed typo: changed hyphen to equals sign
       "intel_idle.max_cstate=1"       # Prevents Gemini Lake low-power hardware freezes
-      # "i915.enable_dc=0"              # Disables unstable GPU power-saving states
+      "i915.enable_psr=0"
+      "i915.enable_dc=0"              # Disables unstable GPU power-saving states
     ];
   };
 }
