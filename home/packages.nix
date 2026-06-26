@@ -67,6 +67,7 @@ with pkgs; ([
   libreoffice
   gimp3
   swappy
+  yazi
 
 # Wayland tools
   eww

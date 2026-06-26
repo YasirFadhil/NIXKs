@@ -12,7 +12,9 @@
       bash-language-server
       typescript-language-server
       lua-language-server
+      vscode-langservers-extracted
       pyright
+      
 
       # Formatters
       prettier
