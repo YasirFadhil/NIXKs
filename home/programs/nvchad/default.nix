@@ -3,28 +3,47 @@
     inputs.nix4nvchad.homeManagerModule
   ];
 
+  home.packages = with pkgs; [
+    # Language servers
+    bash-language-server
+    typescript-language-server
+    lua-language-server
+    vscode-langservers-extracted
+    pyright
+    
+    # Formatters
+    prettier
+    black
+    stylua
+
+    # Utilities
+    ripgrep
+    fd
+    tree-sitter
+  ];
+
   programs.nvchad = {
     enable = true;
 
     # LSP servers, formatters, and other tools
     extraPackages = with pkgs; [
       # Language servers
-      bash-language-server
-      typescript-language-server
-      lua-language-server
-      vscode-langservers-extracted
-      pyright
-      
-
-      # Formatters
-      prettier
-      black
-      stylua
-
-      # Utilities
-      ripgrep
-      fd
-      tree-sitter
+      # bash-language-server
+      # typescript-language-server
+      # lua-language-server
+      # vscode-langservers-extracted
+      # pyright
+      #
+      #
+      # # Formatters
+      # prettier
+      # black
+      # stylua
+      #
+      # # Utilities
+      # ripgrep
+      # fd
+      # tree-sitter
     ];
 
     # Home-manager manages the NvChad config in ~/.config/nvim

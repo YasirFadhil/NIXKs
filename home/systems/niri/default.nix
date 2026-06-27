@@ -38,6 +38,9 @@ in
     enable = true;
     package = pkgs.niri;
     settings = {
+      includes = lib.mkAfter [
+          (./modules/blur.kdl)
+        ];
       # blur = {
       #   passes = 2;
       #   offset = 3.0;
@@ -48,6 +51,8 @@ in
       # Environment variables
       environment = {
         NIXOS_OZONE_WL = "1";
+        QT_QPA_PLATFORM = "wayland;xcb";
+        QT_STYLE_OVERRIDE = lib.mkForce "";
         MOZ_ENABLE_WAYLAND = "1";
         XDG_SESSION_TYPE = "wayland";
         XDG_CURRENT_DESKTOP = "niri";
