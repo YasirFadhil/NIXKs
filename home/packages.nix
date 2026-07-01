@@ -1,4 +1,4 @@
-{ pkgs, inputs ? {}, ... }:
+{ pkgs ? {}, ... }:
 
 #let
  # extraGames = if inputs ? freesmlauncher then [ inputs.freesmlauncher.packages."${pkgs.stdenv.hostPlatform.system}".default ] else [];
@@ -31,6 +31,8 @@ with pkgs; ([
 # Development
   zig
   go
+  nixd
+  nixf
   nodejs
   zed-editor
   vim

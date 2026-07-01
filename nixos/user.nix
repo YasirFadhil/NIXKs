@@ -18,6 +18,7 @@ in
      "audio"
      "libvirtd"
      "adbusers"
+     "input"
     ];
     };
   };

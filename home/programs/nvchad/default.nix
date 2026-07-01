@@ -9,7 +9,9 @@
     typescript-language-server
     lua-language-server
     vscode-langservers-extracted
+    tailwindcss-language-server
     pyright
+    nil
     
     # Formatters
     prettier
