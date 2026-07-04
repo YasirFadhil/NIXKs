@@ -8,7 +8,11 @@
       efi.canTouchEfiVariables = true;
     };
     
-    kernel.sysctl."kernel.sysrq" = 1;
+    kernel.sysctl = {
+      "kernel.sysrq" = 1;
+      "vm.dirty_writeback_centisecs" = 200;
+      "vm.dirty_expire_centisecs" = 200;
+    };
 
     # Removed v4l2loopback from here to prevent early-boot crash
     initrd.kernelModules = [ "i915" ];
@@ -28,7 +32,8 @@
       "i915.enable_psr=0"
       "i915.enable_dc=0"
       "mem_sleep_default=s2idle"
-      "usbcore.autosuspend=-1" 
+      "usbcore.autosuspend=-1"
+      "pcie_aspm=off"
     ];
   };
 
