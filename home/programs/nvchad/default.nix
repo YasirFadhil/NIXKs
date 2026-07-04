@@ -1,9 +1,16 @@
-{ inputs, config, pkgs, ... }: {
+{ 
+  inputs, 
+  config, 
+  pkgs, 
+  ... 
+}: 
+
+{
   imports = [
     inputs.nix4nvchad.homeManagerModule
   ];
 
-  home.packages = with pkgs; [
+  home.packages = with pkgs; [ 
     # Language servers
     bash-language-server
     typescript-language-server
@@ -27,43 +34,39 @@
 
   programs.nvchad = {
     enable = true;
-
-    # LSP servers, formatters, and other tools
-    extraPackages = with pkgs; [
-      # Language servers
-      # bash-language-server
-      # typescript-language-server
-      # lua-language-server
-      # vscode-langservers-extracted
-      # pyright
-      #
-      #
-      # # Formatters
-      # prettier
-      # black
-      # stylua
-      #
-      # # Utilities
-      # ripgrep
-      # fd
-      # tree-sitter
-    ];
-
-    # Home-manager manages the NvChad config in ~/.config/nvim
     hm-activation = true;
 
-    # Create backups when config changes
-    # backup = true;
+    # Explicitly inject these binaries into the Neovim execution environment
+    # extraPackages = with pkgs; [
+    #   # Language servers
+    #   bash-language-server
+    #   typescript-language-server
+    #   typescript
+    #   lua-language-server
+    #   vscode-langservers-extracted
+    #   tailwindcss-language-server
+    #   pyright
+    #   nil
+    #
+    #   # Formatters
+    #   prettier
+    #   black
+    #   stylua
+    #
+    #   # Utilities
+    #   ripgrep
+    #   fd
+    #   tree-sitter
+    # ];
   };
 
+  # Main NvChad UI and Theme configuration
   xdg.configFile."nvim/lua/chadrc.lua".text = ''
     ---@type ChadrcConfig
     local M = {}
 
     M.base46 = {
       transparency = true,
-      
-      -- Optional: You can also hardcode your favorite theme here!
       theme = "dark_horizon", 
     }
 
@@ -73,4 +76,46 @@
 
     return M
   '';
+
+  # LSP Configurations for TypeScript, Nix, and your other languages
+  xdg.configFile."nvim/lua/configs/lspconfig.lua".text = ''
+    local configs = require("nvchad.configs.lspconfig")
+    local lspconfig = require("lspconfig")
+
+    -- Generic servers that work perfectly out of the box with NvChad defaults
+    -- Note: 'nil_ls' is used here to bind the 'nil' binary to Nix files
+    local servers = { "html", "cssls", "tailwindcss", "pyright", "bashls", "nil_ls" }
+
+    -- Setup standard servers
+    for _, lsp in ipairs(servers) do
+      lspconfig[lsp].setup {
+        on_init = configs.on_init,
+        on_attach = configs.on_attach,
+        capabilities = configs.capabilities,
+      }
+    end
+
+    -- Explicit configuration for TypeScript & TSX
+    lspconfig.ts_ls.setup {
+      on_init = configs.on_init,
+      on_attach = configs.on_attach,
+      capabilities = configs.capabilities,
+      filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+      root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
+    }
+  '';
+
+  # Intercept the plugin loading sequence to hide the deprecation error screen
+  xdg.configFile."nvim/lua/plugins/init.lua".text = ''
+    vim.deprecate = function() end
+    return {
+      {
+        "neovim/nvim-lspconfig",
+        config = function()
+          require("configs.lspconfig")
+        end,
+      },
+    }
+  '';
 }
+
