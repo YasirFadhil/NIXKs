@@ -12,7 +12,7 @@
       ../../nixos/intel.nix
       ../../nixos/localization.nix
       ../../nixos/networking.nix
-     # ../../nixos/power-button.nix
+      # ../../nixos/power-button.nix
       ../../nixos/session-manager.nix
       ../../nixos/user.nix
       ../../nixos/zram.nix
@@ -42,9 +42,6 @@
 
   # Install some programs.
   programs = {
-    firefox = {
-      enable = true;
-    };
     steam = {
       enable = true;
       remotePlay.openFirewall = true;
@@ -66,6 +63,6 @@
   
   hardware.enableRedistributableFirmware = true;
   hardware.enableAllFirmware = true;
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.05";
 
 }

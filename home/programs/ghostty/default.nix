@@ -7,7 +7,7 @@
     enable = true;
     settings = {
       # Font configuration
-      font-family = "SF Mono";
+      font-family = "Liga SFMono Nerd Font";
       font-size = 12;
       font-style = "bold";
       bold-is-bright = true;

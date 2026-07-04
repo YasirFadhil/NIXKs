@@ -10,7 +10,6 @@
         {
           matches = [
             {is-window-cast-target = true;}
-            {app-id = "^foot$";}
           ];
           focus-ring = {
             active = {color = "#f38ba8";};

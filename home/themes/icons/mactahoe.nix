@@ -8,7 +8,7 @@ stdenv.mkDerivation rec {
     owner = "vinceliuice";
     repo = "MacTahoe-icon-theme";
     rev = "main";
-    sha256 = "sha256-a21zLinYTG6fpdQhKcn/3GzVUKd0bQOnY74609C5I7k=";
+    sha256 = "sha256-eqR+XxQpUKD1sqFUncSgMCsxdFu1uumsDVGzT7Gn7eU=";
   };
 
   nativeBuildInputs = [ pkgs.gtk3 ];

@@ -16,7 +16,7 @@
   # Optional: Configure swappiness (0-100, lower = less swapping)
   # Only swap when necessary
   boot.kernel.sysctl = {
-    "vm.swappiness" = 5;
+    "vm.swappiness" = 100;
     "vm.page-cluster" = 0; 
   };
 }

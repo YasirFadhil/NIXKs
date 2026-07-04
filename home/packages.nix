@@ -1,4 +1,4 @@
-{ pkgs, inputs ? {}, ... }:
+{ pkgs ? {}, ... }:
 
 #let
  # extraGames = if inputs ? freesmlauncher then [ inputs.freesmlauncher.packages."${pkgs.stdenv.hostPlatform.system}".default ] else [];
@@ -7,7 +7,7 @@
 with pkgs; ([
 (import ./scripts/battery.nix { inherit pkgs; })
 (import ./scripts/nowplay.nix { inherit pkgs; })
-(import ./scripts/audio-sink.nix { inherit pkgs; })
+# (import ./scripts/audio-sink.nix { inherit pkgs; })
 
 
 # Terminal Emulators
@@ -15,7 +15,7 @@ with pkgs; ([
   ghostty
   alacritty
   foot
-  claude-code
+  # claude-code
 
 # Shell Tools
   carapace
@@ -24,17 +24,22 @@ with pkgs; ([
   cbonsai
   cava
   scrcpy
+  v4l-utils
   libnotify
   psmisc
+  unzip
  # cisco-packet-tracer_9
 
 # Development
   zig
   go
+  nixd
+  nixf
   nodejs
   zed-editor
   vim
   neovim
+  antigravity
   git
   pywal
 
@@ -52,19 +57,21 @@ with pkgs; ([
   swaybg
   hyphen
   mpvpaper
+  nwg-look
 
 # Media and Entertainment
   vlc
   pavucontrol
   sound-theme-freedesktop
   obs-studio
-  spotify
+  # spotify
 
 # File Management and Viewers
   kdePackages.gwenview
   libreoffice
   gimp3
   swappy
+  yazi
 
 # Wayland tools
   eww
@@ -76,6 +83,7 @@ with pkgs; ([
   wlr-randr
   wlopm
   wl-clipboard
+  swaylock-effects
 
 # Rofi and Related
  rofi
@@ -101,6 +109,8 @@ with pkgs; ([
 # Qt Wayland Support
   qt5.qtwayland
   qt6.qtwayland
+  qt6.qtwebsockets
+  kdePackages.qtdeclarative
 
 # Additional Qt Libraries
   libsForQt5.qtbase

@@ -15,6 +15,7 @@ in
     apple-fonts-pkg.sf-armenian
     apple-fonts-pkg.sf-georgian
     apple-fonts-pkg.sf-hebrew
+    sf-mono-liga-bin
 
     # Core fonts
     inter               # Similar to SF Pro

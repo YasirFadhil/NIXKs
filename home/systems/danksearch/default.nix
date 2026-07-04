@@ -52,6 +52,10 @@
           exclude_hidden = true;
           exclude_dirs = [ "node_modules" ".git" "target" "dist" ];
         }
+        # {
+        #   path = "${config.home.homeDirectory}/.config";
+        #   max_depth = 
+        # }
       ];
     };
   };

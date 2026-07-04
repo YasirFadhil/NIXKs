@@ -26,21 +26,33 @@ in
 
   home.packages = myPackages;
 
-  home.pointerCursor = {
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Ice";
-    size = 20;
-    x11.enable = true;
-    gtk.enable = true;
-  };
+  # home.pointerCursor = {
+  #   # package = pkgs.bibata-cursors;
+  #   name = "MacTahoe-dark";
+  #   size = 20;
+  #   x11.enable = true;
+  #   gtk.enable = true;
+  # };
 
   programs.niri = {
     enable = true;
     package = pkgs.niri;
     settings = {
+      includes = lib.mkAfter [
+          (./modules/blur.kdl)
+        ];
+      # blur = {
+      #   passes = 2;
+      #   offset = 3.0;
+      #   noise = 0.03;
+      #   saturation = 1.0;
+      # };
+
       # Environment variables
       environment = {
         NIXOS_OZONE_WL = "1";
+        QT_QPA_PLATFORM = "wayland;xcb";
+        QT_STYLE_OVERRIDE = lib.mkForce "";
         MOZ_ENABLE_WAYLAND = "1";
         XDG_SESSION_TYPE = "wayland";
         XDG_CURRENT_DESKTOP = "niri";
@@ -51,7 +63,7 @@ in
       spawn-at-startup = [
         { command = ["polkit-gnome-authentication-agent-1"]; }
         { command = ["gnome-keyring-daemon" "--start" "--components=pkcs11,secrets,ssh,pgp"]; }
-        { command = ["swaybg" "-m" "fill" "-i" "${config.home.homeDirectory}/.config/nixos/home/themes/wallpapers/Shorekeeper.jpg"]; }
+        { command = ["swaybg" "-m" "fill" "-i" "${config.home.homeDirectory}/.config/nixos/home/themes/wallpapers/wallbler.jpg"]; }
         { command = ["xwayland-satellite"]; }
         { command = ["hypridle"]; }
         { command = ["wl-paste" "--watch" "cliphist" "store"]; }
@@ -60,8 +72,8 @@ in
 
       # Cursor settings
       cursor = {
-        theme = "Bibata-Modern-Ice";
-        size = 20;
+        theme = "MacTahoe-dark";
+        size = 24;
       };
 
       # Screenshot settings

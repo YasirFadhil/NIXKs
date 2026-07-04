@@ -7,23 +7,32 @@
       };
       efi.canTouchEfiVariables = true;
     };
+    
+    kernel.sysctl."kernel.sysrq" = 1;
 
-    # Force early loading of the Intel graphics driver to prevent switch-root freezes
+    # Removed v4l2loopback from here to prevent early-boot crash
     initrd.kernelModules = [ "i915" ];
 
-    # Linux 6.12 is good, but if freezes persist, uncomment the LTS line below
-    kernelPackages = pkgs.linuxPackages_6_12;
-    # kernelPackages = pkgs.linuxPackages_latest;
-    # kernelPackages = pkgs.linuxPackages_zen;
-    # kernelPackages = pkgs.linuxPackages_cachyos_lts;
+    # Added here for safe loading after the root file system mounts
+    kernelModules = [ "v4l2loopback" ];
+
+    kernelPackages = pkgs.linuxPackages_6_18;
+    extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
+    extraModprobeConfig = ''
+      options v4l2loopback devices=1 video_nr=9 card_label="Android Webcam" exclusive_caps=1
+    '';
 
     kernelParams = [
       "snd_intel_dspcfg.dsp_driver=3"
-      "i915.mitigations=off"
-      "intel_iommu=igfx_off"          # Fixed typo: changed hyphen to equals sign
-      "intel_idle.max_cstate=1"       # Prevents Gemini Lake low-power hardware freezes
-      "i915.enable_dc=0"              # Disables unstable GPU power-saving states
+      "intel_idle.max_cstate=1"       
+      "i915.enable_psr=0"
+      "i915.enable_dc=0"
+      "mem_sleep_default=s2idle"
+      "usbcore.autosuspend=-1" 
     ];
   };
-}
 
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="mmc", ATTR{power/control}="on"
+  '';
+}

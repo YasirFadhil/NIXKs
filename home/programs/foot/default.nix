@@ -5,7 +5,7 @@
     enable = true;
     settings = {
       main = {
-        font = "SF Mono:style=bold:size=12";
+        font = "Liga SFMono Nerd Font:style=bold:size=12";
         dpi-aware = "no";
         pad = "10x10";
       };
@@ -20,7 +20,7 @@
         alpha = "0.8";
 
         # Standard colors
-        regular0 = "000000";
+        regular0 = "000001";
         regular1 = "ff5555";
         regular2 = "55ff55";
         regular3 = "ffff55";

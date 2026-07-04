@@ -8,6 +8,7 @@
     # ./systems/noctalia
     ./systems/quickshell
     # ./systems/swaync
+    # ./systems/swaylock
     ./systems/waybar
 
     # programs
@@ -15,10 +16,11 @@
     ./programs/foot
     ./programs/ghostty
     ./programs/gnom
+    ./programs/helium
     ./programs/nushell
     ./programs/nvchad
     ./programs/rofi
-    # ./programs/spicetify
+    ./programs/spicetify
     ./programs/starship
     ./programs/zed
     ./programs/zen
@@ -43,6 +45,12 @@
       MOZ_ENABLE_WAYLAND = "1";
       GDK_BACKEND = "wayland,x11";
     };
+    file = lib.mkIf (builtins.pathExists (config.home.homeDirectory + "/WhiteSur-firefox-theme")) {
+      ".mozila/firefox/Person/chrome" = {
+        source = "${config.home.homeDirectory}/WhiteSur-firefox-theme";
+        recursive = true;
+      };
+    };
   };
 
   #xdg.mimeApps = {
@@ -52,22 +60,37 @@
   #  };
   #};
 
+  programs = {
+    firefox = {
+      enable = true;
+      profiles.Person = {
+        settings = {
+          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+          "svg.context-properties.content.enabled" = true;
+          "browser.tabs.allow_transparent_browser" = true;
+        };
+      };
+    };
 
-  # waybar.enable = true;
-  programs.starship = {
-    enable = true;
-  };
-  programs.zoxide = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-  programs.git = {
-    enable = true;
-    settings = {
-      user.name = "YasirFadhil";
-      user.email = "yasirfadhil46@gmail.com";
+    starship = {
+      enable = true;
+    };
+
+    zoxide = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
+    git = {
+      enable = true;
+      settings = {
+        user.name = "YasirFadhil";
+        user.email = "yasirfadhil46@gmail.com";
+      };
+    };
+
+    home-manager = {
+      enable = true;
     };
   };
-
-  programs.home-manager.enable = true;
 }
