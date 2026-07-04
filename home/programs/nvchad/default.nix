@@ -7,6 +7,7 @@
     # Language servers
     bash-language-server
     typescript-language-server
+    typescript
     lua-language-server
     vscode-langservers-extracted
     tailwindcss-language-server

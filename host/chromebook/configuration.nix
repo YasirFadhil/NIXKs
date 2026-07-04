@@ -12,7 +12,7 @@
       ../../nixos/intel.nix
       ../../nixos/localization.nix
       ../../nixos/networking.nix
-     # ../../nixos/power-button.nix
+      # ../../nixos/power-button.nix
       ../../nixos/session-manager.nix
       ../../nixos/user.nix
       ../../nixos/zram.nix

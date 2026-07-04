@@ -24,8 +24,10 @@ with pkgs; ([
   cbonsai
   cava
   scrcpy
+  v4l-utils
   libnotify
   psmisc
+  unzip
  # cisco-packet-tracer_9
 
 # Development
@@ -108,6 +110,7 @@ with pkgs; ([
   qt5.qtwayland
   qt6.qtwayland
   qt6.qtwebsockets
+  kdePackages.qtdeclarative
 
 # Additional Qt Libraries
   libsForQt5.qtbase
