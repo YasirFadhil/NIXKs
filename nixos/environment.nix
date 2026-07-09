@@ -83,8 +83,17 @@
     # System Control
     brightnessctl
   ];
+  
+  environment.cosmic.excludePackages = with pkgs; [
+    cosmic-edit
+  ];
 
-
+  environment.gnome.excludePackages = with pkgs; [
+    gnome-tour
+    epiphany
+    geary
+    evince
+  ];
 
   system.userActivationScripts = {
     copy-fonts-local-share = {

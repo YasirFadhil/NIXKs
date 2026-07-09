@@ -1,51 +1,52 @@
 { config, pkgs, lib, inputs, ... }:
 {
-  services.xserver.enable = true;
-
-  # Use GDM display manager
-  # services.displayManager.gdm = {
-    # enable = true;
-    # wayland = true;
-  # };
-
-  #LY display manager
-  services.displayManager = {
-    ly = {
-      enable = true;
+  # Xserver
+  services.xserver = {
+    enable = true;
+    xkb = {
+      layout = "us";
+      variant = "";
+      model = "chromebook";
     };
   };
 
-  # SDDM display manager
-  services.displayManager.sddm = {
-    enable = false;
-    theme = "sddm-astronaut-theme";
+  # Display Manager
+  services.displayManager = {
+    # GDM
+    gdm = {
+      enable = false;
+      wayland = true;
+    };
 
-    extraPackages = [
-      pkgs.sddm-astronaut
-      (pkgs.sddm-astronaut.override {
-        embeddedTheme = "pixel_sakura"; # Options: "astronaut", "black_hole", "cyberpunk", etc.
-      })
-    ];
+    # Ly Greeter
+    ly = {
+      enable = false;
+    };
+    
+    # Cosmic greeter
+    cosmic-greeter = {
+      enable = true;
+    };
+
+    # SDDM
+    sddm = {
+      enable = false;
+      theme = "sddm-astronaut-theme";
+
+      extraPackages = [
+        pkgs.sddm-astronaut
+        (pkgs.sddm-astronaut.override {
+          embeddedTheme = "pixel_sakura";
+         })
+      ];
+    };
   };
 
   # Enable the GNOME Desktop Environment.
   services.desktopManager.gnome.enable = true;
   services.gnome.gnome-keyring.enable = true;
-  # Additional GNOME optimization (optional)
-  environment.gnome.excludePackages = with pkgs; [
-    # Remove if you want to keep these
-    gnome-tour
-    epiphany
-    geary
-    evince
-  ];
   services.gvfs.enable = true;
-
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-    model = "chromebook";
-  };
+  
 
   # Portal configuration for Wayland
   xdg.portal = {

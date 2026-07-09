@@ -8,70 +8,47 @@
 {
   home.file.".config/swaylock/config" = {
     text = ''
-      # Screenshot and effects
-      screenshot
-      scaling=fill
-
-      # Blur effect
-      blur=5
-      blur-sigma=3
-
-      # Pixelate effect (optional)
-      # pixelate-threshold=50
-
-      # Vignette effect (darkens edges)
-      grace=0
-
-      # Ring configuration
-      ring-color=e8e8e8
-      inside-color=ffffff
-      line-color=e8e8e8
-      line-uses-ring-color=true
-      ring-width=20
-
-      # Ring indicator colors (swaylock-effects specific)
-      ring-ver-color=4a90e2
-      ring-wrong-color=e24a4a
-      ring-clear-color=50e3c2
-
-      # Inside colors for different states
-      inside-ver-color=ffffff
-      inside-wrong-color=ffffff
-      inside-clear-color=ffffff
-      inside-caps-lock-color=ffffff
-
-      # Key highlight colors
-      key-hl-color=4a90e2
-      bs-hl-color=e24a4a
-      caps-lock-key-hl-color=50e3c2
-
-      # Button/Indicator configuration
-      indicator-radius=100
-      indicator-thickness=10
-      indicator-x-position=0
-      indicator-y-position=0
-
-      # Text configuration
-      text-color=1a1a1a
-      text-size=32
+      # General Behavior & Appearance
+      screenshots
+      effect-blur=7x5
+      effect-vignette=0.5:0.5
       font="SF Pro Display"
+      fade= 0.1
 
-      # Text colors for different states
-      text-ver-color=1a1a1a
-      text-wrong-color=e24a4a
-      text-clear-color=1a1a1a
-      text-caps-lock-color=1a1a1a
-
-      # Separator line (swaylock-effects)
-      separator-color=e8e8e8
-
-      # Fade in animation
-      fade-in=0.2
-
-      # Additional swaylock-effects features
+      # Indicator & Clock
+      indicator
+      indicator-radius=100
       clock
-      timestr=%H:%M:%S
-      datestr=%A, %d %B %Y
+      timestr=%I:%M
+      datestr=%a, %B %d
+
+      # Theme Colors (Example)
+      ring-color=11111bff
+      key-hl-color=a6e3a1ff
+      text-color=cdd6f4ff
+
+      # Default State
+      inside-color=00000088
+
+      # Verifying State (Inside stays same, Ring turns Blue)
+      inside-ver-color=00000088
+      ring-ver-color=0000ffff
+      text-ver-color=0000ffff
+
+      # Wrong State (Inside stays same, Ring turns Red)
+      inside-wrong-color=00000088
+      ring-wrong-color=ff0000ff
+      text-wrong-color=ff0000ff
+
+      # Clear State (Inside stays same, Ring turns Transparent/Clear)
+      inside-clear-color=00000088
+      ring-clear-color=11111bff
+      text-clear-color=ffffffff
+
+      # Font Sizes
+      font-size=38
+      clock-font-size=60
+      date-font-size=30
     '';
   };
 
