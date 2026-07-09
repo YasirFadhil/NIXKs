@@ -36,7 +36,7 @@
     username = "yasirfadhil";
     homeDirectory = "/home/yasirfadhil";
     stateVersion = "26.05";
-    packages = import ./packages.nix { inherit pkgs inputs; };
+    packages = import ../../home/packages.nix { inherit pkgs inputs; };
     sessionVariables = {
       EDITOR = "nvim";
       VISUAL = "nvim";

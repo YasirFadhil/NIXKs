@@ -15,7 +15,6 @@
     # GDM
     gdm = {
       enable = false;
-      wayland = true;
     };
 
     # Ly Greeter
