@@ -2,34 +2,34 @@
 
   imports = [
     #sys
-    ./systems/dankshell
-    ./systems/hypr
-    ./systems/niri
+    ../../home/systems/dankshell
+    ../../home/systems/hypr
+    ../../home/systems/niri
     # ./systems/noctalia
-    ./systems/quickshell
+    ../../home/systems/quickshell
     # ./systems/swaync
     # ./systems/swaylock
-    ./systems/waybar
+    ../../home/systems/waybar
 
     # programs
-    ./programs/fastfetch
-    ./programs/foot
-    ./programs/ghostty
-    ./programs/gnom
-    ./programs/helium
-    ./programs/nushell
-    ./programs/nvchad
-    ./programs/rofi
-    ./programs/spicetify
-    ./programs/starship
-    ./programs/zed
-    ./programs/zen
-    ./programs/zsh
+    ../../home/programs/fastfetch
+    ../../home/programs/foot
+    ../../home/programs/ghostty
+    ../../home/programs/gnom
+    ../../home/programs/helium
+    ../../home/programs/nushell
+    ../../home/programs/nvchad
+    ../../home/programs/rofi
+    ../../home/programs/spicetify
+    ../../home/programs/starship
+    ../../home/programs/zed
+    ../../home/programs/zen
+    ../../home/programs/zsh
 
     # other
-    ./nh.nix
-    ./themes
-    ./var.nix
+    ../../home/nh.nix
+    ../../home/themes
+    ../../home/var.nix
   ];
 
   home = {
@@ -52,13 +52,6 @@
       };
     };
   };
-
-  #xdg.mimeApps = {
-  #  enable = true;
-  #  defaultApplications = {
-  #    "inode/directory" = [ "org.gnome.Nautilus.desktop" ];
-  #  };
-  #};
 
   programs = {
     firefox = {
