@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ lib, ... }:
 let
   accent = "#6cb6eb";
   background-alt = "#282c34";

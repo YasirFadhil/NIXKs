@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, ... }:
+{ pkgs, ... }:
 {
   # Xserver
   services.xserver = {
@@ -45,7 +45,8 @@
   services.desktopManager.gnome.enable = true;
   services.gnome.gnome-keyring.enable = true;
   services.gvfs.enable = true;
-  
+
+  services.desktopManager.cosmic.enable = true;
 
   # Portal configuration for Wayland
   xdg.portal = {

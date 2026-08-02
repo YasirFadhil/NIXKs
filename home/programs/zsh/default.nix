@@ -1,4 +1,8 @@
-{ pkgs, ... }:
+{
+  config,
+  ... 
+}:
+
 {
   programs.zsh = {
     enable = true;
@@ -35,9 +39,9 @@
       cd = "z";
 
       # NixOS (matching nushell style)
-      nhs = "nh os switch /home/yasirfadhil/.config/nixos -H nixos --ask";
-      cdn = "cd /home/yasirfadhil/.config/nixos";
-      nh-switch = "nh os switch /home/yasirfadhil/.config/nixos -H nixosss --ask";
+      nhs = "nh os switch /home/${config.var.username}/.config/nixos -H nixos --ask";
+      cdn = "cd /home/${config.var.username}/.config/nixos";
+      nh-switch = "nh os switch /home/${config.var.username}/.config/nixos -H nixosss --ask";
       nh-clean = "nh clean all --keep 3";
       nix-search = "nix-shell -p";
 

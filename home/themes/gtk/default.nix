@@ -1,4 +1,4 @@
-{ pkgs, lib, config, inputs, ... }:
+{ pkgs, ... }:
 
 let
   mactahoe-icon-theme = pkgs.callPackage ../icons/mactahoe.nix {};

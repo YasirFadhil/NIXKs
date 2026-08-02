@@ -9,6 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixos-cosmic = {
+      url = "github:lilyinstarlight/nixos-cosmic";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     sf-mono-liga-src = {
       url = "github:shaunsingh/SFMono-Nerd-Font-Ligaturized";
       flake = false;
@@ -70,7 +75,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, niri, nix4nvchad, hyprland, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, niri, hyprland, nixos-cosmic, ... }@inputs:
   let
     system = "x86_64-linux";
 
@@ -80,10 +85,12 @@
         substituters = [
           "https://hyprland.cachix.org"
           "https://niri.cachix.org"
+          "https://cosmic.cachix.org/"
         ];
         trusted-public-keys = [
           "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
           "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z7oezYhGhR+3W2964="
+          "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRe102smYzA85dPE="
         ];
         trusted-substituters = [
           "https://hyprland.cachix.org"
@@ -92,6 +99,28 @@
       };
 
       nixpkgs.overlays = [
+        niri.overlays.niri
+        
+        (final: prev: {
+          niri = prev.niri.overrideAttrs (old: {
+            buildInputs = (prev.lib.filter
+            (p: !(prev.lib.hasPrefix "libdisplay-info" (p.pname or "")))
+            (old.buildInputs or [])
+              ) ++ [
+                (prev.libdisplay-info.overrideAttrs (o: rec {
+                  version = "0.2.0";
+                  src = prev.fetchFromGitLab {
+                    domain = "gitlab.freedesktop.org";
+                    owner = "emersion";
+                    repo = "libdisplay-info";
+                    rev = version;
+                    hash = "sha256-6xmWBrPHghjok43eIDGeshpUEQTuwWLXNHg7CnBUt3Q="; 
+                  };
+                }))
+              ];
+          });
+        })
+
         (final: prev: {
           sf-mono-liga-bin = prev.stdenvNoCC.mkDerivation rec {
             pname = "sf-mono-liga-bin";

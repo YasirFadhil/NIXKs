@@ -1,7 +1,10 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
   # Core System Utilities
+    # displaycal
+    # argyllcms
+    # colord
     wget
     curl
     git
@@ -106,7 +109,4 @@
       '';
     };
   };
-
-   # Enable zsh shell
-  programs.zsh.enable = true;
 }

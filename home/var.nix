@@ -1,4 +1,4 @@
-{config, ...}: {
+{ ... }: {
   imports = [../nixos/var-conf.nix];
 
   config.var = {

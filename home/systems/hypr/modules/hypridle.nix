@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   home.file.".config/hypr/hypridle.conf".text = ''

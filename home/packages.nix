@@ -13,7 +13,7 @@ with pkgs; ([
 # Terminal Emulators
   kitty
   ghostty
-  alacritty
+  # alacritty
   foot
   # claude-code
 
@@ -39,18 +39,18 @@ with pkgs; ([
   zed-editor
   vim
   neovim
-  antigravity
+  antigravity-ide
   git
-  pywal
+  # pywal
 
 # Browsers and Communication
- # microsoft-edge
+  # microsoft-edge
   discord
-  element-desktop
-  google-chrome
+  # element-desktop
+  # google-chrome
   kdePackages.kdeconnect-kde
-  kdePackages.krdp
-  kdePackages.krdc
+  # kdePackages.krdp
+  # kdePackages.krdc
 
 # System Tools
   winbox4
@@ -68,13 +68,13 @@ with pkgs; ([
 
 # File Management and Viewers
   kdePackages.gwenview
-  libreoffice
+  # libreoffice
   gimp3
   swappy
   yazi
 
 # Wayland tools
-  eww
+  # eww
   hyprlock
   hypridle
   hyprshot
@@ -126,6 +126,7 @@ with pkgs; ([
   onlyoffice-desktopeditors
 
 # Games
+  # pcsx2
 #] ++ extraGames ++ [
 ]
 )

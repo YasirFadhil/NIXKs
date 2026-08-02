@@ -1,4 +1,4 @@
-{ pkgs, lib, stdenv, fetchFromGitHub }:
+{ lib, stdenv, fetchFromGitHub }:
 
 stdenv.mkDerivation rec {
   pname = "gnome-macos-tahoe-theme";
@@ -8,7 +8,7 @@ stdenv.mkDerivation rec {
     owner = "kayozxo";
     repo = "GNOME-macOS-Tahoe";
     rev = "main";
-    sha256 = "sha256-A0YOqjvWC41TCg2SymLEyXrNX2ArElyezJzh0Q1Hsd0=";
+    sha256 = "sha256-N+6eR0CQsQObd22tVduvIHYfvPA69AlXTJSYne1esi4=";
   };
 
   dontBuild = true;

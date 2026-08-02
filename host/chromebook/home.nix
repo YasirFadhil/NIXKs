@@ -1,4 +1,11 @@
-{ pkgs, config, inputs, lib, ... }: {
+{ 
+  pkgs, 
+  inputs, 
+  config, 
+  ... 
+}: 
+
+{
 
   imports = [
     #sys
@@ -33,36 +40,23 @@
   ];
 
   home = {
-    username = "yasirfadhil";
-    homeDirectory = "/home/yasirfadhil";
+    username = config.var.username;
+    homeDirectory = "/home/${config.var.username}";
     stateVersion = "26.05";
     packages = import ../../home/packages.nix { inherit pkgs inputs; };
     sessionVariables = {
       EDITOR = "nvim";
       VISUAL = "nvim";
       PAGER = "less";
-      BROWSER = "zen-browser";
+      BROWSER = "helium";
       MOZ_ENABLE_WAYLAND = "1";
       GDK_BACKEND = "wayland,x11";
-    };
-    file = lib.mkIf (builtins.pathExists (config.home.homeDirectory + "/WhiteSur-firefox-theme")) {
-      ".mozila/firefox/Person/chrome" = {
-        source = "${config.home.homeDirectory}/WhiteSur-firefox-theme";
-        recursive = true;
-      };
     };
   };
 
   programs = {
     firefox = {
       enable = true;
-      profiles.Person = {
-        settings = {
-          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-          "svg.context-properties.content.enabled" = true;
-          "browser.tabs.allow_transparent_browser" = true;
-        };
-      };
     };
 
     starship = {
@@ -74,11 +68,15 @@
       enableZshIntegration = true;
     };
 
+    zsh = {
+      enable = true;
+    };
+
     git = {
       enable = true;
       settings = {
-        user.name = "YasirFadhil";
-        user.email = "yasirfadhil46@gmail.com";
+        user.name = config.var.git.username;
+        user.email = config.var.git.email;
       };
     };
 

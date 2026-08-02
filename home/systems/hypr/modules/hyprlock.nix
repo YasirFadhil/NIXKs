@@ -1,4 +1,9 @@
-{ lib, pkgs, inputs, ... }: let
+{ 
+  config,
+  lib, 
+  pkgs, 
+  ... 
+}: let
   textColor = "rgba(255,255,255,1)";
   entryBg = "rgba(51,51,51,0.07)";
   entryBorder = "rgba(59,59,59,0.33)";
@@ -16,7 +21,7 @@ in {
 
       background = lib.mkForce {
         monitor = "";
-        path = "/home/yasirfadhil/.config/nixos/home/themes/wallpapers/lock.jpg";
+        path = "${config.home.homeDirectory}/.config/nixos/home/themes/wallpapers/lock.jpg";
         # You can add blur, vibrancy, contrast if You want.
       };
 

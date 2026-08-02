@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 let
   ventoyWrapper = pkgs.writeShellScriptBin "ventoy-create-usb" ''

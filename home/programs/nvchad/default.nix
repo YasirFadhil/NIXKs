@@ -1,13 +1,12 @@
 { 
   inputs, 
-  config, 
   pkgs, 
   ... 
 }: 
 
 {
   imports = [
-    inputs.nix4nvchad.homeManagerModule
+    inputs.nix4nvchad.homeManagerModules.default
   ];
 
   home.packages = with pkgs; [ 
@@ -82,11 +81,8 @@
     local configs = require("nvchad.configs.lspconfig")
     local lspconfig = require("lspconfig")
 
-    -- Generic servers that work perfectly out of the box with NvChad defaults
-    -- Note: 'nil_ls' is used here to bind the 'nil' binary to Nix files
     local servers = { "html", "cssls", "tailwindcss", "pyright", "bashls", "nil_ls" }
 
-    -- Setup standard servers
     for _, lsp in ipairs(servers) do
       lspconfig[lsp].setup {
         on_init = configs.on_init,
@@ -95,7 +91,6 @@
       }
     end
 
-    -- Explicit configuration for TypeScript & TSX
     lspconfig.ts_ls.setup {
       on_init = configs.on_init,
       on_attach = configs.on_attach,

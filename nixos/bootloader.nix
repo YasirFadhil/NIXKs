@@ -24,6 +24,7 @@
     extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
     extraModprobeConfig = ''
       options v4l2loopback devices=1 video_nr=9 card_label="Android Webcam" exclusive_caps=1
+      options usb-storage quirks=05e3:0747:u
     '';
 
     kernelParams = [
@@ -33,11 +34,13 @@
       "i915.enable_dc=0"
       "mem_sleep_default=s2idle"
       "usbcore.autosuspend=-1"
+      "usb-storage.quirks=05e3:0747:u"
       "pcie_aspm=off"
     ];
   };
 
   services.udev.extraRules = ''
-    ACTION=="add", SUBSYSTEM=="mmc", ATTR{power/control}="on"
+    # Genesys Logic USB SD card reader — disable autosuspend explicitly
+    ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="05e3", ATTR{idProduct}=="0747", ATTR{power/control}="on", ATTR{power/autosuspend}="-1"
   '';
 }

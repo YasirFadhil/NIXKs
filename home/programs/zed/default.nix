@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, ... }:
 
 {
   # Zed settings
@@ -21,6 +21,13 @@
         "mode": "dark",
         "light": "One Light",
         "dark": "One Dark Pro Glass"
+      },
+      "context_servers": {
+        "mcp-server-github": {
+          "settings": {
+            "github_personal_access_token": "${builtins.replaceStrings ["\n"] [""] (builtins.readFile "${config.home.homeDirectory}/.secrets/github-mcp-token")}"
+          }
+        }
       }
     }
   '';
