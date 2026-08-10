@@ -1,5 +1,4 @@
 {
-  pkgs,
   ...
 }:
 
@@ -48,11 +47,5 @@
       clock-font-size=60
       date-font-size=30
     '';
-  };
-
-  # Enable swaylock with swaylock-effects package
-  programs.swaylock = {
-    enable = true;
-    package = pkgs.swaylock-effects;
   };
 }

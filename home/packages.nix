@@ -28,6 +28,7 @@ with pkgs; ([
   libnotify
   psmisc
   unzip
+  socat
  # cisco-packet-tracer_9
 
 # Development

@@ -45,16 +45,35 @@
   services.desktopManager.gnome.enable = true;
   services.gnome.gnome-keyring.enable = true;
   services.gvfs.enable = true;
-
+  programs.dconf.enable = true;
   services.desktopManager.cosmic.enable = true;
 
   # Portal configuration for Wayland
+  # xdg.portal = {
+  #   enable = true;
+  #   extraPortals = [
+  #     pkgs.xdg-desktop-portal-gnome
+  #   ];
+  #   config.common.default = "gnome";
+  # };
+  
   xdg.portal = {
     enable = true;
     extraPortals = [
-      pkgs.xdg-desktop-portal-gnome
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-hyprland
     ];
-    config.common.default = "gnome";
+    
+    config = {
+      common = {
+        default = [ "hyprland" "gtk" ];
+      };
+
+      hyprland = {
+        default = [ "hyprland" "gtk" ];
+        "org.freedesktop.impl.portal.Settings" = [ "gtk" ];
+      };
+    };
   };
 
   # PAM configuration for swaylock

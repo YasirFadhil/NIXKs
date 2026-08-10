@@ -1,24 +1,25 @@
-{ 
-  pkgs, 
-  inputs, 
-  config, 
-  ... 
-}: 
+{
+  pkgs,
+  inputs,
+  config,
+  ...
+}:
 
 {
 
   imports = [
     #sys
-    ../../home/systems/dankshell
+    # ../../home/systems/dankshell
     ../../home/systems/hypr
-    ../../home/systems/niri
+    # ../../home/systems/niri
     # ./systems/noctalia
     ../../home/systems/quickshell
     # ./systems/swaync
-    # ./systems/swaylock
+    ../../home/systems/swaylock
     ../../home/systems/waybar
 
     # programs
+    ../../home/programs/claude-desk
     ../../home/programs/fastfetch
     ../../home/programs/foot
     ../../home/programs/ghostty
@@ -29,8 +30,9 @@
     ../../home/programs/rofi
     ../../home/programs/spicetify
     ../../home/programs/starship
+    ../../home/programs/swappy
     ../../home/programs/zed
-    ../../home/programs/zen
+    # ../../home/programs/zen
     ../../home/programs/zsh
 
     # other
@@ -61,6 +63,11 @@
 
     starship = {
       enable = true;
+    };
+
+    swaylock = {
+      enable = true;
+      package = pkgs.swaylock-effects;
     };
 
     zoxide = {

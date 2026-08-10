@@ -110,6 +110,26 @@
         "type": "github"
       }
     },
+    "claude-desktop": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1785831873,
+        "narHash": "sha256-c924wNmcHaOOlosqbBeCSBAEvam1upd12SaPEEuOodE=",
+        "owner": "nmcbride",
+        "repo": "claude-desktop-nix",
+        "rev": "362ab2c2d195ad1e8e08de7e391073035bd6918f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nmcbride",
+        "repo": "claude-desktop-nix",
+        "type": "github"
+      }
+    },
     "danksearch": {
       "inputs": {
         "nixpkgs": [
@@ -898,6 +918,7 @@
     "root": {
       "inputs": {
         "apple-fonts": "apple-fonts",
+        "claude-desktop": "claude-desktop",
         "danksearch": "danksearch",
         "dgop": "dgop",
         "dms": "dms",

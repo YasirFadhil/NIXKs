@@ -40,6 +40,10 @@
     '';
   };
 
+  environment.etc."libvirt/secret.conf".text = ''
+      encrypt_data = 0
+  '';
+
   # Install some programs.
   programs = {
     steam = {

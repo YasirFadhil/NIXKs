@@ -1,37 +1,28 @@
 { lib, stdenv, fetchFromGitHub }:
-
 stdenv.mkDerivation rec {
   pname = "gnome-macos-tahoe-theme";
-  version = "unstable-2025-01-16";
-
+  version = "unstable-2026-08-03";
   src = fetchFromGitHub {
     owner = "kayozxo";
     repo = "GNOME-macOS-Tahoe";
-    rev = "main";
-    sha256 = "sha256-N+6eR0CQsQObd22tVduvIHYfvPA69AlXTJSYne1esi4=";
-  };
+    rev = "78661131d81abebf8732eec638b3d71317d57fd0";
+    sha256 = "sha256-aWjag/sbFJ1g6kjiXfzlvknUVGfWtLoBGLlh2DXrT5g=";
 
+  };
   dontBuild = true;
   dontConfigure = true;
   dontPatch = true;
-
   installPhase = ''
     runHook preInstall
-
     mkdir -p $out/share/themes
-
-    # Copy all theme variants from the gtk directory
-    # The repository contains pre-built themes in the gtk/ folder
     if [ -d gtk ]; then
       for theme in gtk/*/; do
         theme_name=$(basename "$theme")
         cp -r "$theme" "$out/share/themes/$theme_name"
       done
     fi
-
     runHook postInstall
   '';
-
   meta = with lib; {
     description = "A macOS Tahoe inspired GTK theme for GNOME desktops";
     homepage = "https://github.com/kayozxo/GNOME-macOS-Tahoe";

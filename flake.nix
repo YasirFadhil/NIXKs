@@ -73,6 +73,10 @@
       url = "github:schembriaiden/helium-browser-nix-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    claude-desktop = {
+      url = "github:nmcbride/claude-desktop-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, niri, hyprland, nixos-cosmic, ... }@inputs:
@@ -99,27 +103,27 @@
       };
 
       nixpkgs.overlays = [
-        niri.overlays.niri
-        
-        (final: prev: {
-          niri = prev.niri.overrideAttrs (old: {
-            buildInputs = (prev.lib.filter
-            (p: !(prev.lib.hasPrefix "libdisplay-info" (p.pname or "")))
-            (old.buildInputs or [])
-              ) ++ [
-                (prev.libdisplay-info.overrideAttrs (o: rec {
-                  version = "0.2.0";
-                  src = prev.fetchFromGitLab {
-                    domain = "gitlab.freedesktop.org";
-                    owner = "emersion";
-                    repo = "libdisplay-info";
-                    rev = version;
-                    hash = "sha256-6xmWBrPHghjok43eIDGeshpUEQTuwWLXNHg7CnBUt3Q="; 
-                  };
-                }))
-              ];
-          });
-        })
+        # niri.overlays.niri
+        #
+        # (final: prev: {
+        #   niri = prev.niri.overrideAttrs (old: {
+        #     buildInputs = (prev.lib.filter
+        #     (p: !(prev.lib.hasPrefix "libdisplay-info" (p.pname or "")))
+        #     (old.buildInputs or [])
+        #       ) ++ [
+        #         (prev.libdisplay-info.overrideAttrs (o: rec {
+        #           version = "0.2.0";
+        #           src = prev.fetchFromGitLab {
+        #             domain = "gitlab.freedesktop.org";
+        #             owner = "emersion";
+        #             repo = "libdisplay-info";
+        #             rev = version;
+        #             hash = "sha256-6xmWBrPHghjok43eIDGeshpUEQTuwWLXNHg7CnBUt3Q="; 
+        #           };
+        #         }))
+        #       ];
+        #   });
+        # })
 
         (final: prev: {
           sf-mono-liga-bin = prev.stdenvNoCC.mkDerivation rec {
@@ -176,10 +180,10 @@
           package = pkgs.hyprland;
           portalPackage = pkgs.xdg-desktop-portal-hyprland;
         };
-        programs.niri = {
-          enable = true;
-          package = pkgs.niri;
-        };
+        # programs.niri = {
+        #   enable = true;
+        #   package = pkgs.niri;
+        # };
       })
     ];
   in {
