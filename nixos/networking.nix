@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ ... }:
 
 {
   hardware.bluetooth = {
@@ -55,6 +55,7 @@
         to = 50000;
       }
     ];
+    trustedInterfaces = [ "virbr0" ];
   };
 
   # networking = {

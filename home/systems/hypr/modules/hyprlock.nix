@@ -1,4 +1,9 @@
-{ lib, pkgs, inputs, ... }: let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   textColor = "rgba(255,255,255,1)";
   entryBg = "rgba(51,51,51,0.07)";
   entryBorder = "rgba(59,59,59,0.33)";
@@ -16,7 +21,7 @@ in {
 
       background = lib.mkForce {
         monitor = "";
-        path = "/home/yasirfadhil/.config/nixos/home/themes/wallpapers/lock.jpg";
+        path = "${config.home.homeDirectory}/.config/nixos/home/themes/wallpapers/background_zoomed.png";
         # You can add blur, vibrancy, contrast if You want.
       };
 
@@ -35,7 +40,7 @@ in {
         position = "0, -150";
         halign = "center";
         valign = "center";
-        font_family = font;
+        font_family = fontBold;
       };
 
       label = [
@@ -48,7 +53,6 @@ in {
           color = textColor;
           font_size = "80";
           font_family = fontBold;
-          font_weight = "300";
           position = "0, 234";
           halign = "center";
           valign = "center";

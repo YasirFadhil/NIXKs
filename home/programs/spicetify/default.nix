@@ -1,8 +1,5 @@
-# Spicetify is a spotify client customizer
 {
   pkgs,
-  config,
-  lib,
   inputs,
   ...
 }: let

@@ -1,5 +1,5 @@
 # chrome-device.nix
-{ config, pkgs, lib, ... }: 
+{ pkgs, ... }: 
 
 let
   # Cara yang lebih elegan dan aman untuk NixOS modern

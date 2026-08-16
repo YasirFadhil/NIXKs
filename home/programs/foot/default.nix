@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ ... }:
 
 {
   programs.foot = {
@@ -17,7 +17,7 @@
       colors-dark = {
         foreground = "dddddd";
         background = "000000";
-        alpha = "0.8";
+        # alpha = "0.8";
 
         # Standard colors
         regular0 = "000001";

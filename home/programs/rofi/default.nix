@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
 {
   # programs.rofi = {
@@ -16,10 +16,10 @@
         display-drun: " ";
         display-run: " ";
         drun-display-format: "{name}";
-        disable-history: false;
+        disable-history: true;
         hide-scrollbar: true;
         sidebar-mode: false;
-        terminal: "ghostty";
+        terminal: "foot";
         font: "Sf Mono 11";
     }
 

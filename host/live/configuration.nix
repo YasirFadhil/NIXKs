@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports =
@@ -16,8 +16,8 @@
       ../../nixos/session-manager.nix
       ../../nixos/user.nix
       ../../nixos/zram.nix
-      ../../nixos/virtual.nix
-      ../../nixos/ventoy.nix
+      # ../../nixos/virtual.nix
+      # ../../nixos/ventoy.nix
     ];
 
   # Enable CUPS to print documents.
@@ -40,30 +40,26 @@
     '';
   };
 
-  environment.etc."libvirt/secret.conf".text = ''
-      encrypt_data = 0
-  '';
-
   # Install some programs.
-  programs = {
-    steam = {
-      enable = true;
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
-      extraCompatPackages = with pkgs; [
-        proton-ge-bin
-      ];
-    };
-    gamemode.enable = true;
-  };
+  # programs = {
+  #   steam = {
+  #     enable = true;
+  #     remotePlay.openFirewall = true;
+  #     dedicatedServer.openFirewall = true;
+  #     extraCompatPackages = with pkgs; [
+  #       proton-ge-bin
+  #     ];
+  #   };
+  #   gamemode.enable = true;
+  # };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # Allow insecure packages
-  nixpkgs.config.permittedInsecurePackages = [
-    "ventoy-1.1.12"
-  ];
+  # nixpkgs.config.permittedInsecurePackages = [
+    # "ventoy-1.1.12"
+  # ];
   
   hardware.enableRedistributableFirmware = true;
   hardware.enableAllFirmware = true;

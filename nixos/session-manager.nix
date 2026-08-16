@@ -1,59 +1,79 @@
-{ config, pkgs, lib, inputs, ... }:
+{ pkgs, ... }:
 {
-  services.xserver.enable = true;
-
-  # Use GDM display manager
-  # services.displayManager.gdm = {
-    # enable = true;
-    # wayland = true;
-  # };
-
-  #LY display manager
-  services.displayManager = {
-    ly = {
-      enable = true;
+  # Xserver
+  services.xserver = {
+    enable = true;
+    xkb = {
+      layout = "us";
+      variant = "";
+      model = "chromebook";
     };
   };
 
-  # SDDM display manager
-  services.displayManager.sddm = {
-    enable = false;
-    theme = "sddm-astronaut-theme";
+  # Display Manager
+  services.displayManager = {
+    # GDM
+    gdm = {
+      enable = false;
+    };
 
-    extraPackages = [
-      pkgs.sddm-astronaut
-      (pkgs.sddm-astronaut.override {
-        embeddedTheme = "pixel_sakura"; # Options: "astronaut", "black_hole", "cyberpunk", etc.
-      })
-    ];
+    # Ly Greeter
+    ly = {
+      enable = false;
+    };
+    
+    # Cosmic greeter
+    cosmic-greeter = {
+      enable = true;
+    };
+
+    # SDDM
+    sddm = {
+      enable = false;
+      theme = "sddm-astronaut-theme";
+
+      extraPackages = [
+        pkgs.sddm-astronaut
+        (pkgs.sddm-astronaut.override {
+          embeddedTheme = "pixel_sakura";
+         })
+      ];
+    };
   };
 
   # Enable the GNOME Desktop Environment.
   services.desktopManager.gnome.enable = true;
   services.gnome.gnome-keyring.enable = true;
-  # Additional GNOME optimization (optional)
-  environment.gnome.excludePackages = with pkgs; [
-    # Remove if you want to keep these
-    gnome-tour
-    epiphany
-    geary
-    evince
-  ];
   services.gvfs.enable = true;
-
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-    model = "chromebook";
-  };
+  programs.dconf.enable = true;
+  services.desktopManager.cosmic.enable = true;
 
   # Portal configuration for Wayland
+  # xdg.portal = {
+  #   enable = true;
+  #   extraPortals = [
+  #     pkgs.xdg-desktop-portal-gnome
+  #   ];
+  #   config.common.default = "gnome";
+  # };
+  
   xdg.portal = {
     enable = true;
     extraPortals = [
-      pkgs.xdg-desktop-portal-gnome
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-hyprland
     ];
-    config.common.default = "gnome";
+    
+    config = {
+      common = {
+        default = [ "hyprland" "gtk" ];
+      };
+
+      hyprland = {
+        default = [ "hyprland" "gtk" ];
+        "org.freedesktop.impl.portal.Settings" = [ "gtk" ];
+      };
+    };
   };
 
   # PAM configuration for swaylock

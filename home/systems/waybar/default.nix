@@ -1,10 +1,24 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 with lib; let
   cfg = config.waybar;
+   notifStatusScript = pkgs.writeShellScript "notif-status" ''
+    #!/usr/bin/env bash
+    count=$(qs ipc call notifications count)
+    dnd=$(qs ipc call notifications dnd)
+
+    if [ "$dnd" = "true" ]; then
+        [ "$count" -gt 0 ] && alt="dnd-notification" || alt="dnd-none"
+    else
+        [ "$count" -gt 0 ] && alt="notification" || alt="none"
+    fi
+
+    printf '{"text": "", "alt": "%s", "tooltip": "%s notifikasi", "class": "%s"}\n' "$alt" "$count" "$alt"
+  '';
 in {
   options.waybar = {
     enable = mkEnableOption "Enable waybar panel";
@@ -692,18 +706,14 @@ in {
             format-icons = {
               "notification" = "󱅫";
               "none" = "󰂚";
-              "dnd-notification" = "󰂛";
+              "dnd-notification" = "󰂛";
               "dnd-none" = "󰂛";
-              "inhibited-notification" = "󱅫";
-              "inhibited-none" = "󰂚";
-              "dnd-inhibited-notification" = "󰂛";
-              "dnd-inhibited-none" = "󰂛";
             };
             return-type = "json";
-            exec-if = "which swaync-client";
-            exec = "swaync-client -swb";
-            on-click = "sleep 0.1 && swaync-client -t -sw";
-            on-click-right = "sleep 0.1 && swaync-client -d -sw";
+            exec = "${notifStatusScript}";
+            interval = 2;
+            on-click = "qs ipc call notifications toggleCenter";
+            on-click-right = "qs ipc call notifications toggleDnd";
             escape = false;
           };
           "clock" = {

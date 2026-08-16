@@ -3,7 +3,6 @@
   pkgs,
   lib,
   config,
-  niri,
   ...
 }:
 
@@ -51,6 +50,7 @@ in
       # Environment variables
       environment = {
         NIXOS_OZONE_WL = "1";
+	      QT_QPA_PLATFORMTHEME = "qt6ct";
         QT_QPA_PLATFORM = "wayland;xcb";
         QT_STYLE_OVERRIDE = lib.mkForce "";
         MOZ_ENABLE_WAYLAND = "1";
@@ -74,6 +74,8 @@ in
       cursor = {
         theme = "MacTahoe-dark";
         size = 24;
+        hide-when-typing = true;
+        hide-after-inactive-ms = 3919;
       };
 
       # Screenshot settings

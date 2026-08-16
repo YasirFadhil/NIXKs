@@ -9,12 +9,6 @@ in
     # Apple Fonts
     apple-fonts-pkg.sf-pro
     apple-fonts-pkg.sf-mono
-    apple-fonts-pkg.sf-compact
-    apple-fonts-pkg.ny
-    apple-fonts-pkg.sf-arabic
-    apple-fonts-pkg.sf-armenian
-    apple-fonts-pkg.sf-georgian
-    apple-fonts-pkg.sf-hebrew
     sf-mono-liga-bin
 
     # Core fonts
