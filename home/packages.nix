@@ -40,6 +40,7 @@ with pkgs; ([
   zed-editor
   vim
   neovim
+  antigravity-cli
   antigravity-ide
   git
   # pywal
@@ -59,6 +60,8 @@ with pkgs; ([
   hyphen
   mpvpaper
   nwg-look
+  awww
+  zenity
 
 # Media and Entertainment
   vlc
@@ -85,6 +88,7 @@ with pkgs; ([
   wlopm
   wl-clipboard
   swaylock-effects
+  matugen
 
 # Rofi and Related
  rofi

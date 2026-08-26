@@ -32,6 +32,8 @@
     max-jobs = 1;
     cores = 1;
   };
+  
+  powerManagement.cpuFreqGovernor = "schedutil";
 
   security.sudo = {
     extraConfig = ''
@@ -46,14 +48,14 @@
 
   # Install some programs.
   programs = {
-    steam = {
-      enable = true;
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
-      extraCompatPackages = with pkgs; [
-        proton-ge-bin
-      ];
-    };
+    # steam = {
+    #   enable = true;
+    #   remotePlay.openFirewall = true;
+    #   dedicatedServer.openFirewall = true;
+    #   extraCompatPackages = with pkgs; [
+    #     proton-ge-bin
+    #   ];
+    # };
     gamemode.enable = true;
   };
 
@@ -62,7 +64,7 @@
 
   # Allow insecure packages
   nixpkgs.config.permittedInsecurePackages = [
-    "ventoy-1.1.12"
+    "ventoy-1.1.17"
   ];
   
   hardware.enableRedistributableFirmware = true;

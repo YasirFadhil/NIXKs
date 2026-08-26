@@ -17,6 +17,7 @@
     polkit_gnome
     gnome-keyring
     upower
+    linuxPackages.cpupower
     xwayland-satellite
 
     # Audio/Video System
@@ -101,11 +102,12 @@
   system.userActivationScripts = {
     copy-fonts-local-share = {
       text = ''
+        chmod -R u+w ~/.local/share/fonts 2>/dev/null || true
         rm -rf ~/.local/share/fonts
         mkdir -p ~/.local/share/fonts
         cp ${pkgs.corefonts}/share/fonts/truetype/* ~/.local/share/fonts/
-        chmod 544 ~/.local/share/fonts
-        chmod 444 ~/.local/share/fonts/*
+        chmod 755 ~/.local/share/fonts
+        chmod 644 ~/.local/share/fonts/*
       '';
     };
   };

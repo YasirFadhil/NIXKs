@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchFromGitHub }:
+{ lib, stdenv, fetchFromGitHub, dart-sass }:
 stdenv.mkDerivation rec {
   pname = "gnome-macos-tahoe-theme";
   version = "unstable-2026-08-03";
@@ -7,11 +7,24 @@ stdenv.mkDerivation rec {
     repo = "GNOME-macOS-Tahoe";
     rev = "78661131d81abebf8732eec638b3d71317d57fd0";
     sha256 = "sha256-aWjag/sbFJ1g6kjiXfzlvknUVGfWtLoBGLlh2DXrT5g=";
-
   };
-  dontBuild = true;
+  nativeBuildInputs = [ dart-sass ];
   dontConfigure = true;
-  dontPatch = true;
+  buildPhase = ''
+    runHook preBuild
+    mkdir -p gtk/Tahoe-Dark/gtk-4.0 gtk/Tahoe-Light/gtk-4.0
+    sass src/targets/Tahoe-Dark-gtk4.scss gtk/Tahoe-Dark/gtk-4.0/gtk.css
+    cp gtk/Tahoe-Dark/gtk-4.0/gtk.css gtk/Tahoe-Dark/gtk-4.0/gtk-dark.css
+    sass src/targets/Tahoe-Light-gtk4.scss gtk/Tahoe-Light/gtk-4.0/gtk.css
+    cp gtk/Tahoe-Light/gtk-4.0/gtk.css gtk/Tahoe-Light/gtk-4.0/gtk-dark.css
+    if [ -d gtk/Tahoe-Dark/gtk-3.0/assets ]; then
+      cp -r gtk/Tahoe-Dark/gtk-3.0/assets gtk/Tahoe-Dark/gtk-4.0/assets
+    fi
+    if [ -d gtk/Tahoe-Light/gtk-3.0/assets ]; then
+      cp -r gtk/Tahoe-Light/gtk-3.0/assets gtk/Tahoe-Light/gtk-4.0/assets
+    fi
+    runHook postBuild
+  '';
   installPhase = ''
     runHook preInstall
     mkdir -p $out/share/themes
