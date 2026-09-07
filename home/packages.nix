@@ -68,6 +68,8 @@ with pkgs; ([
   pavucontrol
   sound-theme-freedesktop
   obs-studio
+  krita
+  inkscape
   # spotify
 
 # File Management and Viewers

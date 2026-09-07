@@ -32,7 +32,7 @@
     ../../home/programs/starship
     ../../home/programs/swappy
     ../../home/programs/zed
-    # ../../home/programs/zen
+    ../../home/programs/zen
     ../../home/programs/zsh
 
     # other
@@ -58,7 +58,7 @@
 
   programs = {
     firefox = {
-      enable = true;
+      enable = false;
     };
 
     starship = {
@@ -73,10 +73,6 @@
     zoxide = {
       enable = true;
       enableZshIntegration = true;
-    };
-
-    zsh = {
-      enable = true;
     };
 
     git = {

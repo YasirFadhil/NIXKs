@@ -1,7 +1,7 @@
 { pkgs, lib, stdenv, fetchFromGitHub }:
 stdenv.mkDerivation rec {
   pname = "mactahoe-icon-theme";
-  version = "2025-10-16";                      # ← diubah, tadinya "unstable-2025-01-16"
+  version = "2025-10-16";
   src = fetchFromGitHub {
     owner = "vinceliuice";
     repo = "MacTahoe-icon-theme";
