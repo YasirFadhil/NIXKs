@@ -18,9 +18,10 @@
     initrd.kernelModules = [ "i915" ];
 
     # Added here for safe loading after the root file system mounts
-    kernelModules = [ "v4l2loopback" ];
+    kernelModules = [ ];
 
-    kernelPackages = pkgs.linuxPackages_6_18;
+    # kernelPackages = pkgs.linuxPackages_6_18;
+    kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-lts;
     extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
     extraModprobeConfig = ''
       options v4l2loopback devices=1 video_nr=9 card_label="Android Webcam" exclusive_caps=1

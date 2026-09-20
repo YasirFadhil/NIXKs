@@ -26,7 +26,8 @@
     ../../home/programs/gnom
     ../../home/programs/helium
     ../../home/programs/nushell
-    ../../home/programs/nvchad
+    # ../../home/programs/nvchad
+    ../../home/programs/nvim
     ../../home/programs/rofi
     ../../home/programs/spicetify
     ../../home/programs/starship

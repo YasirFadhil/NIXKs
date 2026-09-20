@@ -9,6 +9,7 @@
       ../../nixos/bootloader.nix
       ../../nixos/chromebook.nix
       ../../nixos/environment.nix
+      # ../../nixos/howdy.nix
       ../../nixos/intel.nix
       ../../nixos/localization.nix
       ../../nixos/networking.nix

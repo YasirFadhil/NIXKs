@@ -1,23 +1,20 @@
-{ pkgs ? {}, ... }:
-
+{pkgs ? {}, ...}:
 #let
- # extraGames = if inputs ? freesmlauncher then [ inputs.freesmlauncher.packages."${pkgs.stdenv.hostPlatform.system}".default ] else [];
+# extraGames = if inputs ? freesmlauncher then [ inputs.freesmlauncher.packages."${pkgs.stdenv.hostPlatform.system}".default ] else [];
 #in
+with pkgs; [
+  (import ./scripts/battery.nix {inherit pkgs;})
+  (import ./scripts/nowplay.nix {inherit pkgs;})
+  # (import ./scripts/audio-sink.nix { inherit pkgs; })
 
-with pkgs; ([
-(import ./scripts/battery.nix { inherit pkgs; })
-(import ./scripts/nowplay.nix { inherit pkgs; })
-# (import ./scripts/audio-sink.nix { inherit pkgs; })
-
-
-# Terminal Emulators
+  # Terminal Emulators
   kitty
   ghostty
   # alacritty
   foot
   # claude-code
 
-# Shell Tools
+  # Shell Tools
   carapace
   zoxide
   cmatrix
@@ -29,9 +26,9 @@ with pkgs; ([
   psmisc
   unzip
   socat
- # cisco-packet-tracer_9
+  # cisco-packet-tracer_9
 
-# Development
+  # Development
   zig
   go
   nixd
@@ -45,7 +42,7 @@ with pkgs; ([
   git
   # pywal
 
-# Browsers and Communication
+  # Browsers and Communication
   # microsoft-edge
   discord
   # element-desktop
@@ -54,7 +51,7 @@ with pkgs; ([
   # kdePackages.krdp
   # kdePackages.krdc
 
-# System Tools
+  # System Tools
   winbox4
   swaybg
   hyphen
@@ -63,7 +60,7 @@ with pkgs; ([
   awww
   zenity
 
-# Media and Entertainment
+  # Media and Entertainment
   vlc
   pavucontrol
   sound-theme-freedesktop
@@ -72,14 +69,14 @@ with pkgs; ([
   inkscape
   # spotify
 
-# File Management and Viewers
+  # File Management and Viewers
   kdePackages.gwenview
   # libreoffice
   gimp3
   swappy
   yazi
 
-# Wayland tools
+  # Wayland tools
   # eww
   hyprlock
   hypridle
@@ -92,48 +89,47 @@ with pkgs; ([
   swaylock-effects
   matugen
 
-# Rofi and Related
- rofi
- # rofimoji
- # rofi-emoji
+  # Rofi and Related
+  rofi
+  # rofimoji
+  # rofi-emoji
 
-# System Tray and Notifications
+  # System Tray and Notifications
   # swaynotificationcenter
   # nwg-dock
   blueman
   networkmanager
   caffeine-ng
 
-# GTK Themes and Tools
+  # GTK Themes and Tools
   gnome-tweaks
   gnome-extension-manager
 
-# Qt5 and Qt6 theme tools
+  # Qt5 and Qt6 theme tools
   libsForQt5.qtstyleplugins
   libsForQt5.qtquickcontrols2
   libsForQt5.qtgraphicaleffects
 
-# Qt Wayland Support
+  # Qt Wayland Support
   qt5.qtwayland
   qt6.qtwayland
   qt6.qtwebsockets
   kdePackages.qtdeclarative
 
-# Additional Qt Libraries
+  # Additional Qt Libraries
   libsForQt5.qtbase
 
-# Theme utilities
+  # Theme utilities
   dconf-editor
 
-# System Monitoring
+  # System Monitoring
   btop
   fastfetch
 
-# Text Editor Alt
+  # Text Editor Alt
   onlyoffice-desktopeditors
 
-# Games
+  # Games
   # pcsx2
-#] ++ extraGames ++ [
+  #] ++ extraGames ++ [
 ]
-)

@@ -68,10 +68,15 @@ in
     };
   };
 
-  # 3. Menerapkan paket audio
+  # 3. Menerapkan paket audio & quirks input
   environment = {
     systemPackages = [ pkgs.sof-firmware ];
     sessionVariables.ALSA_CONFIG_UCM2 = "${cb-ucm-conf}/share/alsa/ucm2";
+    etc."libinput/local-overrides.quirks".text = ''
+      [keyd virtual keyboard]
+      MatchName=keyd virtual keyboard
+      AttrKeyboardIntegration=internal
+    '';
   };
 
   # 4. Sledgehammer: Mengganti ALSA system-wide (wajib untuk > 24.05)

@@ -2,7 +2,13 @@
   description = "A very basic flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs = {
+      url = "github:nixos/nixpkgs/nixos-unstable";
+    };
+
+    nix-cachyos-kernel = {
+      url = "github:xddxdd/nix-cachyos-kernel/release";
+    };
 
     apple-fonts = {
       url = "github:Lyndeno/apple-fonts.nix";
@@ -49,8 +55,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix4nvchad = {
-      url = "github:nix-community/nix4nvchad";
+    # nix4nvchad = {
+    #   url = "github:nix-community/nix4nvchad";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
+    nvf = {
+      url = "github:NotAShelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -73,13 +84,14 @@
       url = "github:schembriaiden/helium-browser-nix-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     claude-desktop = {
       url = "github:nmcbride/claude-desktop-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, niri, hyprland, nixos-cosmic, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, niri, hyprland, nixos-cosmic, nix-cachyos-kernel, ... }@inputs:
   let
     system = "x86_64-linux";
 
@@ -87,11 +99,15 @@
     sharedNixSettings = {
       nix.settings = {
         substituters = [
+          "https://cache.xinux.uz"
+          "https://attic.xuyh0120.win/lantian"
           "https://hyprland.cachix.org"
           "https://niri.cachix.org"
           "https://cosmic.cachix.org/"
         ];
         trusted-public-keys = [
+          "cache.xinux.uz:BXCrtqejFjWzWEB9YuGB7X2MV4ttBur1N8BkwQRdH+0="
+          "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
           "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
           "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z7oezYhGhR+3W2964="
           "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRe102smYzA85dPE="
@@ -103,6 +119,7 @@
       };
 
       nixpkgs.overlays = [
+        nix-cachyos-kernel.overlays.pinned
         # niri.overlays.niri
         #
         # (final: prev: {
