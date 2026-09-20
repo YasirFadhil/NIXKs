@@ -1,39 +1,36 @@
-{ pkgs, ... }:
-
-{
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ../../home/var.nix
-      ../../nixos/audio.nix
-      ../../nixos/bootloader.nix
-      ../../nixos/chromebook.nix
-      ../../nixos/environment.nix
-      # ../../nixos/howdy.nix
-      ../../nixos/intel.nix
-      ../../nixos/localization.nix
-      ../../nixos/networking.nix
-      ../../nixos/power-button.nix
-      ../../nixos/session-manager.nix
-      ../../nixos/user.nix
-      ../../nixos/zram.nix
-      ../../nixos/virtual.nix
-      ../../nixos/ventoy.nix
-    ];
+{pkgs, ...}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ../../home/var.nix
+    ../../nixos/audio.nix
+    ../../nixos/bootloader.nix
+    ../../nixos/chromebook.nix
+    ../../nixos/environment.nix
+    ../../nixos/intel.nix
+    ../../nixos/localization.nix
+    ../../nixos/networking.nix
+    ../../nixos/power-button.nix
+    ../../nixos/session-manager.nix
+    ../../nixos/user.nix
+    ../../nixos/zram.nix
+    ../../nixos/virtual.nix
+    ../../nixos/ventoy.nix
+  ];
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
   nix.settings = {
     experimental-features = [
-    "nix-command"
-    "flakes"
+      "nix-command"
+      "flakes"
     ];
 
     max-jobs = 1;
     cores = 1;
   };
-  
+
   powerManagement.cpuFreqGovernor = "schedutil";
 
   security.sudo = {
@@ -44,7 +41,7 @@
   };
 
   environment.etc."libvirt/secret.conf".text = ''
-      encrypt_data = 0
+    encrypt_data = 0
   '';
 
   # Install some programs.
@@ -67,9 +64,8 @@
   nixpkgs.config.permittedInsecurePackages = [
     "ventoy-1.1.17"
   ];
-  
+
   hardware.enableRedistributableFirmware = true;
   hardware.enableAllFirmware = true;
   system.stateVersion = "26.05";
-
 }
