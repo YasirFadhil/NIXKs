@@ -18,7 +18,7 @@ in
   #   ./modules/keybinds.nix
   ];
 
-  waybar.enable = true;
+  #waybar.enable = true;
 
   # Apply GTK/Qt themes to Hyprland session
   # home.sessionVariables = {

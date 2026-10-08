@@ -9,9 +9,9 @@ with pkgs; [
 
   # Terminal Emulators
   kitty
-  ghostty
+  # ghostty
   # alacritty
-  foot
+  # foot
   # claude-code
 
   # Shell Tools
@@ -37,9 +37,10 @@ with pkgs; [
   zed-editor
   vim
   neovim
-  antigravity-cli
+  # antigravity-cli
   antigravity-ide
   git
+  github-copilot-cli
   # pywal
 
   # Browsers and Communication
@@ -65,32 +66,32 @@ with pkgs; [
   pavucontrol
   sound-theme-freedesktop
   obs-studio
-  krita
-  inkscape
+  # krita
+  # inkscape
   # spotify
 
   # File Management and Viewers
   kdePackages.gwenview
   # libreoffice
-  gimp3
+  # gimp3
   swappy
   yazi
 
   # Wayland tools
   # eww
-  hyprlock
+  # hyprlock
   hypridle
   hyprshot
-  wlogout
-  waybar
+  # wlogout
+  # waybar
   wlr-randr
   wlopm
   wl-clipboard
-  swaylock-effects
+  # swaylock-effects
   matugen
 
   # Rofi and Related
-  rofi
+  # rofi
   # rofimoji
   # rofi-emoji
 
@@ -102,8 +103,8 @@ with pkgs; [
   caffeine-ng
 
   # GTK Themes and Tools
-  gnome-tweaks
-  gnome-extension-manager
+  # gnome-tweaks
+  # gnome-extension-manager
 
   # Qt5 and Qt6 theme tools
   libsForQt5.qtstyleplugins
@@ -130,6 +131,7 @@ with pkgs; [
   onlyoffice-desktopeditors
 
   # Games
+  steam-run
   # pcsx2
   #] ++ extraGames ++ [
 ]

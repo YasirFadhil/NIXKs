@@ -1,22 +1,20 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-  # Core System Utilities
+    # Core System Utilities
     # displaycal
     # argyllcms
     # colord
+    nautilus
+    sushi
+    gnome-disk-utility
+    baobab
+    seahorse
     wget
     curl
     git
-    udisks
     efibootmgr
-    dbus
-    gvfs
     mediawriter
     lm_sensors
-    polkit_gnome
-    gnome-keyring
-    upower
     linuxPackages.cpupower
     xwayland-satellite
 
@@ -87,7 +85,7 @@
     # System Control
     brightnessctl
   ];
-  
+
   environment.cosmic.excludePackages = with pkgs; [
     cosmic-edit
   ];

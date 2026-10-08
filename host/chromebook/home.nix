@@ -3,10 +3,7 @@
   inputs,
   config,
   ...
-}:
-
-{
-
+}: {
   imports = [
     #sys
     # ../../home/systems/dankshell
@@ -15,28 +12,29 @@
     # ./systems/noctalia
     ../../home/systems/quickshell
     # ./systems/swaync
-    ../../home/systems/swaylock
-    ../../home/systems/waybar
+    # ../../home/systems/swaylock
+    # ../../home/systems/waybar
 
     # programs
     ../../home/programs/claude-desk
     ../../home/programs/fastfetch
-    ../../home/programs/foot
-    ../../home/programs/ghostty
-    ../../home/programs/gnom
+    # ../../home/programs/foot
+    # ../../home/programs/ghostty
+    # ../../home/programs/gnom
     ../../home/programs/helium
     ../../home/programs/nushell
     # ../../home/programs/nvchad
     ../../home/programs/nvim
-    ../../home/programs/rofi
+    # ../../home/programs/rofi
     ../../home/programs/spicetify
     ../../home/programs/starship
     ../../home/programs/swappy
-    ../../home/programs/zed
-    ../../home/programs/zen
+    # ../../home/programs/zed
+    # ../../home/programs/zen
     ../../home/programs/zsh
 
     # other
+    ../../home/face.nix
     ../../home/nh.nix
     ../../home/themes
     ../../home/var.nix
@@ -46,7 +44,7 @@
     username = config.var.username;
     homeDirectory = "/home/${config.var.username}";
     stateVersion = "26.05";
-    packages = import ../../home/packages.nix { inherit pkgs inputs; };
+    packages = import ../../home/packages.nix {inherit pkgs inputs;};
     sessionVariables = {
       EDITOR = "nvim";
       VISUAL = "nvim";
@@ -67,7 +65,7 @@
     };
 
     swaylock = {
-      enable = true;
+      enable = false;
       package = pkgs.swaylock-effects;
     };
 

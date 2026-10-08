@@ -30,10 +30,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    niri = {
-      url = "github:sodiboo/niri-flake/very-refactor";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # niri = {
+    #  url = "github:sodiboo/niri-flake/very-refactor";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     qml-niri = {
       url = "github:imiric/qml-niri/main";
@@ -50,10 +50,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # zen-browser = {
+    #  url = "github:youwen5/zen-browser-flake";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # nix4nvchad = {
     #   url = "github:nix-community/nix4nvchad";
@@ -65,20 +65,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    dms = {
-      url = "github:AvengeMedia/DankMaterialShell/stable";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # dms = {
+    #  url = "github:AvengeMedia/DankMaterialShell/stable";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
-    dgop = {
-      url = "github:AvengeMedia/dgop";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # dgop = {
+    #  url = "github:AvengeMedia/dgop";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
-    danksearch = {
-      url = "github:AvengeMedia/danksearch";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # danksearch = {
+    #  url = "github:AvengeMedia/danksearch";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     helium = {
       url = "github:schembriaiden/helium-browser-nix-flake";
@@ -91,8 +91,15 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, niri, hyprland, nixos-cosmic, nix-cachyos-kernel, ... }@inputs:
-  let
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    hyprland,
+    nixos-cosmic,
+    nix-cachyos-kernel,
+    ...
+  } @ inputs: let
     system = "x86_64-linux";
 
     # Overlay & cache settings yang dipakai bareng di semua host
@@ -100,14 +107,12 @@
       nix.settings = {
         substituters = [
           "https://cache.xinux.uz"
-          "https://attic.xuyh0120.win/lantian"
           "https://hyprland.cachix.org"
           "https://niri.cachix.org"
           "https://cosmic.cachix.org/"
         ];
         trusted-public-keys = [
           "cache.xinux.uz:BXCrtqejFjWzWEB9YuGB7X2MV4ttBur1N8BkwQRdH+0="
-          "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
           "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
           "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z7oezYhGhR+3W2964="
           "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRe102smYzA85dPE="
@@ -135,7 +140,7 @@
         #             owner = "emersion";
         #             repo = "libdisplay-info";
         #             rev = version;
-        #             hash = "sha256-6xmWBrPHghjok43eIDGeshpUEQTuwWLXNHg7CnBUt3Q="; 
+        #             hash = "sha256-6xmWBrPHghjok43eIDGeshpUEQTuwWLXNHg7CnBUt3Q=";
         #           };
         #         }))
         #       ];
@@ -189,9 +194,9 @@
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.users.yasirfadhil = import homeFile;
-        home-manager.extraSpecialArgs = { inherit inputs; };
+        home-manager.extraSpecialArgs = {inherit inputs;};
       }
-      ({ pkgs, ... }: {
+      ({pkgs, ...}: {
         programs.hyprland = {
           enable = true;
           package = pkgs.hyprland;
@@ -206,20 +211,24 @@
   in {
     nixosConfigurations.nixosss = nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = { inherit inputs; };
-      modules = [
-        ./host/chromebook/configuration.nix
-        sharedNixSettings
-      ] ++ sharedModules ./host/chromebook/home.nix;
+      specialArgs = {inherit inputs;};
+      modules =
+        [
+          ./host/chromebook/configuration.nix
+          sharedNixSettings
+        ]
+        ++ sharedModules ./host/chromebook/home.nix;
     };
 
     nixosConfigurations.live = nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = { inherit inputs; };
-      modules = [
-        ./host/live/configuration.nix
-        sharedNixSettings
-      ] ++ sharedModules ./host/live/home.nix;
+      specialArgs = {inherit inputs;};
+      modules =
+        [
+          ./host/live/configuration.nix
+          sharedNixSettings
+        ]
+        ++ sharedModules ./host/live/home.nix;
     };
   };
 }
