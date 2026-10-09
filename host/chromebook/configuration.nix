@@ -91,6 +91,19 @@
     ];
   };
 
+  fileSystems."/home/yasirfadhil/.local/share/FreesmLauncher/instances" = {
+    device = "/dev/disk/by-uuid/10c47c32-61e3-48ad-b110-25c12dddfd76";
+    fsType = "btrfs";
+    options = [
+      "subvol=@minecraft"
+      "compress=zstd:3"
+      "noatime"
+      "nofail"
+      "x-systemd.device-timeout=5s"
+      "x-systemd.automount"
+    ];
+  };
+
   fileSystems."/".options = ["compress=zstd:3" "noatime"];
 
   systemd.tmpfiles.rules = [

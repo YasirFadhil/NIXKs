@@ -34,13 +34,13 @@ with pkgs; [
   nixd
   nixf
   nodejs
-  zed-editor
+  # zed-editor
   vim
   neovim
   # antigravity-cli
   antigravity-ide
   git
-  github-copilot-cli
+  # github-copilot-cli
   # pywal
 
   # Browsers and Communication
