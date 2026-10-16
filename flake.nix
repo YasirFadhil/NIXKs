@@ -27,7 +27,11 @@
 
     hyprland = {
       url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprliquid = {
+      url = "github:zaregototsukai/hyprliquid";
+      inputs.hyprland.follows = "hyprland";
     };
 
     # niri = {
@@ -96,6 +100,7 @@
     nixpkgs,
     home-manager,
     hyprland,
+    hyprliquid,
     nixos-cosmic,
     nix-cachyos-kernel,
     ...
@@ -199,8 +204,9 @@
       ({pkgs, ...}: {
         programs.hyprland = {
           enable = true;
-          package = pkgs.hyprland;
-          portalPackage = pkgs.xdg-desktop-portal-hyprland;
+          withUWSM = true;
+          package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+          portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
         };
         # programs.niri = {
         #   enable = true;
@@ -218,17 +224,6 @@
           sharedNixSettings
         ]
         ++ sharedModules ./host/chromebook/home.nix;
-    };
-
-    nixosConfigurations.live = nixpkgs.lib.nixosSystem {
-      inherit system;
-      specialArgs = {inherit inputs;};
-      modules =
-        [
-          ./host/live/configuration.nix
-          sharedNixSettings
-        ]
-        ++ sharedModules ./host/live/home.nix;
     };
   };
 }

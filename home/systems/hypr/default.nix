@@ -1,90 +1,267 @@
-{ 
+{
   inputs,
   pkgs,
   lib,
-  config, 
-  ... 
-}:
+  ...
+}: let
+  # Convert the familiar Hyprland-style settings into Hyprland Lua API calls.
+  toLuaSettings = import ./hyprland-transpiler.nix {inherit lib;};
 
-let
-  myPackages = import ../../packages.nix { inherit pkgs; };
-in
+  system = pkgs.stdenv.hostPlatform.system;
 
-{
+  hyprlandPackage =
+    inputs.hyprland.packages.${system}.hyprland;
+
+  workspaceBinds = builtins.concatLists (builtins.genList (i: let
+      ws = i + 1;
+      key = toString (lib.mod ws 10);
+    in [
+      "$mainMod, ${key}, workspace, ${toString ws}"
+      "$mainMod SHIFT, ${key}, movetoworkspace, ${toString ws}"
+    ])
+    10);
+
+  classicSettings = {
+    "$mainMod" = "SUPER";
+    "$terminal" = "kitty";
+    "$fileManager" = "nautilus";
+    "$menu" = "qs ipc call launcher toggle";
+
+    monitor = [
+      "eDP-1, 1366x768@60, 0x0, 1"
+      "DP-1, 1920x1080@60, 1366x0, 1"
+      "DP-2, 1920x1080@60, 3286x0, 1"
+      "preferred, auto, 0x0, 1"
+    ];
+
+    env = [
+      "XCURSOR_SIZE,24"
+      "HYPRCURSOR_SIZE,24"
+    ];
+
+    exec-once = [
+      "awww-daemon"
+      "bash -c 'source ~/.config/quickshell/state/icon-theme.env 2>/dev/null; export QS_ICON_THEME; exec qs -n'"
+      "wl-paste --type text --watch cliphist store"
+      "wl-paste --type image --watch cliphist store"
+    ];
+
+    general = {
+      gaps_in = 5;
+      gaps_out = 20;
+      border_size = 0;
+      "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
+      "col.inactive_border" = "rgba(595959aa)";
+      resize_on_border = false;
+      allow_tearing = false;
+      layout = "scrolling";
+    };
+
+    # Matches the supplied hyprland.lua.bak baseline.
+    input = {
+      kb_layout = "us";
+      kb_variant = "";
+      kb_model = "";
+      kb_options = "";
+      kb_rules = "";
+      follow_mouse = 1;
+      sensitivity = 0;
+      touchpad = {
+        natural_scroll = true;
+      };
+    };
+
+    decoration = {
+      rounding = 10;
+      rounding_power = 2;
+      active_opacity = 0.94;
+      inactive_opacity = 0.96;
+      blur = {
+        enabled = true;
+        size = 4;
+        passes = 2;
+        vibrancy = 0.1696;
+      };
+      shadow = {
+        enabled = false;
+        range = 4;
+        render_power = 3;
+        # Decimal form of the Lua integer 0xee1a1a1a.
+        color = 3994681882;
+      };
+    };
+
+    animations = {
+      enabled = true;
+      bezier = [
+        "easeOutQuint, 0.23, 1, 0.32, 1"
+        "easeInOutCubic, 0.65, 0.05, 0.36, 1"
+        "linear, 0, 0, 1, 1"
+        "almostLinear, 0.5, 0.5, 0.75, 1"
+        "quick, 0.15, 0, 0.1, 1"
+      ];
+      # HyprNix extension: spring rows become hl.curve(... type = "spring").
+      spring = ["easy, 1, 238.1191, 24.21279333"];
+      animation = [
+        "global, 1, 10, default"
+        "border, 1, 5.39, easeOutQuint"
+        "windows, 1, 4.79, spring:easy"
+        "windowsIn, 1, 4.1, spring:easy, popin 87%"
+        "windowsOut, 1, 1.49, linear, popin 87%"
+        "fadeIn, 1, 1.73, almostLinear"
+        "fadeOut, 1, 1.46, almostLinear"
+        "fade, 1, 3.03, quick"
+        "layers, 1, 3.81, easeOutQuint"
+        "layersIn, 1, 4, easeOutQuint, fade"
+        "layersOut, 1, 1.5, linear, fade"
+        "fadeLayersIn, 1, 1.79, almostLinear"
+        "fadeLayersOut, 1, 1.39, almostLinear"
+        "workspaces, 1, 1.9, almostLinear, slidevert"
+        "workspacesIn, 1, 1.9, almostLinear, slidevert"
+        "workspacesOut, 1, 1.9, almostLinear, slidevert"
+        "zoomFactor, 1, 7, quick"
+      ];
+    };
+
+    dwindle = {
+      preserve_split = true;
+    };
+
+    master = {
+      new_status = "master";
+    };
+
+    scrolling = {
+      column_width = 0.89;
+      fullscreen_on_one_column = false;
+    };
+
+    misc = {
+      force_default_wallpaper = -1;
+      disable_hyprland_logo = false;
+    };
+
+    gesture = ["3, horizontal, workspace"];
+
+    # Present in the supplied hyprland.lua.bak reference. It only matches that
+    # device name; remove it if no such device exists on this machine.
+    device = [
+      {
+        name = "epic-mouse-v1";
+        sensitivity = -0.5;
+      }
+    ];
+
+    bind =
+      [
+        "$mainMod, T, exec, $terminal"
+        "$mainMod, Q, killactive,"
+        "$mainMod, F, fullscreen,"
+        "$mainMod, M, exec, command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"
+        "$mainMod, E, exec, $fileManager"
+        "$mainMod ALT, F, togglefloating,"
+        "$mainMod ALT, P, pseudo,"
+        "$mainMod, J, layoutmsg, togglesplit"
+        "$mainMod, left, movefocus, l"
+        "$mainMod, right, movefocus, r"
+        "$mainMod, up, movefocus, u"
+        "$mainMod, down, movefocus, d"
+        "$mainMod, S, togglespecialworkspace, magic"
+        "$mainMod SHIFT, S, movetoworkspace, special:magic"
+        "$mainMod, mouse_down, workspace, e+1"
+        "$mainMod, mouse_up, workspace, e-1"
+        "$mainMod, SPACE, exec, qs ipc call launcher toggle"
+        "$mainMod SHIFT, W, exec, qs ipc call wallpaper toggle"
+        "$mainMod SHIFT, E, exec, qs ipc call emoji toggle"
+        "$mainMod, V, exec, qs ipc call clipboard toggle"
+        "$mainMod, P, exec, qs ipc call powermenu toggle"
+        "$mainMod ALT, L, exec, qs ipc call lockscreen toggle"
+        "$mainMod, D, exec, qs ipc call dashboard toggle"
+        "$mainMod, N, exec, qs ipc call notifCenter toggle"
+        "$mainMod, C, exec, qs ipc call controlCenter toggle"
+        "$mainMod, B, exec, qs ipc call battery toggle"
+        ", Print, exec, ~/.config/quickshell/scripts/screenshot.sh full"
+        "SHIFT, Print, exec, ~/.config/quickshell/scripts/screenshot.sh region"
+      ]
+      ++ workspaceBinds;
+
+    bindm = [
+      "$mainMod, mouse:272, movewindow"
+      "$mainMod, mouse:273, resizewindow"
+    ];
+
+    bindel = [
+      ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
+      ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+      ", XF86MonBrightnessUp, exec, brightnessctl -e4 -n2 set 5%+"
+      ", XF86MonBrightnessDown, exec, brightnessctl -e4 -n2 set 5%-"
+      ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+      ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+    ];
+
+    bindl = [
+      ", XF86AudioNext, exec, playerctl next"
+      ", XF86AudioPause, exec, playerctl play-pause"
+      ", XF86AudioPlay, exec, playerctl play-pause"
+      ", XF86AudioPrev, exec, playerctl previous"
+    ];
+
+    # Extra flags for binds that cannot be expressed through legacy groups.
+    bindFlags = {
+      "SUPER + Q" = {repeating = true;};
+      "XF86AudioMute" = {repeating = true;};
+      "XF86AudioMicMute" = {repeating = true;};
+    };
+
+    windowrule = [
+      "match:class .*, suppress_event maximize"
+      "match:class ^$, match:title ^$, match:xwayland true, match:float true, match:fullscreen false, match:pin false, no_focus on"
+      "match:class hyprland-run, float on, move 20 monitor_h-120"
+    ];
+    windowRuleNames = [
+      "suppress-maximize-events"
+      "fix-xwayland-drags"
+      "move-hyprland-run"
+    ];
+
+    # Keep Hyprliquid options disabled in this rule until the plugin loads
+    # successfully. Re-enable effect/radius/highlight after ABI validation.
+    layerrule = [
+      "match:namespace ^quickshell:.*$, blur on, ignore_alpha 0.3"
+    ];
+    layerRuleNames = ["quickshell-blur"];
+  };
+in {
+  # Intentionally do not import the upstream Hyprliquid HM module here:
+  # this configuration uses the custom package above to test an ABI-aligned build.
   imports = [
-  #   ./modules/animation.nix
     ./modules/hyprlock.nix
     ./modules/hypridle.nix
-  #   ./modules/keybinds.nix
   ];
 
-  #waybar.enable = true;
+  wayland.windowManager.hyprland = {
+    enable = true;
+    package = null;
+    portalPackage = null;
+    configType = "lua";
 
-  # Apply GTK/Qt themes to Hyprland session
-  # home.sessionVariables = {
-  #   GDK_BACKEND = "wayland,x11";
-  #   QT_QPA_PLATFORM_THEME = "gtk3";
-  #   QT_STYLE_OVERRIDE = "gtk2";
-  #   XCURSOR_THEME = "Bibata-Modern-Ice";
-  #   XCURSOR_SIZE = "20";
-  # };
+    settings = toLuaSettings classicSettings;
 
-  # wayland.windowManager.hyprland = {
-  #   enable = true;
-  #   package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-  #   portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-  #   configType = "lua";
+    # Curves should be emitted before animations that refer to them.
+    importantPrefixes = [
+      "curve"
+      "monitor"
+      "config"
+      "device"
+      "env"
+      "gesture"
+      "window_rule"
+      "layer_rule"
+      "bind"
+      "animation"
+      "on"
+    ];
+  };
 
-    # settings = {
-    #   exec-once = [
-    #     # "noctalia-shell"
-    #     "hyprctl setcursor Bibata-Modern-Ice 20"
-    #     "waybar"
-    #     "swaybg -m fill -i ~/.config/nixos/home/themes/wallpapers/MacTahoeDark.jpg"
-    #   ];
-    #
-    #   general = {
-    #     gaps_in = 5;
-    #     gaps_out = 10;
-    #     border_size = 0;
-    #     layout = "dwindle";
-    #   };
-    #
-    #   decoration = {
-    #     rounding = 10;
-    #     blur = {
-    #       enabled = true;
-    #       size = 3;
-    #       passes = 2;
-    #       vibrancy = 0.1696;
-    #     };
-    #     shadow = {
-    #       enabled = true;
-    #       range = 4;
-    #       render_power = 3;
-    #       color = "rgba(1a1a1aee)";
-    #     };
-    #   };
-    #
-    #   input = {
-    #     kb_layout = "us";
-    #     kb_model = "chromebook";
-    #     follow_mouse = 1;
-    #     sensitivity = 0.0;
-    #     touchpad = {
-    #       natural_scroll = true;
-    #     };
-    #   };
-    #
-    #   dwindle = {
-    #     pseudotile = true;
-    #     preserve_split = true;
-    #   };
-    #
-    #   # windowrule = [
-    #   #   "float,^(pavucontrol)$"
-    #   #   "float,^(blueman-manager)$"
-    #   # ];
-    # };
-  # };
+  services.hyprpolkitagent.enable = true;
 }

@@ -9,23 +9,11 @@ in {
 
   programs.spicetify = {
     enable = true;
-    theme = spicePkgs.themes.text;  # Changed to lowercase 'default'
-    # theme = {
-    #   name = "text";
+    theme = spicePkgs.themes.text;
 
-    #   src = pkgs.fetchFromGitHub {
-    #     owner = "spicetify";
-    #     repo = "spicetify-themes";
-    #     rev = "master";
-    #     hash = "sha256-jEBkyzCjcN6eUZ/RLmxRIPlrL1PEvKGOr/9auQOsqPg=";
-    #   };
-
-    #   injectCss = true;
-    #   injectThemeJs = true;
-    #   replaceColors = true;
-    #   homeConfig = true;
-    #   overwriteAssets = false;
-    # };
+    enabledCustomApps = with spicePkgs.apps; [
+      lyricsPlus
+    ];
 
     enabledExtensions = with spicePkgs.extensions; [
       playlistIcons
@@ -33,7 +21,7 @@ in {
       historyShortcut
       hidePodcasts
       adblock
-      fullAppDisplay
+      fullAppDisplayMod
       shuffle
     ];
   };

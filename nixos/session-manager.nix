@@ -13,12 +13,20 @@
   services.displayManager = {
     # GDM
     gdm = {
-      enable = true;
+      enable = false;
     };
 
     # Ly Greeter
     ly = {
-      enable = false;
+      enable = true;
+      settings = {
+        animate = true;
+        # animation = "cmatrix";
+        hide_borders = true;
+        clock = "%c";
+        bigclock = true;
+        hide_f1_commands = true;
+      };
     };
 
     # Cosmic greeter
@@ -45,6 +53,7 @@
   services.gnome.gnome-keyring.enable = true;
   services.udisks2.enable = true;
   services.gvfs.enable = true;
+  services.upower.enable = true;
   programs.dconf.enable = true;
   services.desktopManager.cosmic.enable = false;
   services.tlp = {
@@ -79,7 +88,6 @@
     enable = true;
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
-      pkgs.xdg-desktop-portal-hyprland
     ];
 
     config = {

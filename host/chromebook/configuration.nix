@@ -10,7 +10,7 @@
     ../../nixos/intel.nix
     ../../nixos/localization.nix
     ../../nixos/networking.nix
-    ../../nixos/power-button.nix
+    # ../../nixos/power-button.nix
     ../../nixos/session-manager.nix
     ../../nixos/user.nix
     ../../nixos/zram.nix
@@ -50,6 +50,10 @@
 
   environment.etc."libvirt/secret.conf".text = ''
     encrypt_data = 0
+  '';
+
+  services.udev.extraRules = ''
+    ACTION=="add|change", KERNEL=="BAT0", SUBSYSTEM=="power_supply", ATTR{charge_control_end_threshold}="80"
   '';
 
   # Install some programs.

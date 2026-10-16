@@ -241,11 +241,11 @@
 
           # Languages that are enabled in the maximal configuration.
           bash.enable = true;
-          clang.enable = true;
+          clang.enable = false;
           css.enable = true;
           html.enable = true;
-          sql.enable = true;
-          java.enable = true;
+          sql.enable = false;
+          java.enable = false;
           kotlin.enable = true;
           typescript = {
             enable = true;
@@ -254,21 +254,21 @@
               type = ["prettier"];
             };
           };
-          go.enable = true;
+          go.enable = false;
           lua.enable = true;
-          zig.enable = true;
+          zig.enable = false;
           python.enable = true;
-          typst.enable = true;
+          typst.enable = false;
           rust = {
-            enable = true;
-            lsp.enable = true;
-            extensions.crates-nvim.enable = true;
+            enable = false;
+            lsp.enable = false;
+            extensions.crates-nvim.enable = false;
           };
 
           # Language modules that are not as common.
           assembly.enable = false;
           # astro.enable = true;
-          nu.enable = false;
+          nu.enable = true;
           csharp.enable = false;
           julia.enable = false;
           vala.enable = false;
@@ -494,7 +494,7 @@
         assistant = {
           chatgpt.enable = false;
           copilot = {
-            enable = true;
+            enable = false;
             cmp.enable = false;
           };
           codecompanion-nvim.enable = true;
