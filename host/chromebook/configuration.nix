@@ -10,7 +10,7 @@
     ../../nixos/intel.nix
     ../../nixos/localization.nix
     ../../nixos/networking.nix
-    # ../../nixos/power-button.nix
+    ../../nixos/power-button.nix
     ../../nixos/session-manager.nix
     ../../nixos/user.nix
     ../../nixos/zram.nix
@@ -58,6 +58,11 @@
 
   # Install some programs.
   programs = {
+    appimage = {
+      enable = true;
+      binfmt = true;
+    };
+
     # steam = {
     # enable = true;
     # remotePlay.openFirewall = true;
@@ -108,11 +113,24 @@
     ];
   };
 
+  fileSystems."/home/yasirfadhil/Videos" = {
+    device = "/dev/disk/by-uuid/10c47c32-61e3-48ad-b110-25c12dddfd76";
+    fsType = "btrfs";
+    options = [
+      "subvol=@videos"
+      "noatime"
+      "nofail"
+      "x-systemd.device-timeout=5s"
+      "x-systemd.automount"
+    ];
+  };
+
   fileSystems."/".options = ["compress=zstd:3" "noatime"];
 
   systemd.tmpfiles.rules = [
     "d /home/yasirfadhil/.cache 0755 yasirfadhil users -"
     "d /home/yasirfadhil/Downloads 0755 yasirfadhil users -"
+    "d /home/yasirfadhil/Videos 0755 yasirfadhil users -"
   ];
 
   # Allow unfree packages

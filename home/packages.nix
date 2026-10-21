@@ -54,6 +54,7 @@ with pkgs; [
 
   # System Tools
   winbox4
+  fd
   swaybg
   hyphen
   mpvpaper
@@ -131,7 +132,7 @@ with pkgs; [
   onlyoffice-desktopeditors
 
   # Games
-  steam-run
+  # steam-run
   # pcsx2
   #] ++ extraGames ++ [
 ]

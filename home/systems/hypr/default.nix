@@ -9,8 +9,19 @@
 
   system = pkgs.stdenv.hostPlatform.system;
 
-  hyprlandPackage =
-    inputs.hyprland.packages.${system}.hyprland;
+  # Use the exact Hyprland package selected by the main flake as the headers
+  # and build dependencies for Hyprliquid. This is intended to avoid building
+  # the plugin against a different Hyprland revision.
+  hyprlandPackage = inputs.hyprland.packages.${system}.hyprland;
+
+  hyprliquidPlugin = inputs.hyprliquid.packages.${system}.hyprliquid.overrideAttrs (_old: {
+    buildInputs =
+      [
+        hyprlandPackage.dev
+        pkgs.stb
+      ]
+      ++ (hyprlandPackage.buildInputs or []);
+  });
 
   workspaceBinds = builtins.concatLists (builtins.genList (i: let
       ws = i + 1;
@@ -228,6 +239,7 @@
     # successfully. Re-enable effect/radius/highlight after ABI validation.
     layerrule = [
       "match:namespace ^quickshell:.*$, blur on, ignore_alpha 0.3"
+      # "match:namespace ^quickshell:dock$, hyprliquid:effect liquid_glass, hyprliquid:vdf_map_mode 1, hyprliquid:corner_radius 22, hyprliquid:vdf_map_debug_mode 1"
     ];
     layerRuleNames = ["quickshell-blur"];
   };
@@ -244,6 +256,12 @@ in {
     package = null;
     portalPackage = null;
     configType = "lua";
+    systemd = {
+      enable = false;
+    };
+
+    # Use the package rebuilt against the Hyprland package selected by this flake.
+    plugins = [hyprliquidPlugin];
 
     settings = toLuaSettings classicSettings;
 

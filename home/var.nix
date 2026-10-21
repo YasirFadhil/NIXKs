@@ -1,13 +1,14 @@
-{ ... }: {
+{ config, ... }: {
   imports = [../nixos/var-conf.nix];
 
   config.var = {
     # hostname = "nixos";
     username = "yasirfadhil";
+    configDirectory = "/home/${config.var.username}/.config/nixos";
     # configDirectory =
-    #   "/etc/"
+    #   "/home/"
     #   + config.var.username
-    #   "/etc/nixos"; # The path of the nixos configuration directory
+    #   + "."; # The path of the nixos configuration directory
 
     # keyboardLayout = "us";
     # weather = "d62572757403946f6fa5d9702a932d2e";
@@ -21,6 +22,7 @@
       email = "yasirfadhil46@gmail.com";
     };
 
+    powerKeyAction = "suspend";
 
     # Choose your theme variables here
     # theme = import ./themes/var/nixy.nix;

@@ -1,12 +1,10 @@
-{ pkgs, ... }:
-
-let
+{pkgs, ...}: let
+  adwair = pkgs.callPackage ../icons/adwair.nix {};
   mactahoe-icon-theme = pkgs.callPackage ../icons/mactahoe.nix {};
   gnome-macos-tahoe-theme = pkgs.callPackage ./gnome-macos-tahoe.nix {
     dart-sass = pkgs.dart-sass;
   };
-in
-{
+in {
   # GTK theme configuration
   gtk = {
     enable = true;

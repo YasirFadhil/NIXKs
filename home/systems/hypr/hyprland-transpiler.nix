@@ -88,8 +88,8 @@ let
         type = "spring";
         mass = number (builtins.elemAt fields 1);
         stiffness = number (builtins.elemAt fields 2);
-        # Current Hyprland Lua API calls this `damping` (not `dampening`).
-        damping = number (builtins.elemAt fields 3);
+        # v0.56.0 expects `dampening`; newer Hyprland main uses `damping`.
+        dampening = number (builtins.elemAt fields 3);
       }
     ];
 

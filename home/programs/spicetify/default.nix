@@ -21,7 +21,8 @@ in {
       historyShortcut
       hidePodcasts
       adblock
-      fullAppDisplayMod
+      # fullAppDisplayMod
+      fullScreen
       shuffle
     ];
   };

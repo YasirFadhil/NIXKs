@@ -1,16 +1,21 @@
-{ pkgs, lib, stdenv, fetchFromGitHub }:
+{
+  pkgs,
+  lib,
+  stdenv,
+  fetchFromGitHub,
+}:
 stdenv.mkDerivation rec {
   pname = "mactahoe-icon-theme";
-  version = "2025-10-16";
+  version = "2026-09-10";
   src = fetchFromGitHub {
     owner = "vinceliuice";
     repo = "MacTahoe-icon-theme";
-    rev = version;                             # ← diubah, tadinya "main"
-    sha256 = "sha256-2Tj4PmecvVA3T5GmKBkYdkjnspIue/u0LiYPaNMXk10=";                    # ← diubah, tadinya sha256 yang lama
+    rev = "839848b9a8a38a92a6936e30c4abe35cc6f2546d";
+    hash = "sha256-NAahlBOYub0QlqkYStamoCbyWh+H5JG/iFm4Ws9EU3A="; # sementara, harus diganti dengan hash sebenarnya
   };
-  nativeBuildInputs = [ pkgs.gtk3 ];
+  nativeBuildInputs = [pkgs.gtk3];
   dontDropIconThemeCache = true;
-  dontCheckForBrokenSymlinks = true;             # ← baris baru, ditambahin
+  dontCheckForBrokenSymlinks = true; # ← baris baru, ditambahin
   installPhase = ''
     runHook preInstall
     mkdir -p $out/share/icons

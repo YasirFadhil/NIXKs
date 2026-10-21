@@ -9,6 +9,10 @@
             type = lib.types.str;
             description = "Username for the system";
           };
+          configDirectory = lib.mkOption {
+            type = lib.types.str;
+            description = "Path to the NixOS configuration directory";
+          };
           powerKeyAction = lib.mkOption {
             type = lib.types.str;
             default = "ignore";
