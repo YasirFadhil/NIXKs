@@ -16,7 +16,7 @@
     # ../../home/systems/waybar
 
     # programs
-    ../../home/programs/claude-desk
+    # ../../home/programs/claude-desk
     ../../home/programs/fastfetch
     # ../../home/programs/foot
     # ../../home/programs/ghostty
@@ -76,9 +76,12 @@
 
     git = {
       enable = true;
+      package = pkgs.git.override {withLibsecret = true;};
+
       settings = {
         user.name = config.var.git.username;
         user.email = config.var.git.email;
+        credential.helper = "libsecret";
       };
     };
 

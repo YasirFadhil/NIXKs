@@ -11,7 +11,7 @@
     seahorse
     wget
     curl
-    git
+    # git
     efibootmgr
     mediawriter
     lm_sensors

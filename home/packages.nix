@@ -39,13 +39,13 @@ with pkgs; [
   neovim
   # antigravity-cli
   antigravity-ide
-  git
+  # git
   # github-copilot-cli
   # pywal
 
   # Browsers and Communication
   # microsoft-edge
-  discord
+  # discord
   # element-desktop
   # google-chrome
   kdePackages.kdeconnect-kde
@@ -53,7 +53,7 @@ with pkgs; [
   # kdePackages.krdc
 
   # System Tools
-  winbox4
+  # winbox4
   fd
   swaybg
   hyphen
@@ -81,7 +81,7 @@ with pkgs; [
   # Wayland tools
   # eww
   # hyprlock
-  hypridle
+  # hypridle
   hyprshot
   # wlogout
   # waybar

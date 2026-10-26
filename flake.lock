@@ -461,36 +461,6 @@
         "type": "github"
       }
     },
-    "hyprliquid": {
-      "inputs": {
-        "hyprland": [
-          "hyprland"
-        ],
-        "nixpkgs": [
-          "hyprliquid",
-          "hyprland",
-          "nixpkgs"
-        ],
-        "systems": [
-          "hyprliquid",
-          "hyprland",
-          "systems"
-        ]
-      },
-      "locked": {
-        "lastModified": 1790754249,
-        "narHash": "sha256-F331z7pj8bbli6hjIDDCzcldHylnelbURtA8lhf5/Gs=",
-        "owner": "zaregototsukai",
-        "repo": "hyprliquid",
-        "rev": "4bbb70286f0f14ad6bfafc26115412f3806064a2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "zaregototsukai",
-        "repo": "hyprliquid",
-        "type": "github"
-      }
-    },
     "hyprtoolkit": {
       "inputs": {
         "aquamarine": [
@@ -915,7 +885,6 @@
         "helium": "helium",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
-        "hyprliquid": "hyprliquid",
         "nix-cachyos-kernel": "nix-cachyos-kernel",
         "nixos-cosmic": "nixos-cosmic",
         "nixpkgs": "nixpkgs_3",

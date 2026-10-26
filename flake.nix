@@ -30,10 +30,10 @@
       url = "github:hyprwm/Hyprland/v0.56.0";
     };
 
-    hyprliquid = {
-      url = "github:zaregototsukai/hyprliquid";
-      inputs.hyprland.follows = "hyprland";
-    };
+    # hyprliquid = {
+    #   url = "github:zaregototsukai/hyprliquid";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
 
     # niri = {
     #  url = "github:sodiboo/niri-flake/very-refactor";
@@ -101,7 +101,7 @@
     nixpkgs,
     home-manager,
     hyprland,
-    hyprliquid,
+    # hyprliquid,
     nixos-cosmic,
     nix-cachyos-kernel,
     ...

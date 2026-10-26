@@ -36,7 +36,7 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 7d";
+    options = "--delete-older-than 2d";
   };
 
   powerManagement.cpuFreqGovernor = "schedutil";
@@ -141,10 +141,10 @@
     "ventoy-1.1.17"
   ];
 
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [
-      "steam-unwrapped"
-    ];
+  # nixpkgs.config.allowUnfreePredicate = pkg:
+  #   builtins.elem (lib.getName pkg) [
+  #     "steam-unwrapped"
+  #   ];
 
   hardware.enableRedistributableFirmware = true;
   # hardware.enableAllFirmware = true;
